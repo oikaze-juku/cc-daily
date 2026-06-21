@@ -2,27 +2,93 @@
   "date": "2026-06-22",
   "quiet_day": false,
   "headline_top": {
-    "title_ja": "Claude Code に動的ワークフローが追加",
-    "summary_ja": ["スクリプトから多数のサブエージェントを編成できる。", "大規模な調査・移行・レビューを並列化できる。", "塾アプリの一括監査などに応用が利く。"],
-    "url": "https://code.claude.com/docs/en/whats-new",
+    "title_ja": "サブエージェントがさらにサブエージェントを産む — 連鎖深度5まで",
+    "summary_ja": [
+      "Week 24（6/8〜12）: バックグラウンドチェーンが5段まで可能になり、複雑な多段タスクを完全自動化できる。",
+      "同週に `/cd` で会話中にワーキングディレクトリを切替可能、`--safe-mode` でカスタマイズを全オフにしてトラブルシュートできる機能も追加。",
+      "複数モデルの `fallbackModel` 設定（最大3つを順番に試す）で API エラー時の自動リカバリも対応。"
+    ],
+    "url": "https://code.claude.com/docs/en/whats-new/2026-w24",
     "trust": "🟩",
-    "trust_reason": "公式 What's new が出どころ",
+    "trust_reason": "公式 What's New（Week 24 ダイジェスト）が出どころ",
     "tags": ["自動化", "アプリ開発"],
-    "try_hint": "詳細リンクを参照"
+    "try_hint": "Claude Code を最新版に更新後、`claude --safe-mode` でトラブルシュートを試す。fallbackModel は settings.json に追記。"
   },
   "categories": [
     {
       "key": "official",
-      "label": "公式アップデート",
+      "label": "公式アップデート（Claude Code）",
       "items": [
         {
-          "title_ja": "Opus 4.8 が既定モデルに",
-          "summary_ja": ["Max/Team/API の既定が Opus 4.8 に。", "既定で高エフォート、最難関は /effort xhigh。", "設計・難デバッグ用途で恩恵。"],
-          "url": "https://code.claude.com/docs/en/changelog",
+          "title_ja": "v2.1.183: 自動モードで破壊的 git コマンドをブロック",
+          "summary_ja": [
+            "auto モード時に `git push --force` や `terraform destroy` 系の破壊的コマンドが自動ブロックされるようになった。",
+            "モデル非推奨警告も追加され、古いモデルを指定している場合に教えてくれる。",
+            "複数の UI/UX 改善とバグ修正を含む（2026-06-19リリース）。"
+          ],
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.183",
           "trust": "🟩",
-          "trust_reason": "公式 changelog",
+          "trust_reason": "公式 GitHub リリース",
+          "tags": ["自動化", "アプリ開発"],
+          "try_hint": "auto モードで `git push --force` を試してブロックされるか確認。"
+        },
+        {
+          "title_ja": "v2.1.181: `/config key=value` で設定をその場変更",
+          "summary_ja": [
+            "スラッシュコマンド `/config key=value` 構文で、ファイルを開かずに会話中に設定を変更できるようになった。",
+            "Bun 1.4 へアップグレード、長い段落のストリーミング描画も改善（2026-06-17リリース）。",
+            "接続・キャッシュ・ファイル操作のバグを複数修正。"
+          ],
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.181",
+          "trust": "🟩",
+          "trust_reason": "公式 GitHub リリース",
           "tags": ["アプリ開発"],
-          "try_hint": "/effort xhigh を試す"
+          "try_hint": "/config model=claude-sonnet-4-6 のように試す。"
+        },
+        {
+          "title_ja": "v2.1.185: API待機ヒントが20秒後に表示に（体感改善）",
+          "summary_ja": [
+            "長い処理中に「Waiting for API response · will retry in …」が出るまでの時間が10秒→20秒に延長。",
+            "不必要なヒント表示が減り、快適になった（2026-06-20リリース）。",
+            "小さな変更だが、長時間タスクを走らせているときのノイズが減る。"
+          ],
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.185",
+          "trust": "🟩",
+          "trust_reason": "公式 GitHub リリース",
+          "tags": ["アプリ開発"],
+          "try_hint": "特に対応不要。自動で恩恵を受ける。"
+        },
+        {
+          "title_ja": "v2.1.179: 接続が切れても途中応答が消えない",
+          "summary_ja": [
+            "接続中断時に届いていた部分応答が保持されるようになった（これまでは消えていた）。",
+            "WSL2 マウスホイール、サンドボックス、リモートセッション関連のバグも修正（2026-06-16リリース）。",
+            "長時間のセッションや不安定な接続環境で特に助かる改善。"
+          ],
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.179",
+          "trust": "🟩",
+          "trust_reason": "公式 GitHub リリース",
+          "tags": ["アプリ開発"],
+          "try_hint": "特に対応不要。接続不安定な環境での作業が安心になる。"
+        }
+      ]
+    },
+    {
+      "key": "official_codex",
+      "label": "公式アップデート（Codex）",
+      "items": [
+        {
+          "title_ja": "Codex 0.141.0: リモート実行に Noise 暗号化チャネルを実装",
+          "summary_ja": [
+            "リモート実行者向けに Noise プロトコルによる暗号化チャネルが実装された（2026-06-18リリース）。",
+            "プラグイン MCP 機能の拡張、クロスプラットフォーム実行の改善も含む。",
+            "Codex は現在 Rust 版（rust-v0.14x）が活発に開発中。v0.142.0 のアルファ版が連日リリースされている。"
+          ],
+          "url": "https://github.com/openai/codex/releases/tag/rust-v0.141.0",
+          "trust": "🟩",
+          "trust_reason": "公式 GitHub リリース",
+          "tags": ["自動化", "アプリ開発"],
+          "try_hint": "npm install -g @openai/codex@latest でアップデート確認。"
         }
       ]
     }
