@@ -1,0 +1,15 @@
+{
+  "primary": [
+    { "name": "Claude Code Releases", "type": "atom", "url": "https://github.com/anthropics/claude-code/releases.atom", "trust": "🟩", "category": "official" },
+    { "name": "Claude Code Changelog", "type": "page", "url": "https://code.claude.com/docs/en/changelog", "trust": "🟩", "category": "official" },
+    { "name": "Claude Code What's New", "type": "page", "url": "https://code.claude.com/docs/en/whats-new", "trust": "🟩", "category": "official" },
+    { "name": "Codex Releases", "type": "atom", "url": "https://github.com/openai/codex/releases.atom", "trust": "🟩", "category": "official" },
+    { "name": "Codex Changelog", "type": "page", "url": "https://developers.openai.com/codex/changelog", "trust": "🟩", "category": "official" }
+  ],
+  "curated_github": [
+    { "name": "awesome-claude-code", "type": "repo-list", "url": "https://github.com/hesreallyhim/awesome-claude-code", "category": "repos" }
+  ],
+  "secondary": [
+    { "name": "ClaudeLog", "type": "page", "url": "https://claudelog.com/claude-news/", "trust": "🟦", "category": "howto" }
+  ]
+}

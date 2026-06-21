@@ -1,0 +1,7 @@
+{
+  "owner": "桜口さん（学習塾オイカゼ）",
+  "stack": ["React", "Vite", "Firebase (Firestore/Functions/Auth)", "Node.js", "vanilla JS"],
+  "domains": ["塾管理（予約・シフト・請求・面談）", "iPad最適化UI", "LINE/LIFF", "AI音声解析（面談文字起こし・要約）", "自動化（Cloud Routines・夜活）"],
+  "projects": ["juku-reservation 予約システム", "漢字道場アプリ", "請求システム再設計（全銀/コレクト）", "生徒マイページ", "経営ダッシュボード", "EdTech第2の柱（不登校オンライン塾）"],
+  "interest_tags": ["塾管理", "アプリ開発", "漢字道場", "請求・全銀", "iPad UI", "LINE・LIFF", "AI音声解析", "自動化", "EdTech"]
+}
