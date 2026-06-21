@@ -1,0 +1,30 @@
+{
+  "date": "2026-06-22",
+  "quiet_day": false,
+  "headline_top": {
+    "title_ja": "Claude Code に動的ワークフローが追加",
+    "summary_ja": ["スクリプトから多数のサブエージェントを編成できる。", "大規模な調査・移行・レビューを並列化できる。", "塾アプリの一括監査などに応用が利く。"],
+    "url": "https://code.claude.com/docs/en/whats-new",
+    "trust": "🟩",
+    "trust_reason": "公式 What's new が出どころ",
+    "tags": ["自動化", "アプリ開発"],
+    "try_hint": "詳細リンクを参照"
+  },
+  "categories": [
+    {
+      "key": "official",
+      "label": "公式アップデート",
+      "items": [
+        {
+          "title_ja": "Opus 4.8 が既定モデルに",
+          "summary_ja": ["Max/Team/API の既定が Opus 4.8 に。", "既定で高エフォート、最難関は /effort xhigh。", "設計・難デバッグ用途で恩恵。"],
+          "url": "https://code.claude.com/docs/en/changelog",
+          "trust": "🟩",
+          "trust_reason": "公式 changelog",
+          "tags": ["アプリ開発"],
+          "try_hint": "/effort xhigh を試す"
+        }
+      ]
+    }
+  ]
+}
