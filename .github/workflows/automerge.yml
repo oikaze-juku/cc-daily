@@ -1,0 +1,25 @@
+name: automerge-daily-issue
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    # feat(issue): で始まるPRだけを自動マージ（probe・手動PRは対象外）
+    if: startsWith(github.event.pull_request.title, 'feat(issue):')
+    runs-on: ubuntu-latest
+    steps:
+      - name: draft を解除してから auto-merge を有効化
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR="${{ github.event.pull_request.number }}"
+          # draft の場合は ready 状態に変換
+          gh pr ready "$PR" --repo "${{ github.repository }}" 2>/dev/null || true
+          # squash merge で auto-merge を設定
+          gh pr merge --auto --squash "$PR" --repo "${{ github.repository }}"

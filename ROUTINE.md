@@ -24,7 +24,7 @@
 10. `issues/<TODAY>.json` として書き出す（スキーマは下記）。
 11. `scripts/validateIssue.js` の `validateIssue` 関数ロジックで検証。エラーがあれば修正してから次へ進む。
 12. `node scripts/writeManifest.js` を実行して `issues/manifest.json` を更新。
-13. 変更をコミットして反映する（メッセージ例: `feat(issue): <TODAY> の号`）。
+13. 変更を **通常の PR（DRAFT ではない）** として作成する。タイトルは必ず `feat(issue): <TODAY> の号` で始めること。GitHub Action が自動マージする。
 
 ## 号スキーマ（issues/<date>.json）
 
@@ -63,6 +63,7 @@
 
 ## 厳守
 
+- PR は **DRAFT にしない**（通常 PR で作成。DRAFT だと自動マージが働かない）。
 - 蛇口（sources.json）以外から拾わない。SNSの「儲かる」系は構造的に入れない。
 - 不確かなものは 🟨 にして `trust_reason` を1行添える（鵜呑み禁止の明示）。
 - 1号は読みやすさ優先：各カテゴリ最大5件、詰め込みすぎない。
