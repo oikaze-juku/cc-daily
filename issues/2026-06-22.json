@@ -2,17 +2,17 @@
   "date": "2026-06-22",
   "quiet_day": false,
   "headline_top": {
-    "title_ja": "サブエージェントがさらにサブエージェントを産む — 連鎖深度5まで",
+    "title_ja": "AI が自分の \"部下AI\" を何段にも呼べるように（夜の自動作業が一気に賢くなる）",
     "summary_ja": [
-      "Week 24（6/8〜12）: バックグラウンドチェーンが5段まで可能になり、複雑な多段タスクを完全自動化できる。",
-      "同週に `/cd` で会話中にワーキングディレクトリを切替可能、`--safe-mode` でカスタマイズを全オフにしてトラブルシュートできる機能も追加。",
-      "複数モデルの `fallbackModel` 設定（最大3つを順番に試す）で API エラー時の自動リカバリも対応。"
+      "これまで AI は部下 AI（サブエージェント＝作業を任せる AI の分身）を1段しか呼べなかったが、最大5段まで呼べるように。大きな仕事を細かく分担して任せられる。",
+      "塾アプリの大規模な点検（全画面のバグ探しなど）を、夜のうちに AI 軍団へまるごと任せて朝に結果を受け取る、が現実的になる。",
+      "桜口さんが寝ている間に進む開発の量が増える＝同じ一晩でこなせる仕事が増える。"
     ],
     "url": "https://code.claude.com/docs/en/whats-new/2026-w24",
     "trust": "🟩",
     "trust_reason": "公式 What's New（Week 24 ダイジェスト）が出どころ",
     "tags": ["自動化", "アプリ開発"],
-    "try_hint": "Claude Code を最新版に更新後、`claude --safe-mode` でトラブルシュートを試す。fallbackModel は settings.json に追記。"
+    "try_hint": "試すなら：夜活で『この機能を全部点検して』のような大きめの依頼を投げてみる（AI が自動で作業を分担する）。"
   },
   "categories": [
     {
@@ -20,56 +20,43 @@
       "label": "公式アップデート（Claude Code）",
       "items": [
         {
-          "title_ja": "v2.1.183: 自動モードで破壊的 git コマンドをブロック",
+          "title_ja": "夜中に AI が止まっても自動で控えに引き継ぎ（夜活の中断防止）",
           "summary_ja": [
-            "auto モード時に `git push --force` や `terraform destroy` 系の破壊的コマンドが自動ブロックされるようになった。",
-            "モデル非推奨警告も追加され、古いモデルを指定している場合に教えてくれる。",
-            "複数の UI/UX 改善とバグ修正を含む（2026-06-19リリース）。"
+            "メインの AI が混雑などで応答しない時、自動で控えの AI（最大3つまで順番に指定可）に切り替えて作業を続ける設定が追加された。",
+            "夜に塾アプリの開発を AI に任せる「夜活」が、途中のエラーで止まらず朝までやり切れるようになる。",
+            "「朝起きたら途中で止まっていた」が減る＝任せた一晩の仕事が無駄になりにくい。"
           ],
-          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.183",
+          "url": "https://code.claude.com/docs/en/whats-new/2026-w24",
           "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース",
+          "trust_reason": "公式 What's New（Week 24 ダイジェスト）が出どころ",
           "tags": ["自動化", "アプリ開発"],
-          "try_hint": "auto モードで `git push --force` を試してブロックされるか確認。"
+          "try_hint": "試すなら：設定ファイル(settings.json)に控えモデルを順番に並べて指定（公式 changelog にやり方あり）。"
         },
         {
-          "title_ja": "v2.1.181: `/config key=value` で設定をその場変更",
+          "title_ja": "設定変更が会話の途中でワンタッチに（手が止まらない）",
           "summary_ja": [
-            "スラッシュコマンド `/config key=value` 構文で、ファイルを開かずに会話中に設定を変更できるようになった。",
-            "Bun 1.4 へアップグレード、長い段落のストリーミング描画も改善（2026-06-17リリース）。",
-            "接続・キャッシュ・ファイル操作のバグを複数修正。"
+            "これまで設定を変えるには別ファイルを開く必要があったが、会話中に `/config 項目=値` と打つだけでその場で変えられるようになった。",
+            "「今だけ別のモデルで」「今だけこの権限で」を会話を切らずに切り替えられ、塾アプリ作業のテンポが上がる。",
+            "設定のたびに作業が中断しない＝集中が途切れず、結果的に速い。"
           ],
           "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.181",
           "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース",
+          "trust_reason": "公式 GitHub リリース（v2.1.181）",
           "tags": ["アプリ開発"],
-          "try_hint": "/config model=claude-sonnet-4-6 のように試す。"
+          "try_hint": "試すなら：会話中に `/config model=claude-sonnet-4-6` と打って、その場で切り替わるか確認。"
         },
         {
-          "title_ja": "v2.1.185: API待機ヒントが20秒後に表示に（体感改善）",
+          "title_ja": "AI が勝手に危険な操作をしないよう自動ガード（事故防止）",
           "summary_ja": [
-            "長い処理中に「Waiting for API response · will retry in …」が出るまでの時間が10秒→20秒に延長。",
-            "不必要なヒント表示が減り、快適になった（2026-06-20リリース）。",
-            "小さな変更だが、長時間タスクを走らせているときのノイズが減る。"
+            "AI に作業を任せている時、うっかり大事なデータやコードを消す操作を自動で止めてくれる安全機能が強化された。",
+            "塾アプリの Firebase データやコードを AI に触らせる時、消去・上書き事故の保険になる。",
+            "「AI に任せて壊さないか不安」が減り、安心して自動作業を増やせる＝結果的に開発が速くなる。"
           ],
-          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.185",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.183",
           "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース",
-          "tags": ["アプリ開発"],
-          "try_hint": "特に対応不要。自動で恩恵を受ける。"
-        },
-        {
-          "title_ja": "v2.1.179: 接続が切れても途中応答が消えない",
-          "summary_ja": [
-            "接続中断時に届いていた部分応答が保持されるようになった（これまでは消えていた）。",
-            "WSL2 マウスホイール、サンドボックス、リモートセッション関連のバグも修正（2026-06-16リリース）。",
-            "長時間のセッションや不安定な接続環境で特に助かる改善。"
-          ],
-          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.179",
-          "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース",
-          "tags": ["アプリ開発"],
-          "try_hint": "特に対応不要。接続不安定な環境での作業が安心になる。"
+          "trust_reason": "公式 GitHub リリース（v2.1.183）",
+          "tags": ["自動化", "アプリ開発"],
+          "try_hint": "試すなら：特別な設定は不要。自動モードで作業すれば自動で効く。"
         }
       ]
     },
@@ -78,17 +65,17 @@
       "label": "公式アップデート（Codex）",
       "items": [
         {
-          "title_ja": "Codex 0.141.0: リモート実行に Noise 暗号化チャネルを実装",
+          "title_ja": "Codex が外部ツール連携を強化（つなげる道具が増える）",
           "summary_ja": [
-            "リモート実行者向けに Noise プロトコルによる暗号化チャネルが実装された（2026-06-18リリース）。",
-            "プラグイン MCP 機能の拡張、クロスプラットフォーム実行の改善も含む。",
-            "Codex は現在 Rust 版（rust-v0.14x）が活発に開発中。v0.142.0 のアルファ版が連日リリースされている。"
+            "Codex（OpenAI のコーディング AI）が、外部ツールをつなぐ仕組み（MCP）を拡張し、離れた場所での作業の通信も暗号化された。",
+            "Codex 側で開発を進める時、つなげられる便利ツールの幅が広がる。",
+            "Claude Code と Codex を使い分けている桜口さんにとって、Codex でできることが増える＝手札が増える。"
           ],
           "url": "https://github.com/openai/codex/releases/tag/rust-v0.141.0",
           "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース",
+          "trust_reason": "公式 GitHub リリース（rust-v0.141.0）",
           "tags": ["自動化", "アプリ開発"],
-          "try_hint": "npm install -g @openai/codex@latest でアップデート確認。"
+          "try_hint": "試すなら：`npm install -g @openai/codex@latest` で最新版に更新して確認。"
         }
       ]
     }
