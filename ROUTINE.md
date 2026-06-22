@@ -17,7 +17,7 @@
 
 ## 手順
 
-1. `sources.json` を読む（primary=公式 / insider=中の人 / community=Reddit・HN / curated_github / secondary / _探索ルール）。
+1. `sources.json` を読む（primary=公式 / insider=中の人ブログ+X watch / media=専門メディア / practitioner_blogs=実践ブログ / newsletters=ニュースレター / video=YouTube / competitor_context=競合ツール / community=Reddit・HN / japanese=日本語 / curated_github / secondary / _探索ルール）。
 2. `issues/` の既存ファイル全てから、過去に出した全 `url` を集める（重複排除キー）。
 3. 各ソースを取得：
    - `type: atom` … releases.atom や Simon Willison の Atom の直近7日のエントリ。
@@ -25,8 +25,8 @@
    - `type: repo-list` … awesome-claude-code の前回号に無い新規追加リポ。
    - `type: x-watch`（中の人のX）… `handle` の人物を「人名＋Claude Code」で WebSearch し、直近7日の**本人発**を特定。本人アカウントと確認できたら🟨で採用（`trust_reason` 必須）、できなければ載せない。ハンドルは検索で都度特定する（変動しうる）。
    - insider（中の人ブログ）… Anthropic Engineering / Claude Blog / Simon Willison / Latent Space の新着。Simon は til.simonwillison.net/claude-code も見る。
-4. **深掘り（このダイジェストの肝）**：手順3で見つけた中から、(a) 読者が「なんだそれ？」と思う**新語**、(b)「効率上がる？役に立つ？」と問いたくなる**機能** を選び、`WebSearch` で**複数の独立ソース**を引いて「解説」「考察」を作る。中の人の発言も `WebSearch` で**本人ソース**を確認してから載せる。
-   - **中の人ウォッチの探し方（毎朝必ず watch リストを順に当たる）**：まず**ブログ層（Simon Willison・swyx）**を見て、直近7日に Claude/Codex の実践があれば最優先で拾う（本文を WebFetch で確認できるので🟩）。無ければ**X層（Boris Cherny・Thariq・Alex Albert）**を「人名＋Claude Code」で検索し、本人発の「うまい使い方」を1つ選ぶ（🟨・`trust_reason` 必須）。見出しに発信者名を込める（例「Claude Code作者ボリス『計画に8割使え』」）。
+4. **深掘り（このダイジェストの肝）**：手順3で見つけた中から、(a) 読者が「なんだそれ？」と思う**新語**、(b)「効率上がる？役に立つ？」と問いたくなる**機能** を選び、`WebSearch` で**複数の独立ソース**を引いて「解説」「考察」を作る。中の人の発言も `WebSearch` で**本人ソース**を確認してから載せる。専門メディア（media）・実践ブログ（practitioner_blogs）・ニュースレター（newsletters）・コミュニティ（community）は直近7日のキーワード検索で探す（各 watch の記載キーワードを使う）。日本語ソース（japanese）は howto・insight 候補として DevelopersIO / Zenn / Qiita を検索する。競合文脈（competitor_context）は Cursor・Copilot の新機能が insight のネタになるときだけ引く。
+   - **中の人ウォッチの探し方（毎朝必ず watch リストを順に当たる）**：まず**ブログ層（Simon Willison・swyx・Chip Huyen・Jack Clark・DAIR.AI）**を見て、直近7日に Claude/Codex の実践があれば最優先で拾う（本文を WebFetch で確認できるので🟩）。次に**X層（Boris Cherny・Thariq・Alex Albert・Karpathy・Lilian Weng・Riley Goodside・Philipp Schmid）**を「人名＋Claude Code」で検索し、本人発を確認できたら🟨で採用（`trust_reason` 必須）。見出しに発信者名を込める（例「Claude Code作者ボリス『計画に8割使え』」）。確認できなければ載せない。
 5. 候補から既出 url（手順2）を `scripts/dedupe.js` の `dedupe` ロジックで除外する。**さらに、URL が違っても過去号と同じ話題・同じ機能を扱うものは出さない**（同じ新機能の二度載せ禁止）。
 6. 各候補を評価：
    - **信頼度を 緑→黄→赤（やばい順）で付ける**：🟩 安全（公式・本人の一次発信・複数ソースで裏取り済み）／🟨 注意（信頼できる二次・解説記事ベースで複数一致・一部未確認）／🟥 要警戒（個人の SNS 主張・未検証・出どころは弱いが話題。**鵜呑み禁物**として載せる）。
