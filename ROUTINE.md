@@ -24,9 +24,11 @@
    - `type: page` … ページの新着更新項目。
    - `type: repo-list` … awesome-claude-code の前回号に無い新規追加リポ。
    - `type: x-watch`（中の人のX）… `handle` の人物を「人名＋Claude Code」で WebSearch し、直近7日の**本人発**を特定。本人アカウントと確認できたら🟨で採用（`trust_reason` 必須）、できなければ載せない。ハンドルは検索で都度特定する（変動しうる）。
+   - `deepdive: true`（video＝動画文字起こし深掘り・任意）… **良いネタがある日だけ**。C段:WebSearchで直近7日の良い動画を1本特定→B段:動画URLを文字起こしサービスにWebFetchして本編取得→名場面を1つ抽出。サービス候補・フォールバック・trust規約は `sources.json` の `_探索ルール`「動画文字起こし深掘り（方式B・任意）」に従う。取れない日は方式C（検索要約）にフォールバックし号は止めない。0本でよい。
    - insider（中の人ブログ）… Anthropic Engineering / Claude Blog / Simon Willison / Latent Space の新着。Simon は til.simonwillison.net/claude-code も見る。
 4. **深掘り（このダイジェストの肝）**：手順3で見つけた中から、(a) 読者が「なんだそれ？」と思う**新語**、(b)「効率上がる？役に立つ？」と問いたくなる**機能** を選び、`WebSearch` で**複数の独立ソース**を引いて「解説」「考察」を作る。中の人の発言も `WebSearch` で**本人ソース**を確認してから載せる。専門メディア（media）・実践ブログ（practitioner_blogs）・ニュースレター（newsletters）・コミュニティ（community）は直近7日のキーワード検索で探す（各 watch の記載キーワードを使う）。日本語ソース（japanese）は howto・insight 候補として DevelopersIO / Zenn / Qiita を検索する。競合文脈（competitor_context）は Cursor・Copilot の新機能が insight のネタになるときだけ引く。
    - **中の人ウォッチの探し方（毎朝必ず watch リストを順に当たる）**：まず**ブログ層（★Ethan Mollick・Simon Willison・swyx・Chip Huyen・Geoffrey Huntley・Hamel Husain・Eugene Yan・Kent Beck・Armin Ronacher・Jack Clark・DAIR.AI）**を見て、直近7日に Claude/Codex・AI活用の記事があれば最優先で拾う（本文を WebFetch で確認できるので🟩）。**★Ethan Mollick（oneusefulthing.org）は塾長に最も刺さる発信者**——非エンジニアがAIを実務に使う話が多い。「管理職がClaude Codeを最も上手く使える」「マネジメントはAIのスーパーパワー」等の切り口は積極的に拾う。次に**X層（Boris Cherny・Cat Wu・Erik Schluntz・Thariq・Alex Albert・Karpathy・Lilian Weng・Riley Goodside・Philipp Schmid）**を「人名＋Claude Code」で検索し、本人発を確認できたら🟨で採用（`trust_reason` 必須）。見出しに発信者名を込める（例「管理職はなぜAIの達人になれるか──Ethan Mollick 研究」）。確認できなければ載せない。
+   - **動画deep-dive（任意・良いネタがある日だけ）**：video（海外5人＝IndyDevDan・Cole Medin・Fireship・Matt Berman・AI Engineer）に直近7日の良い動画があれば、**本編の文字起こしを1本だけ深掘り**して実演ノウハウを拾う。①WebSearchで「これは」という動画を1本特定→②動画URL（youtube.com/watch?v=ID）を文字起こしサービスにWebFetch（候補・順序は `sources.json` の `_探索ルール`「動画文字起こし深掘り」）→③名場面を1つ抽出して記事化（🟨・動画URL併記・固有名詞は公式名に補正・全文転載禁止）。**サービスが全滅したらその日は方式C（検索要約）にフォールバック**し号は止めない。**0本の日があってよい**（無理に作らない）。
 5. 候補から既出 url（手順2）を `scripts/dedupe.js` の `dedupe` ロジックで除外する。**さらに、URL が違っても過去号と同じ話題・同じ機能を扱うものは出さない**（同じ新機能の二度載せ禁止）。
 6. 各候補を評価：
    - **信頼度を 緑→黄→赤（やばい順）で付ける**：🟩 安全（公式・本人の一次発信・複数ソースで裏取り済み）／🟨 注意（信頼できる二次・解説記事ベースで複数一致・一部未確認）／🟥 要警戒（個人の SNS 主張・未検証・出どころは弱いが話題。**鵜呑み禁物**として載せる）。
@@ -119,6 +121,7 @@
 - PR は **DRAFT にしない**（通常 PR で作成。DRAFT だと自動マージが働かない）。
 - **中の人ウォッチは `sources.json` の insider watch リストを起点に拾う**。本人ブログ（Simon・swyx）の本文確認なら🟩、本人X（Boris・Thariq・Alex）の発言確認なら🟨。又聞きの怪しいまとめ・インプ稼ぎ・詐欺は入れない。掘り出し物があれば日本語・他分野の実践者も拾ってよい（本人一次発信に限る）。
 - 蛇口（sources.json）と手順4の深掘り調査**以外**からは拾わない。SNS の「儲かる」系は構造的に入れない。
+- **動画文字起こし（任意）**：videoの深掘りは🟨・動画URL併記・固有名詞は公式名に補正・全文転載禁止（要点＋出典URLのみ）。文字起こしサービスが取れない日は方式C（検索要約）にフォールバックし、**号は絶対に止めない**。0本でよい。
 - 不確かなものは 🟨 にして `trust_reason` を1行添える（鵜呑み禁止の明示）。**考察は断定せず「条件付き」で**結論する。
 - **情報の鮮度（最重要）**：**号の日付から1週間（7日）以内のものだけ**を載せる。8日以上前のものは拾わない。各項目に `source_date` を必ず付ける。提供終了・利用不可のものは載せない。
 - **重複回避**：過去号と同じ話題・URL は出さない（同じ機能の二度載せ禁止）。
