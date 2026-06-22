@@ -34,6 +34,12 @@ header {
   border:1.5px solid var(--line); border-radius:24px; padding:0 18px; font-size:16px; font-family:var(--jp);
 }
 .controls select:focus, .controls input:focus { outline:none; border-color:var(--kiku); box-shadow:0 0 0 3px var(--kiku-soft); }
+.fav-toggle {
+  flex-shrink:0; min-height:48px; padding:0 16px; background:var(--card); color:var(--sub);
+  border:1.5px solid var(--line); border-radius:24px; font-size:14px; font-weight:500;
+  font-family:var(--jp); cursor:pointer; -webkit-tap-highlight-color:transparent; white-space:nowrap;
+}
+.fav-toggle.on { background:var(--kiku-soft); color:#8A6D14; border-color:var(--kiku); }
 
 /* ===== 凡例 ===== */
 .legend {
@@ -113,14 +119,14 @@ main > h1 {
 .src:active::after { transform:translateX(4px); }
 .quiet { color:var(--sub); font-style:italic; }
 
-/* ===== 進捗バー（タスク管理・その号の既読数） ===== */
-.progress { background:var(--cream); border:1px solid var(--line); border-radius:24px; padding:14px 18px; margin:0 0 16px; }
-.progress-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; }
-.progress-num { font-family:var(--serif); font-weight:600; font-size:15px; color:var(--ink); }
-.progress.done .progress-num { color:#8A6D14; }
-.progress-bar { height:9px; background:#fff; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
-.progress-fill { height:100%; background:var(--kiku); border-radius:999px; transition:width .35s ease; }
-.progress.done .progress-fill { background:var(--green); }
+/* ===== 進捗バー（細い・ヘッダー内に固定） ===== */
+#progressbar:empty { display:none; }
+.pbar { display:flex; align-items:center; gap:10px; margin-top:11px; }
+.pbar-track { flex:1; height:5px; background:#fff; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.pbar-fill { display:block; height:100%; background:var(--kiku); border-radius:999px; transition:width .35s ease; }
+.pbar.done .pbar-fill { background:var(--green); }
+.pbar-num { font-family:var(--serif); font-size:12px; font-weight:600; color:var(--sub); white-space:nowrap; }
+.pbar.done .pbar-num { color:var(--green-ink); }
 
 /* ===== フィルタ（すべて/未読/お気に入り） ===== */
 .filters { display:flex; gap:8px; margin:0 0 18px; }

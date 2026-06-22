@@ -11,7 +11,6 @@ let read = getSet(LS_READ);
 let manifest = [];
 let current = null;     // 表示中の号
 let filter = 'all';     // all | unread | fav
-let query = '';
 
 async function loadJSON(path) {
   const res = await fetch(path, { cache: 'no-store' });
@@ -61,33 +60,31 @@ function itemCard(item) {
     </details>`;
 }
 
-// その号の既読進捗バー（タスク管理）
-function progressView(issue) {
+// その号の既読進捗（細い・上部固定バー）
+function renderProgress(issue) {
+  if (!issue || filter === 'fav') { $('#progressbar').innerHTML = ''; return; }
   const items = allItems(issue);
   const total = items.length;
   const done = items.filter((i) => read.has(i.url)).length;
   const pct = total ? Math.round((done / total) * 100) : 0;
   const allDone = total > 0 && done === total;
-  return `
-    <div class="progress${allDone ? ' done' : ''}">
-      <div class="progress-head">
-        <span class="progress-num">${done} / ${total} ${allDone ? '読了！' : '読んだ'}</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+  $('#progressbar').innerHTML = `
+    <div class="pbar${allDone ? ' done' : ''}">
+      <span class="pbar-track"><span class="pbar-fill" style="width:${pct}%"></span></span>
+      <span class="pbar-num">${done}/${total}${allDone ? ' 読了' : ''}</span>
     </div>`;
 }
 
 function filterBar() {
   const tab = (key, label) => `<button class="ftab${filter === key ? ' on' : ''}" data-filter="${key}">${label}</button>`;
-  return `<div class="filters">${tab('all', 'すべて')}${tab('unread', '未読')}${tab('fav', '★お気に入り')}</div>`;
+  return `<div class="filters">${tab('all', 'すべて')}${tab('unread', '未読')}</div>`;
 }
 
-const matchesQuery = (it) => !query || it.title_ja.includes(query) || (it.tags || []).some((t) => t.includes(query));
+const legend = `<div class="legend"><span>🟩 公式・本家発で安心</span><span>🟦 信頼できる二次情報</span><span>🟨 要注意（理由つき）</span></div>`;
 
 // 通常表示（1つの号）
 function renderIssue(issue) {
-  const legend = `<div class="legend"><span>🟩 公式・本家発で安心</span><span>🟦 信頼できる二次情報</span><span>🟨 要注意（理由つき）</span></div>`;
-  const top = issue.headline_top
+  const top = issue.headline_top && (filter !== 'unread' || !read.has(issue.headline_top.url))
     ? `<section class="top"><h2>🌟 今日の一番</h2>${itemCard(issue.headline_top)}</section>`
     : '';
   const quiet = issue.quiet_day ? `<p class="quiet">今日は静かでした。</p>` : '';
@@ -96,27 +93,28 @@ function renderIssue(issue) {
     if (!items.length) return '';
     return `<section class="cat" data-key="${cat.key || ''}"><h3>${cat.label || cat.key}</h3>${items.map(itemCard).join('')}</section>`;
   }).join('');
-  const topVisible = top && (filter !== 'unread' || !read.has(issue.headline_top.url)) ? top : '';
-  $('#issue').innerHTML = `${progressView(issue)}<h1>${issue.date} の号</h1>${filterBar()}${quiet}${topVisible}${cats}${legend}`;
+  $('#issue').innerHTML = `<h1>${issue.date} の号</h1>${filterBar()}${quiet}${top}${cats}${legend}`;
 }
 
 // お気に入り横断表示（全号からお気に入り記事を集約）
 async function renderFavorites() {
-  const legend = `<div class="legend"><span>🟩 公式・本家発で安心</span><span>🟦 信頼できる二次情報</span><span>🟨 要注意（理由つき）</span></div>`;
   const collected = [];
   for (const m of manifest) {
     try {
       const issue = await loadJSON(m.path);
-      allItems(issue).forEach((it) => { if (favorites.has(it.url)) collected.push({ ...it, _date: issue.date }); });
+      allItems(issue).forEach((it) => { if (favorites.has(it.url)) collected.push(it); });
     } catch (e) { /* skip */ }
   }
   const body = collected.length
     ? `<section class="cat"><h3>★ お気に入り（${collected.length}件）</h3>${collected.map(itemCard).join('')}</section>`
     : `<p class="quiet">まだお気に入りがありません。記事の ☆ をタップすると、ここにまとまります。</p>`;
-  $('#issue').innerHTML = `<h1>★ お気に入り</h1>${filterBar()}${body}${legend}`;
+  $('#issue').innerHTML = `<h1>★ お気に入り</h1>${body}${legend}`;
 }
 
 function render() {
+  renderProgress(current);
+  $('#favBtn').classList.toggle('on', filter === 'fav');
+  $('#favBtn').innerHTML = filter === 'fav' ? '★ お気に入り' : '☆ お気に入り';
   if (filter === 'fav') { renderFavorites(); return; }
   if (current) renderIssue(current);
 }
@@ -126,7 +124,8 @@ async function boot() {
   const sel = $('#dates');
   sel.innerHTML = manifest.map((m) => `<option value="${m.path}">${m.date}</option>`).join('');
   sel.addEventListener('change', async () => { current = await loadJSON(sel.value); filter = 'all'; render(); });
-  $('#q').addEventListener('input', (e) => { query = e.target.value.trim(); render(); });
+
+  $('#favBtn').addEventListener('click', () => { filter = filter === 'fav' ? 'all' : 'fav'; render(); });
 
   // ☆✓ トグルとフィルタ切替（イベント委譲）
   $('#issue').addEventListener('click', (e) => {
