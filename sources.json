@@ -4,12 +4,23 @@
     { "name": "Claude Code Changelog", "type": "page", "url": "https://code.claude.com/docs/en/changelog", "trust": "🟩", "category": "official" },
     { "name": "Claude Code What's New", "type": "page", "url": "https://code.claude.com/docs/en/whats-new", "trust": "🟩", "category": "official" },
     { "name": "Codex Releases", "type": "atom", "url": "https://github.com/openai/codex/releases.atom", "trust": "🟩", "category": "official" },
-    { "name": "Codex Changelog", "type": "page", "url": "https://developers.openai.com/codex/changelog", "trust": "🟩", "category": "official" }
+    { "name": "Codex Changelog", "type": "page", "url": "https://developers.openai.com/codex/changelog", "trust": "🟩", "category": "official" },
+    { "name": "Anthropic News", "type": "page", "url": "https://www.anthropic.com/news", "trust": "🟩", "category": "official" },
+    { "name": "OpenAI News", "type": "page", "url": "https://openai.com/news/", "trust": "🟩", "category": "official" }
+  ],
+  "insider": [
+    { "name": "Anthropic Engineering Blog（中の人の技術発信＝一次）", "type": "page", "url": "https://www.anthropic.com/engineering", "trust": "🟩", "category": "insider" },
+    { "name": "Claude Blog", "type": "page", "url": "https://claude.com/blog", "trust": "🟩", "category": "insider" }
   ],
   "curated_github": [
     { "name": "awesome-claude-code", "type": "repo-list", "url": "https://github.com/hesreallyhim/awesome-claude-code", "category": "repos" }
   ],
   "secondary": [
-    { "name": "ClaudeLog", "type": "page", "url": "https://claudelog.com/claude-news/", "trust": "🟦", "category": "howto" }
-  ]
+    { "name": "ClaudeLog", "type": "page", "url": "https://claudelog.com/claude-news/", "trust": "🟦", "category": "howto", "note": "2026-06-22時点で 403 を返すことがある。取得失敗時はスキップ可。" }
+  ],
+  "_探索ルール": {
+    "新ワード解説": "公式や一次情報で見慣れない用語（例: hermes agent）が出たら、WebSearch で複数の独立ソースを引いて中立に解説する。固定の蛇口は持たない（探索で拾う）。",
+    "使いこなし考察": "『◯◯すると効率は上がるか』のような問いは、WebSearch で複数の技術ブログ・公式情報を引き、断定せず『条件付き』で結論を出す（公式数値でなければ🟦）。",
+    "中の人ウォッチ": "Anthropic/OpenAI の社員の発言は、本人の一次発信（公式ブログ・公式インタビュー・本人の公式アカウント）に限定。又聞きの二次まとめ・インプ稼ぎは入れない。"
+  }
 }

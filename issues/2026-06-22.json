@@ -2,80 +2,92 @@
   "date": "2026-06-22",
   "quiet_day": false,
   "headline_top": {
-    "title_ja": "AI が自分の \"部下AI\" を何段にも呼べるように（夜の自動作業が一気に賢くなる）",
+    "title_ja": "Codex に \"1回見せれば覚える\" 自動化が登場（塾の事務作業がそのまま自動化できる）",
     "summary_ja": [
-      "これまで AI は部下 AI（サブエージェント＝作業を任せる AI の分身）を1段しか呼べなかったが、最大5段まで呼べるように。大きな仕事を細かく分担して任せられる。",
-      "塾アプリの大規模な点検（全画面のバグ探しなど）を、夜のうちに AI 軍団へまるごと任せて朝に結果を受け取る、が現実的になる。",
-      "桜口さんが寝ている間に進む開発の量が増える＝同じ一晩でこなせる仕事が増える。"
+      "面倒な作業を Codex に1回やって見せるだけで、再利用できる手順書に変換してくれる新機能「Record & Replay」が 2026/6/18 に登場した。",
+      "塾の毎月の経費精算・定例レポート・請求まわりの繰り返し事務を、1回見せるだけで自動化できる。",
+      "クリック位置でなく「やりたいこと」を覚えるので画面が少し変わっても壊れにくい＝事務時間がまるごと減る。"
     ],
-    "url": "https://code.claude.com/docs/en/whats-new/2026-w24",
+    "url": "https://www.techtimes.com/articles/318759/20260620/openai-codex-automation-gains-record-replay-show-it-once-skip-script.htm",
     "trust": "🟩",
-    "trust_reason": "公式 What's New（Week 24 ダイジェスト）が出どころ",
-    "tags": ["自動化", "アプリ開発"],
-    "try_hint": "試すなら：夜活で『この機能を全部点検して』のような大きめの依頼を投げてみる（AI が自動で作業を分担する）。"
+    "trust_reason": "OpenAI Codex の公式機能（2026/6/18）。複数の独立メディアで内容が一致",
+    "tags": ["自動化", "請求・全銀"],
+    "try_hint": "試すなら：Codex の Mac アプリを最新版に更新し、まず毎月の定例レポート1つを「見せて」覚えさせる。"
   },
   "categories": [
     {
-      "key": "official",
-      "label": "公式アップデート（Claude Code）",
+      "key": "newword",
+      "label": "📖 新ワード解説",
       "items": [
         {
-          "title_ja": "夜中に AI が止まっても自動で控えに引き継ぎ（夜活の中断防止）",
+          "title_ja": "hermes agent ＝ \"常駐して動き続ける\" タイプのAIエージェント",
           "summary_ja": [
-            "メインの AI が混雑などで応答しない時、自動で控えの AI（最大3つまで順番に指定可）に切り替えて作業を続ける設定が追加された。",
-            "夜に塾アプリの開発を AI に任せる「夜活」が、途中のエラーで止まらず朝までやり切れるようになる。",
-            "「朝起きたら途中で止まっていた」が減る＝任せた一晩の仕事が無駄になりにくい。"
+            "Nous Research が 2026年2月に公開した自律エージェントの土台で、頭脳に Claude を使える（hermes agent）。",
+            "Claude Code が「頼んだら動いて終わる職人」なら、hermes は「住み込みで動き続ける執事」。常駐させて回す用途向け。",
+            "今すぐ必要ではないが「常駐型エージェント」という選択肢を知っておくと、将来の自動化設計の幅が広がる。"
+          ],
+          "url": "https://www.mindstudio.ai/blog/hermes-agent-vs-claude-code-comparison",
+          "trust": "🟦",
+          "trust_reason": "公式ドキュメントでなく解説記事ベース。複数ソースで内容が一致するため🟦",
+          "tags": ["自動化"],
+          "try_hint": "試すなら：今は「こういう種類がある」と知るだけでOK。詳しくは解説リンクへ。"
+        }
+      ]
+    },
+    {
+      "key": "howto",
+      "label": "🛠 新機能と使い方",
+      "items": [
+        {
+          "title_ja": "AI が \"部下AI\" を5段まで呼べるように（大きな仕事を任せきれる）",
+          "summary_ja": [
+            "AI が自分の部下 AI（サブエージェント＝作業を任せる分身）を最大5段まで呼べるようになり、大仕事を細かく分担できる。",
+            "塾アプリの全画面バグ点検のような大規模作業を、夜のうちに AI 軍団へまるごと任せて朝に結果、が現実的になる。",
+            "一晩でこなせる仕事量が増える＝寝ている間に進む開発が増える。"
           ],
           "url": "https://code.claude.com/docs/en/whats-new/2026-w24",
           "trust": "🟩",
           "trust_reason": "公式 What's New（Week 24 ダイジェスト）が出どころ",
           "tags": ["自動化", "アプリ開発"],
-          "try_hint": "試すなら：設定ファイル(settings.json)に控えモデルを順番に並べて指定（公式 changelog にやり方あり）。"
-        },
-        {
-          "title_ja": "設定変更が会話の途中でワンタッチに（手が止まらない）",
-          "summary_ja": [
-            "これまで設定を変えるには別ファイルを開く必要があったが、会話中に `/config 項目=値` と打つだけでその場で変えられるようになった。",
-            "「今だけ別のモデルで」「今だけこの権限で」を会話を切らずに切り替えられ、塾アプリ作業のテンポが上がる。",
-            "設定のたびに作業が中断しない＝集中が途切れず、結果的に速い。"
-          ],
-          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.181",
-          "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース（v2.1.181）",
-          "tags": ["アプリ開発"],
-          "try_hint": "試すなら：会話中に `/config model=claude-sonnet-4-6` と打って、その場で切り替わるか確認。"
-        },
-        {
-          "title_ja": "AI が勝手に危険な操作をしないよう自動ガード（事故防止）",
-          "summary_ja": [
-            "AI に作業を任せている時、うっかり大事なデータやコードを消す操作を自動で止めてくれる安全機能が強化された。",
-            "塾アプリの Firebase データやコードを AI に触らせる時、消去・上書き事故の保険になる。",
-            "「AI に任せて壊さないか不安」が減り、安心して自動作業を増やせる＝結果的に開発が速くなる。"
-          ],
-          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.183",
-          "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース（v2.1.183）",
-          "tags": ["自動化", "アプリ開発"],
-          "try_hint": "試すなら：特別な設定は不要。自動モードで作業すれば自動で効く。"
+          "try_hint": "試すなら：夜活で「この機能を全部点検して」のように大きめに頼む（AI が自動で分担する）。"
         }
       ]
     },
     {
-      "key": "official_codex",
-      "label": "公式アップデート（Codex）",
+      "key": "insight",
+      "label": "🤔 使いこなし考察",
       "items": [
         {
-          "title_ja": "Codex が外部ツール連携を強化（つなげる道具が増える）",
+          "title_ja": "\"AI司令塔＋部下\" は効率を上げるか？ → 並列作業なら上がる（コスト管理が鍵）",
           "summary_ja": [
-            "Codex（OpenAI のコーディング AI）が、外部ツールをつなぐ仕組み（MCP）を拡張し、離れた場所での作業の通信も暗号化された。",
-            "Codex 側で開発を進める時、つなげられる便利ツールの幅が広がる。",
-            "Claude Code と Codex を使い分けている桜口さんにとって、Codex でできることが増える＝手札が増える。"
+            "複数の AI を束ねる「オーケストレーター」は、調査やレビューなど同時に進められる作業では速くなる。",
+            "逆に順番にやる作業や同じ場所を編集する作業はかえって遅くコスト高。桜口さんの夜活「アプリ全体点検」のような並列向き。",
+            "コツは「司令塔に賢いモデル＋部下に安いモデル」。品質を保ったままコストが5〜10倍下がる実例がある。"
           ],
-          "url": "https://github.com/openai/codex/releases/tag/rust-v0.141.0",
-          "trust": "🟩",
-          "trust_reason": "公式 GitHub リリース（rust-v0.141.0）",
+          "url": "https://medium.com/neuralnotions/multi-agent-orchestration-in-claude-code-the-architecture-and-economics-of-subagents-06d52e69f8b2",
+          "trust": "🟦",
+          "trust_reason": "複数の技術ブログで同様の結論。公式の数値ではないため🟦（鵜呑みにせず傾向として）",
           "tags": ["自動化", "アプリ開発"],
-          "try_hint": "試すなら：`npm install -g @openai/codex@latest` で最新版に更新して確認。"
+          "try_hint": "試すなら：夜活で大きめの並列タスク時だけ多エージェントを使い、普段は単体で（枠の節約）。"
+        }
+      ]
+    },
+    {
+      "key": "insider",
+      "label": "🎙 中の人ウォッチ",
+      "items": [
+        {
+          "title_ja": "Claude Code 開発者いわく「いきなり書かせるな、まず計画させろ」",
+          "summary_ja": [
+            "開発者 Boris Cherny・Cat Wu が語る2026年の最適解は「調べる→計画→実行→レビュー→出荷、各段階で人間が監督」。",
+            "特に「プランモードで先に段取り」させると難題の成功率が2〜3倍。桜口さんの「設計してから実装（opusplan）」はこれと同じ。",
+            "中の人公認のやり方を桜口さんは既に実践中＝今の AI チーム運用は正しい方向、と裏付けられた。"
+          ],
+          "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
+          "trust": "🟩",
+          "trust_reason": "Anthropic 公式エンジニアリング記事＋開発者本人の発言",
+          "tags": ["自動化", "アプリ開発"],
+          "try_hint": "試すなら：難しめの依頼は最初に「まず計画だけ立てて」と一言add。"
         }
       ]
     }
