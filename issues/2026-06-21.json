@@ -33,8 +33,8 @@
           ],
           "source_date": "2026年2月（公開）",
           "url": "https://www.mindstudio.ai/blog/hermes-agent-vs-claude-code-comparison",
-          "trust": "🟦",
-          "trust_reason": "公式ドキュメントでなく解説記事ベース。複数ソースで内容が一致するため🟦",
+          "trust": "🟨",
+          "trust_reason": "公式ドキュメントでなく解説記事ベース。複数ソースで内容が一致するため🟨",
           "tags": ["自動化"],
           "ideas": [
             "毎晩決まった時刻に塾アプリのデータを自動でバックアップさせる。",
@@ -81,8 +81,8 @@
           ],
           "source_date": "2026年5〜6月（複数の技術記事）",
           "url": "https://medium.com/neuralnotions/multi-agent-orchestration-in-claude-code-the-architecture-and-economics-of-subagents-06d52e69f8b2",
-          "trust": "🟦",
-          "trust_reason": "複数の技術ブログで同様の結論。公式の数値ではないため🟦（傾向として）",
+          "trust": "🟨",
+          "trust_reason": "複数の技術ブログで同様の結論。公式の数値ではないため🟨（傾向として）",
           "tags": ["自動化", "経営・財務"],
           "ideas": [
             "テスト前に全教科の予想問題を並行作成して、準備を短縮する。",

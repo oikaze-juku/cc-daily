@@ -42,3 +42,13 @@ test('ideas が空配列だと invalid', () => {
   const issue = { date: '2026-06-22', quiet_day: false, headline_top: goodItem, categories: [{ items: [bad] }] };
   assert.equal(validateIssue(issue).valid, false);
 });
+
+test('trust 🟥（要警戒）は valid', () => {
+  const issue = { date: '2026-06-22', quiet_day: false, headline_top: { ...goodItem, trust: '🟥' }, categories: [] };
+  assert.equal(validateIssue(issue).valid, true);
+});
+
+test('廃止した 🟦 は invalid', () => {
+  const issue = { date: '2026-06-22', quiet_day: false, headline_top: { ...goodItem, trust: '🟦' }, categories: [] };
+  assert.equal(validateIssue(issue).valid, false);
+});

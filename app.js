@@ -80,7 +80,7 @@ function filterBar() {
   return `<div class="filters">${tab('all', 'すべて')}${tab('unread', '未読')}</div>`;
 }
 
-const legend = `<div class="legend"><span>🟩 公式・本家発で安心</span><span>🟦 信頼できる二次情報</span><span>🟨 要注意（理由つき）</span></div>`;
+const legend = `<div class="legend"><span>🟩 安全（公式・本人発）</span><span>🟨 注意（二次・未確認）</span><span>🟥 要警戒（SNS等・鵜呑み禁物）</span></div>`;
 
 // 通常表示（1つの号）
 function renderIssue(issue) {

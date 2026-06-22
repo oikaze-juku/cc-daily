@@ -1,5 +1,5 @@
 // 号JSONがスキーマを満たすか検証する純粋関数（外部ライブラリ不使用）。
-const TRUST = new Set(['🟩', '🟦', '🟨']);
+const TRUST = new Set(['🟩', '🟨', '🟥']);
 
 function validateItem(item, path, errors) {
   if (typeof item.title_ja !== 'string' || !item.title_ja) errors.push(`${path}.title_ja が空`);
