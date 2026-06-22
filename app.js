@@ -9,12 +9,16 @@ async function loadJSON(path) {
 function itemCard(item) {
   const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
   const reason = item.trust_reason ? `<div class="reason">${item.trust} ${item.trust_reason}</div>` : '';
+  const dateLine = item.source_date ? `<div class="date">📅 ${item.source_date} の情報</div>` : '';
+  const ideaLine = item.idea ? `<div class="idea">💡 こんな使い方：${item.idea}</div>` : '';
   const tryLine = item.try_hint ? `<div class="try">試すなら：${item.try_hint}</div>` : '';
   return `
     <details class="card">
       <summary><span class="badge">${item.trust}</span> ${item.title_ja}</summary>
+      ${dateLine}
       <ul>${(item.summary_ja || []).map((s) => `<li>${s}</li>`).join('')}</ul>
       ${reason}
+      ${ideaLine}
       ${tags ? `<div class="tags">${tags}</div>` : ''}
       ${tryLine}
       <a class="src" href="${item.url}" target="_blank" rel="noopener">原文を開く ↗</a>

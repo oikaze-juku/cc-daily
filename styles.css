@@ -19,3 +19,5 @@ main > h1 { font-size:18px; color:var(--muted); }
 .try { margin-top:8px; font-size:13px; color:#a7f3d0; }
 .src { display:inline-block; margin-top:10px; min-height:44px; line-height:44px; color:#7dd3fc; }
 .quiet { color:var(--muted); }
+.date { color:var(--muted); font-size:12px; margin:4px 0 6px; }
+.idea { margin:10px 0; padding:10px 12px; background:rgba(245,200,66,0.08); border-left:3px solid #f5c842; border-radius:8px; font-size:14px; color:#fde68a; }

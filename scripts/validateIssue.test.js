@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { validateIssue } from './validateIssue.js';
 
-const goodItem = { title_ja: 'x', summary_ja: ['a', 'b', 'c'], url: 'https://e.com', trust: '🟩', tags: [], try_hint: '' };
+const goodItem = { title_ja: 'x', summary_ja: ['a', 'b', 'c'], url: 'https://e.com', trust: '🟩', tags: [], try_hint: '', source_date: '2026-06-22', idea: 'これを使うと〜ができるかも' };
 
 test('正しい号は valid', () => {
   const issue = { date: '2026-06-22', quiet_day: false, headline_top: goodItem, categories: [{ key: 'official', items: [goodItem] }] };
@@ -23,4 +23,16 @@ test('通常日にheadline_topが無いと invalid', () => {
 test('静かな日は headline_top 無しでも valid', () => {
   const issue = { date: '2026-06-22', quiet_day: true, categories: [] };
   assert.equal(validateIssue(issue).valid, true);
+});
+
+test('source_date（情報の日付）が無いと invalid', () => {
+  const { source_date, ...bad } = goodItem;
+  const issue = { date: '2026-06-22', quiet_day: false, headline_top: goodItem, categories: [{ items: [bad] }] };
+  assert.equal(validateIssue(issue).valid, false);
+});
+
+test('idea（応用アイデア）が無いと invalid', () => {
+  const { idea, ...bad } = goodItem;
+  const issue = { date: '2026-06-22', quiet_day: false, headline_top: goodItem, categories: [{ items: [bad] }] };
+  assert.equal(validateIssue(issue).valid, false);
 });

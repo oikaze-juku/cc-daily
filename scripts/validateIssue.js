@@ -8,6 +8,8 @@ function validateItem(item, path, errors) {
   if (!TRUST.has(item.trust)) errors.push(`${path}.trust が不正`);
   if (!Array.isArray(item.tags)) errors.push(`${path}.tags は配列`);
   if (typeof item.try_hint !== 'string') errors.push(`${path}.try_hint は文字列`);
+  if (typeof item.source_date !== 'string' || !item.source_date) errors.push(`${path}.source_date が空（情報の日付が必要）`);
+  if (typeof item.idea !== 'string' || !item.idea) errors.push(`${path}.idea が空（応用アイデアが必要）`);
 }
 
 export function validateIssue(issue) {
