@@ -120,19 +120,25 @@ function renderTodo(issue) {
   $('#issue').innerHTML = `${body}${legend}`;
 }
 
-// お気に入り横断表示（全号からお気に入り記事を集約）
+// お気に入り横断表示（全号のお気に入りを月の第N週ごとに折りたたみ）
 async function renderFavorites() {
-  const collected = [];
+  const entries = [];
   for (const m of manifest) {
     try {
       const issue = await loadJSON(m.path);
-      allItems(issue).forEach((it) => { if (favorites.has(it.url)) collected.push(it); });
+      allItems(issue).forEach((it) => { if (favorites.has(it.url)) entries.push({ item: it, date: issue.date }); });
     } catch (e) { /* skip */ }
   }
-  const body = collected.length
-    ? `<section class="cat"><h3>⭐ お気に入り（${collected.length}件）</h3>${collected.map(itemCard).join('')}</section>`
+  const groups = groupByWeek(entries);
+  const total = entries.length;
+  const body = groups.length
+    ? groups.map((g, i) => `
+        <details class="week-group" ${i === 0 ? 'open' : ''}>
+          <summary><span class="week-label">${g.label}</span><span class="week-count">${g.entries.length}</span></summary>
+          ${g.entries.map((e) => itemCard(e.item)).join('')}
+        </details>`).join('')
     : `<p class="quiet">まだお気に入りがありません。記事の ☆ をタップすると、ここにまとまります。</p>`;
-  $('#issue').innerHTML = `<h1>⭐ お気に入り</h1>${body}${legend}`;
+  $('#issue').innerHTML = `<h1>⭐ お気に入り（${total}件）</h1>${body}${legend}`;
 }
 
 // アーカイブ横断表示（全号の「既読かつ非お気に入り」を月の第N週ごとに折りたたみ）
