@@ -14,6 +14,7 @@ html { -webkit-text-size-adjust:100%; overflow-x:hidden; }
 body {
   margin:0; font-family:var(--jp); background:var(--paper); color:var(--ink);
   line-height:1.85; font-size:16px; font-weight:400;
+  line-break:strict; word-break:auto-phrase;
 }
 
 /* ===== ヘッダー（Citrus方針: backdrop-filterは使わない＝iOS崩れ防止） ===== */
@@ -52,8 +53,8 @@ header {
 /* ===== 本体 ===== */
 main { padding:20px 18px 64px; max-width:680px; margin:0 auto; }
 main > h1 {
-  font-family:var(--serif); font-weight:500; font-size:16px; color:var(--sub);
-  margin:0 0 18px; padding-bottom:10px; border-bottom:1.5px solid var(--ink);
+  font-family:var(--serif); font-weight:600; font-size:18px; color:var(--ink);
+  margin:0 0 14px;
 }
 
 /* ===== 今日の一番 ===== */
@@ -137,7 +138,7 @@ main > h1 {
 .acts { display:flex; gap:6px; flex-shrink:0; }
 .act { width:42px; height:42px; border-radius:999px; border:1.5px solid var(--line); background:var(--card); font-size:18px; line-height:1; cursor:pointer; -webkit-tap-highlight-color:transparent; display:flex; align-items:center; justify-content:center; color:var(--sub); padding:0; }
 .act-fav.on { color:var(--kiku-hover); border-color:var(--kiku); background:var(--kiku-soft); }
-.act-read { color:var(--green-ink); font-weight:700; }
+.act-read { color:#B7B3A0; font-weight:700; }
 .act-read.on { color:#fff; background:var(--green-ink); border-color:var(--green-ink); }
 
 /* 未読ドット（タイトル先頭） */

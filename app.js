@@ -48,7 +48,7 @@ function itemCard(item) {
         </span>
         <span class="acts">
           <button class="act act-fav${isFav ? ' on' : ''}" data-act="fav" data-url="${item.url}" aria-label="お気に入り" title="お気に入り">${isFav ? '★' : '☆'}</button>
-          <button class="act act-read${isRead ? ' on' : ''}" data-act="read" data-url="${item.url}" aria-label="既読チェック" title="読んだ">${isRead ? '✓' : ''}</button>
+          <button class="act act-read${isRead ? ' on' : ''}" data-act="read" data-url="${item.url}" aria-label="既読チェック" title="読んだら押す">✓</button>
         </span>
       </summary>
       ${dateLine}
@@ -93,7 +93,7 @@ function renderIssue(issue) {
     if (!items.length) return '';
     return `<section class="cat" data-key="${cat.key || ''}"><h3>${cat.label || cat.key}</h3>${items.map(itemCard).join('')}</section>`;
   }).join('');
-  $('#issue').innerHTML = `<h1>${issue.date} の号</h1>${filterBar()}${quiet}${top}${cats}${legend}`;
+  $('#issue').innerHTML = `${filterBar()}${quiet}${top}${cats}${legend}`;
 }
 
 // お気に入り横断表示（全号からお気に入り記事を集約）
@@ -138,6 +138,8 @@ async function boot() {
       const set = kind === 'fav' ? favorites : read;
       if (set.has(url)) set.delete(url); else set.add(url);
       saveSet(kind === 'fav' ? LS_FAV : LS_READ, set);
+      // お気に入りにしたら同時に既読をつける
+      if (kind === 'fav' && favorites.has(url) && !read.has(url)) { read.add(url); saveSet(LS_READ, read); }
       render();
       return;
     }
