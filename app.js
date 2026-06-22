@@ -40,16 +40,16 @@ function itemCard(item) {
   return `
     <details class="card${isRead ? ' is-read' : ''}">
       <summary>
-        <span class="badge">${item.trust}</span>
-        <span class="head">
+        <span class="row">
+          <span class="badge">${item.trust}</span>
           <span class="title">${!isRead ? '<span class="dot" aria-label="未読"></span>' : ''}${item.title_ja}</span>
-          <span class="lead-label">こんなことができます</span>
-          <span class="lead">${lead}</span>
+          <span class="acts">
+            <button class="act act-fav${isFav ? ' on' : ''}" data-act="fav" data-url="${item.url}" aria-label="お気に入り" title="お気に入り">${isFav ? '★' : '☆'}</button>
+            <button class="act act-read${isRead ? ' on' : ''}" data-act="read" data-url="${item.url}" aria-label="既読チェック" title="読んだら押す">✓</button>
+          </span>
         </span>
-        <span class="acts">
-          <button class="act act-fav${isFav ? ' on' : ''}" data-act="fav" data-url="${item.url}" aria-label="お気に入り" title="お気に入り">${isFav ? '★' : '☆'}</button>
-          <button class="act act-read${isRead ? ' on' : ''}" data-act="read" data-url="${item.url}" aria-label="既読チェック" title="読んだら押す">✓</button>
-        </span>
+        <span class="lead-label">こんなことができます</span>
+        <span class="lead">${lead}</span>
       </summary>
       ${dateLine}
       ${reason}

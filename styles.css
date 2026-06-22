@@ -82,13 +82,12 @@ main > h1 {
   background:var(--card); border:1px solid var(--line); border-radius:24px;
   padding:18px 20px; margin:12px 0; box-shadow:var(--shadow);
 }
-.card summary { cursor:pointer; list-style:none; display:flex; gap:10px; align-items:flex-start; }
+.card summary { cursor:pointer; list-style:none; display:flex; flex-direction:column; gap:8px; }
 .card summary::-webkit-details-marker { display:none; }
+/* 上段：トレイ＋タイトル＋☆✓ボタン。本文はこの下にフル幅で回り込む */
+.row { display:flex; gap:9px; align-items:flex-start; }
 .badge { font-size:17px; flex-shrink:0; line-height:1.6; }
-
-/* 折りたたみ時：タイトル＋「こんなことができます」概要 */
-.head { flex:1; display:flex; flex-direction:column; gap:6px; min-width:0; }
-.title { font-family:var(--jp); font-size:16.5px; font-weight:700; color:var(--ink); line-height:1.5; }
+.title { flex:1; min-width:0; font-family:var(--jp); font-size:16.5px; font-weight:700; color:var(--ink); line-height:1.5; }
 .lead-label {
   align-self:flex-start; font-family:var(--jp); font-size:10.5px; font-weight:700; color:#8A6D14;
   background:var(--kiku-soft); padding:3px 11px; border-radius:999px; letter-spacing:0.04em;
