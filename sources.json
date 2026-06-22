@@ -3,14 +3,22 @@
     { "name": "Claude Code Releases", "type": "atom", "url": "https://github.com/anthropics/claude-code/releases.atom", "trust": "🟩", "category": "official" },
     { "name": "Claude Code Changelog", "type": "page", "url": "https://code.claude.com/docs/en/changelog", "trust": "🟩", "category": "official" },
     { "name": "Claude Code What's New", "type": "page", "url": "https://code.claude.com/docs/en/whats-new", "trust": "🟩", "category": "official" },
+    { "name": "Claude Platform / API Release Notes", "type": "page", "url": "https://platform.claude.com/docs/en/release-notes/overview", "trust": "🟩", "category": "official", "watch": "Claude本体・APIの新機能。Managed Agents等の企業向け機能もここで出る。" },
     { "name": "Codex Releases", "type": "atom", "url": "https://github.com/openai/codex/releases.atom", "trust": "🟩", "category": "official" },
     { "name": "Codex Changelog", "type": "page", "url": "https://developers.openai.com/codex/changelog", "trust": "🟩", "category": "official" },
+    { "name": "Gemini CLI Releases（クロスプラットフォーム用）", "type": "atom", "url": "https://github.com/google-gemini/gemini-cli/releases.atom", "trust": "🟩", "category": "official", "watch": "superpowersはGemini CLIでも動く。Gemini CLIの新機能も塾長の選択肢になる。" },
     { "name": "Anthropic News", "type": "page", "url": "https://www.anthropic.com/news", "trust": "🟩", "category": "official" },
     { "name": "Anthropic Engineering Blog", "type": "page", "url": "https://www.anthropic.com/engineering", "trust": "🟩", "category": "official" },
     { "name": "Anthropic Research Papers", "type": "page", "url": "https://www.anthropic.com/research", "trust": "🟩", "category": "official" },
+    { "name": "Anthropic Status（障害・稼働状況）", "type": "page", "url": "https://status.anthropic.com/", "trust": "🟩", "category": "official", "watch": "Claude/Claude Codeに障害が出ていないか。『今日は重い・止まってる』の原因確認に使う。大きな障害の日だけ拾う。" },
+    { "name": "Anthropic Cookbook（公式コード例）", "type": "repo-list", "url": "https://github.com/anthropics/anthropic-cookbook", "trust": "🟩", "category": "howto", "watch": "公式の実装レシピ集。新しいレシピ追加はhowtoのネタになる。" },
+    { "name": "Anthropic 公式YouTube（チュートリアル・デモ）", "type": "search", "url": "https://www.youtube.com/@anthropic-ai", "trust": "🟩", "category": "howto", "watch": "「Anthropic Claude Code tutorial 2026」で検索。公式の使い方デモ動画→howto向け→🟩。" },
+    { "name": "Anthropic 公式X（@AnthropicAI）", "type": "x-watch", "url": "https://x.com/AnthropicAI", "trust": "🟩", "category": "official", "handle": "@AnthropicAI", "watch": "公式アカウント。「AnthropicAI Claude Code」で直近7日の告知を確認→公式なので🟩。" },
     { "name": "Claude Blog", "type": "page", "url": "https://claude.com/blog", "trust": "🟩", "category": "official" },
+    { "name": "Model Context Protocol（MCP公式）", "type": "page", "url": "https://modelcontextprotocol.io/", "trust": "🟩", "category": "newword", "watch": "MCPはAnthropic発の公式標準。新しい連携の仕組み・新用語の一次解説に使う→🟩。" },
     { "name": "OpenAI News", "type": "page", "url": "https://openai.com/news/", "trust": "🟩", "category": "official" },
     { "name": "OpenAI Research Blog", "type": "page", "url": "https://openai.com/research/", "trust": "🟩", "category": "official" },
+    { "name": "Google AI Blog（Gemini・AIコーディング）", "type": "page", "url": "https://blog.google/technology/ai/", "trust": "🟩", "category": "official", "watch": "Gemini系の新機能。Claude/Codexとの比較insightのネタにもなる。" },
     { "name": "GitHub Blog（Copilot・AI機能）", "type": "atom", "url": "https://github.blog/feed/", "trust": "🟩", "category": "official" }
   ],
   "insider": [
@@ -19,6 +27,12 @@
       "type": "atom", "url": "https://simonwillison.net/atom/everything/", "trust": "🟩", "category": "insider",
       "handle": "@simonw",
       "watch": "Claude Code/Codexの実践Tips。Atom機械巡回可。専用ページ til.simonwillison.net/claude-code もチェック。本文WebFetch確認済み→🟩。"
+    },
+    {
+      "name": "Ethan Mollick / One Useful Thing（非エンジニア向けAI活用の第一人者）",
+      "type": "page", "url": "https://www.oneusefulthing.org/", "trust": "🟩", "category": "insight",
+      "handle": "@emollick",
+      "watch": "★塾長に最も刺さる発信者。専門家でない人がAIをどう実務に使うかを平易に書く。本人運営→🟩。塾・教育・仕事術の文脈で積極的に拾う。"
     },
     {
       "name": "swyx / Latent Space（AIエンジニア解説の定番メディア）",
@@ -33,10 +47,70 @@
       "watch": "MLエンジニアリング・LLMの実務的な深掘り。本人ブログ→🟩。"
     },
     {
+      "name": "Dario Amodei（Anthropic CEO・エッセイ）",
+      "type": "page", "url": "https://www.darioamodei.com/", "trust": "🟩", "category": "insight",
+      "handle": "@DarioAmodei",
+      "watch": "AIの大きな方向性。塾長が『AIはこの先どうなる』を掴むのに使う。本人サイト→🟩。重要エッセイが出た週だけ。"
+    },
+    {
+      "name": "Hamel Husain（LLM評価・実務の第一人者）",
+      "type": "page", "url": "https://hamel.dev/", "trust": "🟩", "category": "howto",
+      "handle": "@HamelHusain",
+      "watch": "AIの『ちゃんと効いてるか測る』実務。本人ブログ→🟩。"
+    },
+    {
+      "name": "Eugene Yan（Amazon応用ML・実務ブログ）",
+      "type": "page", "url": "https://eugeneyan.com/writing/", "trust": "🟩", "category": "insight",
+      "handle": "@eugeneyan",
+      "watch": "現場でAIをどう仕事に組み込むかの実務的考察。本人ブログ→🟩。"
+    },
+    {
+      "name": "Geoffrey Huntley（Claude Code/エージェント開発の実務家）",
+      "type": "page", "url": "https://ghuntley.com/", "trust": "🟩", "category": "howto",
+      "handle": "@GeoffreyHuntley",
+      "watch": "Claude Codeを使い倒す具体ノウハウを濃く書く。本人ブログ→🟩。塾長の自走運用に直結。"
+    },
+    {
+      "name": "Kent Beck（TDD創始者・Augmented Coding）",
+      "type": "page", "url": "https://tidyfirst.substack.com/", "trust": "🟩", "category": "insight",
+      "handle": "@KentBeck",
+      "watch": "テスト駆動の生みの親がAIと組む開発を書く。塾長の『設計してから実装』哲学の裏付けになる。本人Substack→🟩。"
+    },
+    {
+      "name": "Armin Ronacher（Flask作者・エージェント開発エッセイ）",
+      "type": "page", "url": "https://lucumr.pocoo.org/", "trust": "🟩", "category": "howto",
+      "handle": "@mitsuhiko",
+      "watch": "AIエージェントに作業を任せる実務エッセイ。本人ブログ→🟩。"
+    },
+    {
+      "name": "Jack Clark（Anthropic共同創業者・Import AI）",
+      "type": "page", "url": "https://jack-clark.net/", "trust": "🟩", "category": "insider",
+      "handle": "@jackclarkSF",
+      "watch": "毎週のAI動向まとめ（Import AI）。本人newsletter→🟩。"
+    },
+    {
+      "name": "Elvis Saravia / DAIR.AI（AI教育・プロンプト研究）",
+      "type": "page", "url": "https://dair.ai/", "trust": "🟩", "category": "insider",
+      "handle": "@omarsar0",
+      "watch": "プロンプトガイド・LLM活用教材の定番サイト。本人運営→🟩。"
+    },
+    {
       "name": "Boris Cherny（Claude Code 作者本人）",
       "type": "x-watch", "url": "https://x.com/bcherny", "trust": "🟨", "category": "insider",
       "handle": "@bcherny",
       "watch": "「Boris Cherny Claude Code」で検索し直近7日の発言を特定。本人アカウント確認できたら🟨（trust_reason必須）。"
+    },
+    {
+      "name": "Cat Wu（Anthropic・Claude Code プロダクト）",
+      "type": "x-watch", "url": "https://x.com/_catwu", "trust": "🟨", "category": "insider",
+      "handle": "@_catwu",
+      "watch": "Claude Codeチームのプロダクト担当。「Cat Wu Claude Code Anthropic」で検索し本人発を確認→🟨。ハンドルは検索で都度特定。"
+    },
+    {
+      "name": "Erik Schluntz（Anthropic・Claude Code エンジニア）",
+      "type": "x-watch", "url": "https://x.com/ErikSchluntz", "trust": "🟨", "category": "insider",
+      "handle": "@ErikSchluntz",
+      "watch": "Claude Codeの中の人。「Erik Schluntz Claude Code」で検索し本人発を確認→🟨。"
     },
     {
       "name": "Thariq（Claude Code チームメンバー）",
@@ -51,102 +125,118 @@
       "watch": "Anthropicの開発者向け発信。「Alex Albert Anthropic Claude Code」で検索→🟨。"
     },
     {
-      "name": "Andrej Karpathy（元Tesla AI・元OpenAI・教育AI界の巨人）",
+      "name": "Andrej Karpathy（元Tesla AI・元OpenAI・AI教育の巨人）",
       "type": "x-watch", "url": "https://x.com/karpathy", "trust": "🟨", "category": "insider",
       "handle": "@karpathy",
-      "watch": "「Andrej Karpathy Claude Codex AI coding」で検索し直近7日の発言を特定。LLM・AIコーディングへの本質的な洞察。本人発確認→🟨。"
+      "watch": "「Andrej Karpathy Claude Codex AI coding」で検索。AIコーディングへの本質的洞察。本人発確認→🟨。"
     },
     {
-      "name": "Lilian Weng（OpenAI Head of Safety・技術ブログ定番）",
+      "name": "Lilian Weng（元OpenAI Safety・技術ブログ定番）",
       "type": "x-watch", "url": "https://x.com/lilianweng", "trust": "🟨", "category": "insider",
       "handle": "@lilianweng",
-      "watch": "「Lilian Weng AI agent Claude Code」で検索。エージェント・プロンプト技術の深い解説で有名。本人発確認→🟨。"
+      "watch": "「Lilian Weng AI agent」で検索。エージェント技術の深い解説で有名。本人発確認→🟨。"
     },
     {
-      "name": "Riley Goodside（Scale AI・Staff Prompt Engineer）",
+      "name": "Riley Goodside（プロンプトエンジニアリングの先駆者）",
       "type": "x-watch", "url": "https://x.com/goodside", "trust": "🟨", "category": "insider",
       "handle": "@goodside",
-      "watch": "プロンプトエンジニアリングの実践知。「Riley Goodside Claude Code prompt」で検索→🟨。"
+      "watch": "プロンプトの実践知。「Riley Goodside Claude prompt」で検索→🟨。"
     },
     {
-      "name": "Jack Clark（Anthropic 共同創業者・Import AI Newsletter）",
-      "type": "page", "url": "https://jack-clark.net/", "trust": "🟩", "category": "insider",
-      "handle": "@jackclarkSF",
-      "watch": "毎週のAI動向まとめ（Import AI）。本人ブログ/newsletter→🟩。"
-    },
-    {
-      "name": "Philipp Schmid（Hugging Face・技術解説）",
+      "name": "Philipp Schmid（Google DeepMind・技術解説）",
       "type": "x-watch", "url": "https://x.com/_philschmid", "trust": "🟨", "category": "insider",
       "handle": "@_philschmid",
-      "watch": "LLM実装・Claude活用の具体的なコード例。「Philipp Schmid Claude Code」で検索→🟨。"
-    },
-    {
-      "name": "Elvis Saravia / DAIR.AI（AI教育・プロンプト研究）",
-      "type": "page", "url": "https://dair.ai/", "trust": "🟩", "category": "insider",
-      "handle": "@omarsar0",
-      "watch": "プロンプトガイド・LLM活用教材の定番サイト。本人運営→🟩。"
+      "watch": "LLM実装・Claude活用の具体コード例。「Philipp Schmid Claude Code」で検索→🟨。"
     }
   ],
   "media": [
-    { "name": "VentureBeat AI", "type": "search", "url": "https://venturebeat.com/category/ai/", "trust": "🟨", "category": "official", "watch": "「VentureBeat Claude Code Codex June 2026」で検索。AI業界ニュースを速報する信頼できるメディア→🟨。" },
-    { "name": "MIT Technology Review AI", "type": "search", "url": "https://www.technologyreview.com/topic/artificial-intelligence/", "trust": "🟨", "category": "newword", "watch": "「MIT Technology Review Claude AI coding 2026」で検索。技術的な深掘りに強く新ワード解説に向く→🟨。" },
-    { "name": "TechCrunch AI", "type": "search", "url": "https://techcrunch.com/category/artificial-intelligence/", "trust": "🟨", "category": "official", "watch": "「TechCrunch Claude Code Anthropic June 2026」で検索。速報に強い→🟨。" },
-    { "name": "The Verge AI", "type": "search", "url": "https://www.theverge.com/ai-artificial-intelligence", "trust": "🟨", "category": "official", "watch": "「The Verge Claude Codex AI coding June 2026」で検索。一般向けAIニュースに強い→🟨。" },
-    { "name": "Wired AI", "type": "search", "url": "https://www.wired.com/tag/artificial-intelligence/", "trust": "🟨", "category": "insight", "watch": "「Wired AI Claude Code June 2026」で検索。AIの社会的影響・考察に強く insight に向く→🟨。" },
-    { "name": "InfoQ AI", "type": "search", "url": "https://www.infoq.com/ai-ml-data-eng/", "trust": "🟨", "category": "howto", "watch": "「InfoQ Claude Code AI agent June 2026」で検索。エンタープライズ向け技術の深掘りに強い→🟨。" }
+    { "name": "VentureBeat AI", "type": "search", "url": "https://venturebeat.com/category/ai/", "trust": "🟨", "category": "official", "watch": "「VentureBeat Claude Code Codex June 2026」で検索。AI業界ニュース速報→🟨。" },
+    { "name": "TechCrunch AI", "type": "search", "url": "https://techcrunch.com/category/artificial-intelligence/", "trust": "🟨", "category": "official", "watch": "「TechCrunch Claude Code Anthropic June 2026」で検索→🟨。" },
+    { "name": "The Verge AI", "type": "search", "url": "https://www.theverge.com/ai-artificial-intelligence", "trust": "🟨", "category": "official", "watch": "「The Verge Claude Codex AI coding June 2026」で検索→🟨。" },
+    { "name": "Ars Technica AI（技術ジャーナリズムの定番）", "type": "search", "url": "https://arstechnica.com/ai/", "trust": "🟨", "category": "official", "watch": "「Ars Technica Claude Anthropic June 2026」で検索。技術的に正確な記事→🟨。" },
+    { "name": "The Decoder（AI特化メディア）", "type": "search", "url": "https://the-decoder.com/", "trust": "🟨", "category": "official", "watch": "「The Decoder Claude Code Anthropic June 2026」で検索。AI専門で信号が濃い→🟨。" },
+    { "name": "Axios（簡潔なビジネス視点）", "type": "search", "url": "https://www.axios.com/technology", "trust": "🟨", "category": "official", "watch": "「Axios Anthropic Claude June 2026」で検索。要点が短くまとまる→🟨。" },
+    { "name": "ZDNET AI", "type": "search", "url": "https://www.zdnet.com/topic/artificial-intelligence/", "trust": "🟨", "category": "howto", "watch": "「ZDNET Claude Code how to 2026」で検索。実務・導入視点に強い→🟨。" },
+    { "name": "IEEE Spectrum AI（技術深掘り）", "type": "search", "url": "https://spectrum.ieee.org/topic/artificial-intelligence/", "trust": "🟨", "category": "newword", "watch": "「IEEE Spectrum AI coding agent 2026」で検索。新概念の正確な解説に向く→🟨。" },
+    { "name": "MIT Technology Review AI", "type": "search", "url": "https://www.technologyreview.com/topic/artificial-intelligence/", "trust": "🟨", "category": "newword", "watch": "「MIT Technology Review Claude AI coding 2026」で検索。新ワード解説に向く→🟨。" },
+    { "name": "Wired AI", "type": "search", "url": "https://www.wired.com/tag/artificial-intelligence/", "trust": "🟨", "category": "insight", "watch": "「Wired AI Claude Code June 2026」で検索。社会的影響・考察に強い→🟨。" },
+    { "name": "InfoQ AI", "type": "search", "url": "https://www.infoq.com/ai-ml-data-eng/", "trust": "🟨", "category": "howto", "watch": "「InfoQ Claude Code AI agent June 2026」で検索。エンタープライズ技術の深掘り→🟨。" }
   ],
   "practitioner_blogs": [
-    { "name": "DEV.to / claude-code タグ", "type": "search", "url": "https://dev.to/t/claudecode", "trust": "🟨", "category": "howto", "watch": "「dev.to claude-code tips 2026」で検索。実務開発者の使い方記事が豊富→🟨（複数記事で一致した手法は特に有力）。" },
-    { "name": "Medium / AI Engineering", "type": "search", "url": "https://medium.com/tag/claude-code", "trust": "🟨", "category": "howto", "watch": "「Medium claude code workflow 2026」で検索。実践者のノウハウ記事が多い→🟨。" },
-    { "name": "XDA Developers AI", "type": "search", "url": "https://www.xda-developers.com/tag/ai/", "trust": "🟨", "category": "howto", "watch": "「XDA claude code tips setup 2026」で検索。わかりやすい実践ガイド記事に強い→🟨。" },
-    { "name": "The Pragmatic Engineer（Gergely Orosz）", "type": "search", "url": "https://newsletter.pragmaticengineer.com/", "trust": "🟨", "category": "insight", "watch": "「Pragmatic Engineer Claude Code AI coding 2026」で検索。エンジニアリング組織・開発現場のリアルな考察に強い→🟨。" },
-    { "name": "Every.to / Chain of Thought", "type": "search", "url": "https://every.to/chain-of-thought", "trust": "🟨", "category": "insight", "watch": "「every.to Claude Code AI 2026」で検索。AIの実務活用に特化した深い考察記事→🟨。" }
+    { "name": "DEV.to / claude-code タグ", "type": "search", "url": "https://dev.to/t/claudecode", "trust": "🟨", "category": "howto", "watch": "「dev.to claude-code tips 2026」で検索。実務開発者の使い方記事が豊富→🟨（複数一致した手法は特に有力）。" },
+    { "name": "Medium / claude-code タグ", "type": "search", "url": "https://medium.com/tag/claude-code", "trust": "🟨", "category": "howto", "watch": "「Medium claude code workflow 2026」で検索。実践ノウハウ記事→🟨。" },
+    { "name": "XDA Developers AI", "type": "search", "url": "https://www.xda-developers.com/tag/ai/", "trust": "🟨", "category": "howto", "watch": "「XDA claude code tips setup 2026」で検索。わかりやすい実践ガイド→🟨。" },
+    { "name": "The Pragmatic Engineer（Gergely Orosz）", "type": "search", "url": "https://newsletter.pragmaticengineer.com/", "trust": "🟨", "category": "insight", "watch": "「Pragmatic Engineer Claude Code AI coding 2026」で検索。開発現場のリアルな考察→🟨。" },
+    { "name": "Every.to / Chain of Thought", "type": "search", "url": "https://every.to/chain-of-thought", "trust": "🟨", "category": "insight", "watch": "「every.to Claude Code AI 2026」で検索。AI実務活用の深い考察→🟨。" },
+    { "name": "Vercel Blog（AI SDK・v0・dev tools）", "type": "page", "url": "https://vercel.com/blog", "trust": "🟩", "category": "howto", "watch": "AI開発ツールの新機能。会社公式ブログ→🟩。Claude/Codexと組み合わせる話を拾う。" },
+    { "name": "Martin Fowler（ソフトウェア設計の権威）", "type": "page", "url": "https://martinfowler.com/", "trust": "🟩", "category": "insight", "watch": "LLMをソフトウェア開発にどう組み込むかのエッセイ。本人サイト→🟩。塾長の設計哲学に効く。" },
+    { "name": "Thoughtworks Technology Radar", "type": "page", "url": "https://www.thoughtworks.com/radar", "trust": "🟩", "category": "insight", "watch": "技術の『採用すべきか』判定の定番。AIコーディングツールの位置づけを見る→🟩。更新は四半期ごと。" },
+    { "name": "Sourcegraph Blog（AIコーディング考察）", "type": "search", "url": "https://sourcegraph.com/blog", "trust": "🟨", "category": "insight", "watch": "「Sourcegraph blog AI coding agent 2026」で検索。大規模開発でのAI活用考察→🟨。" }
   ],
   "newsletters": [
-    { "name": "TLDR AI（毎日のAIニュース要約）", "type": "search", "url": "https://tldr.tech/ai", "trust": "🟨", "category": "official", "watch": "「TLDR AI Claude Codex June 2026」で検索。毎日発行の速報まとめ→🟨（記事元URLを必ず確認）。" },
-    { "name": "Ben's Bites（AIニュースレター）", "type": "search", "url": "https://bensbites.co/", "trust": "🟨", "category": "howto", "watch": "「Bens Bites Claude Code Codex June 2026」で検索。AIの実用Tips中心→🟨。" },
-    { "name": "The Rundown AI", "type": "search", "url": "https://www.therundown.ai/", "trust": "🟨", "category": "official", "watch": "「The Rundown AI Claude June 2026」で検索。速報系ニュースレター→🟨。" }
+    { "name": "TLDR AI（毎日のAIニュース要約）", "type": "search", "url": "https://tldr.tech/ai", "trust": "🟨", "category": "official", "watch": "「TLDR AI Claude Codex June 2026」で検索。毎日の速報まとめ→🟨（記事元URLを必ず確認）。" },
+    { "name": "The Batch（DeepLearning.AI / Andrew Ng）", "type": "search", "url": "https://www.deeplearning.ai/the-batch/", "trust": "🟩", "category": "official", "watch": "「The Batch Claude AI coding 2026」で検索。Andrew Ng監修の週刊・質が高い→🟩。" },
+    { "name": "Superhuman AI（非エンジニア向け実用AI）", "type": "search", "url": "https://www.superhuman.ai/", "trust": "🟨", "category": "howto", "watch": "「Superhuman AI Claude tips 2026」で検索。★塾長レベルの『すぐ使える』Tipsが多い→🟨。" },
+    { "name": "Ben's Bites（AIニュースレター）", "type": "search", "url": "https://bensbites.com/", "trust": "🟨", "category": "howto", "watch": "「Bens Bites Claude Code Codex June 2026」で検索。AI実用Tips中心→🟨。" },
+    { "name": "The Rundown AI", "type": "search", "url": "https://www.therundown.ai/", "trust": "🟨", "category": "official", "watch": "「The Rundown AI Claude June 2026」で検索。速報系→🟨。" },
+    { "name": "Last Week in AI", "type": "search", "url": "https://lastweekin.ai/", "trust": "🟨", "category": "official", "watch": "「Last Week in AI Claude Anthropic June 2026」で検索。週刊の網羅まとめ→🟨。" }
   ],
   "video": [
-    { "name": "Fireship（YouTube・短尺テック解説）", "type": "search", "url": "https://www.youtube.com/@Fireship", "trust": "🟨", "category": "newword", "watch": "「Fireship Claude Code Codex 2026」で検索。新概念の短い解説動画で有名→内容を要約で引用・動画URLを記載・🟨。" },
-    { "name": "Matt Berman（YouTube・AIツールレビュー）", "type": "search", "url": "https://www.youtube.com/@MattBerman", "trust": "🟨", "category": "howto", "watch": "「Matt Berman Claude Code review 2026」で検索。実際に使って比較するレビュー動画→🟨。" }
+    { "name": "IndyDevDan（YouTube・Claude Code専門）", "type": "search", "url": "https://www.youtube.com/@indydevdan", "trust": "🟨", "category": "howto", "watch": "★「IndyDevDan Claude Code 2026」で検索。Claude Codeのワークフロー動画に特化→howto向け→内容要約＋動画URL記載・🟨。" },
+    { "name": "Cole Medin（YouTube・AIエージェント/Claude Code）", "type": "search", "url": "https://www.youtube.com/@ColeMedin", "trust": "🟨", "category": "howto", "watch": "「Cole Medin Claude Code AI agent 2026」で検索。実際に作って見せるチュートリアル→🟨。" },
+    { "name": "Fireship（YouTube・短尺テック解説）", "type": "search", "url": "https://www.youtube.com/@Fireship", "trust": "🟨", "category": "newword", "watch": "「Fireship Claude Code Codex 2026」で検索。新概念の短い解説で有名→内容要約で引用・🟨。" },
+    { "name": "Matt Berman（YouTube・AIツールレビュー）", "type": "search", "url": "https://www.youtube.com/@MattBerman", "trust": "🟨", "category": "howto", "watch": "「Matt Berman Claude Code review 2026」で検索。使って比較するレビュー→🟨。" },
+    { "name": "AI Engineer（YouTube・カンファレンス講演）", "type": "search", "url": "https://www.youtube.com/@aiDotEngineer", "trust": "🟨", "category": "insight", "watch": "「AI Engineer Claude Code talk 2026」で検索。第一線エンジニアの講演。考察ネタの宝庫→🟨。" }
   ],
   "competitor_context": [
-    { "name": "Cursor Blog（AIコーディングツール競合）", "type": "page", "url": "https://cursor.sh/blog", "trust": "🟨", "category": "insight", "watch": "「Claude CodeとCursorを比べると何が違うか」の比較insight記事を書く際の一次ソース→🟨。" },
-    { "name": "GitHub Copilot What's New", "type": "page", "url": "https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features", "trust": "🟩", "category": "insight", "watch": "Copilotの新機能→Claude Codeとの差を考察するinsight記事に使う→🟩（GitHub公式）。" },
-    { "name": "Replit AI Blog", "type": "search", "url": "https://blog.replit.com/", "trust": "🟨", "category": "insight", "watch": "「Replit AI agent Claude Code comparison 2026」で検索→競合文脈のinsightに使う→🟨。" }
+    { "name": "Cursor Blog（AIコーディングツール競合）", "type": "page", "url": "https://www.cursor.com/blog", "trust": "🟨", "category": "insight", "watch": "「Claude CodeとCursorの違い」比較insightの一次ソース→🟨。" },
+    { "name": "GitHub Copilot What's New", "type": "page", "url": "https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features", "trust": "🟩", "category": "insight", "watch": "Copilotの新機能→Claude Codeとの差を考察するinsightに使う→🟩（GitHub公式）。" },
+    { "name": "Replit AI Blog", "type": "search", "url": "https://blog.replit.com/", "trust": "🟨", "category": "insight", "watch": "「Replit AI agent Claude Code comparison 2026」で検索→競合文脈→🟨。" },
+    { "name": "Aider（オープンソースAIペアプロ）", "type": "search", "url": "https://aider.chat/", "trust": "🟨", "category": "insight", "watch": "「Aider Claude Code comparison 2026」で検索。無料で使えるAIコーディングの代表格→比較insightに使う→🟨。" },
+    { "name": "Cline（VS Code AIエージェント）", "type": "search", "url": "https://github.com/cline/cline", "trust": "🟨", "category": "insight", "watch": "「Cline Claude Code VS Code 2026」で検索。人気のVS Code拡張→Claude Codeとの使い分け考察→🟨。" },
+    { "name": "Windsurf（旧Codeium・AIエディタ）", "type": "search", "url": "https://windsurf.com/blog", "trust": "🟨", "category": "insight", "watch": "「Windsurf Claude Code comparison 2026」で検索→競合文脈→🟨。" },
+    { "name": "Cognition / Devin（自律AIエンジニア）", "type": "search", "url": "https://cognition.ai/blog", "trust": "🟨", "category": "insight", "watch": "「Devin Cognition Claude Code 2026」で検索。完全自律型の動向→塾長の『夜活で任せる』の参考に→🟨。" }
   ],
   "community": [
     { "name": "Reddit r/ClaudeCode（実務者の使い方・4200+人）", "type": "search", "url": "https://www.reddit.com/r/ClaudeCode/", "trust": "🟨", "category": "insight", "watch": "「Reddit ClaudeCode tips week」で検索し直近7日の上位スレッドを見る。複数ユーザーが一致した意見は🟨（一人の主張は🟥）。" },
     { "name": "Reddit r/ClaudeAI（AI利活用の幅広い議論）", "type": "search", "url": "https://www.reddit.com/r/ClaudeAI/", "trust": "🟨", "category": "insight", "watch": "「Reddit ClaudeAI tips workflow June 2026」で検索。" },
-    { "name": "Reddit r/LocalLLaMA（オープンソースLLM実務者）", "type": "search", "url": "https://www.reddit.com/r/LocalLLaMA/", "trust": "🟨", "category": "insight", "watch": "「Reddit LocalLLaMA Claude Code comparison June 2026」で検索。技術的な深い考察が多い→insight向け→🟨。" },
-    { "name": "Hacker News（開発者コミュニティの玄関）", "type": "search", "url": "https://news.ycombinator.com/", "trust": "🟨", "category": "insight", "watch": "「Hacker News Claude Code June 2026」で検索し直近7日のスレッドを見る。コメント内容は🟥扱いで、話題自体は🟨。" },
-    { "name": "GitHub Discussions（anthropics/claude-code）", "type": "page", "url": "https://github.com/anthropics/claude-code/discussions", "trust": "🟨", "category": "howto", "watch": "直近7日の新規Discussion・人気投票上位を見る。Anthropicエンジニアが回答することもあり→🟨（Anthropic公式回答なら🟩）。" }
+    { "name": "Reddit r/ChatGPTCoding（AIコーディング横断）", "type": "search", "url": "https://www.reddit.com/r/ChatGPTCoding/", "trust": "🟨", "category": "insight", "watch": "「Reddit ChatGPTCoding Claude Code 2026」で検索。ツール横断の比較・乗り換え理由が出る→🟨。" },
+    { "name": "Reddit r/LocalLLaMA（OSS LLM実務者）", "type": "search", "url": "https://www.reddit.com/r/LocalLLaMA/", "trust": "🟨", "category": "insight", "watch": "「Reddit LocalLLaMA Claude Code comparison June 2026」で検索。技術的な深い考察→🟨。" },
+    { "name": "Hacker News（開発者コミュニティの玄関）", "type": "search", "url": "https://news.ycombinator.com/", "trust": "🟨", "category": "insight", "watch": "「Hacker News Claude Code June 2026」で検索し直近7日のスレッドを見る。コメントは🟥扱い・話題自体は🟨。" },
+    { "name": "Lobsters（質の高いHN代替）", "type": "search", "url": "https://lobste.rs/t/ai", "trust": "🟨", "category": "insight", "watch": "「lobste.rs Claude Code AI 2026」で検索。技術者比率が高く議論の質が高い→🟨。" },
+    { "name": "GitHub Discussions（anthropics/claude-code）", "type": "page", "url": "https://github.com/anthropics/claude-code/discussions", "trust": "🟨", "category": "howto", "watch": "直近7日の新規Discussion・人気投票上位を見る。Anthropic公式回答なら🟩。" },
+    { "name": "Product Hunt AI（新ツール発見）", "type": "search", "url": "https://www.producthunt.com/topics/artificial-intelligence", "trust": "🟨", "category": "newword", "watch": "「Product Hunt Claude Code AI tool 2026」で検索。新しいAIツールの掘り出しに使う→🟨。" }
   ],
   "japanese": [
-    { "name": "DevelopersIO（クラスメソッド・日本語技術ブログ）", "type": "search", "url": "https://dev.classmethod.jp/", "trust": "🟨", "category": "howto", "watch": "「DevelopersIO Claude Code 2026」で検索。日本語の実践記事で最も信頼できるソースの一つ→🟨。" },
+    { "name": "DevelopersIO（クラスメソッド・日本語技術ブログ）", "type": "search", "url": "https://dev.classmethod.jp/", "trust": "🟨", "category": "howto", "watch": "「DevelopersIO Claude Code 2026」で検索。日本語の実践記事で最も信頼できる一つ→🟨。" },
     { "name": "Zenn.dev / Claude Codeタグ", "type": "search", "url": "https://zenn.dev/topics/claudecode", "trust": "🟨", "category": "howto", "watch": "「Zenn Claude Code 2026 活用」で検索。日本語エンジニアの実践ノウハウ→🟨。" },
-    { "name": "Qiita / Claude Codeタグ", "type": "search", "url": "https://qiita.com/tags/claude-code", "trust": "🟨", "category": "howto", "watch": "「Qiita Claude Code 2026」で検索。日本語の実装Tips記事→🟨。" },
-    { "name": "note.com / AIカテゴリ（日本語・非エンジニア向け実践例）", "type": "search", "url": "https://note.com/hashtag/claude", "trust": "🟥", "category": "insight", "watch": "「note Claude Code 塾 教育 自動化 2026」で検索。非エンジニアの活用例が桜口さんに刺さることがある→内容は必ず確認・🟥（未検証多い）。" }
+    { "name": "Qiita / Claude Codeタグ", "type": "search", "url": "https://qiita.com/tags/claude-code", "trust": "🟨", "category": "howto", "watch": "「Qiita Claude Code 2026」で検索。日本語の実装Tips→🟨。" },
+    { "name": "ITmedia AI＋（日本語AIニュース）", "type": "search", "url": "https://www.itmedia.co.jp/aiplus/", "trust": "🟨", "category": "howto", "watch": "「ITmedia Claude Anthropic 2026」で検索。日本語で読みやすいAIニュース→塾長向き→🟨。" },
+    { "name": "Publickey（日本語エンタープライズ技術）", "type": "search", "url": "https://www.publickey1.jp/", "trust": "🟨", "category": "official", "watch": "「Publickey Claude Anthropic OpenAI 2026」で検索。日本語の技術ニュースで信頼度が高い→🟨。" },
+    { "name": "Ledge.ai（日本語AI専門メディア）", "type": "search", "url": "https://ledge.ai/", "trust": "🟨", "category": "newword", "watch": "「Ledge.ai Claude Code 生成AI 2026」で検索。日本語でAIの新概念を解説→🟨。" },
+    { "name": "gihyo.jp（技術評論社）", "type": "search", "url": "https://gihyo.jp/", "trust": "🟨", "category": "howto", "watch": "「gihyo Claude Code AI 2026」で検索。日本語の丁寧な技術解説→🟨。" },
+    { "name": "はてなブックマーク テクノロジー（日本語トレンド集約）", "type": "search", "url": "https://b.hatena.ne.jp/hotentry/it", "trust": "🟨", "category": "insight", "watch": "「はてなブックマーク Claude Code」で検索。日本語圏で何が話題かの集約。多数ブクマは注目度の指標→🟨。" },
+    { "name": "note.com / Claudeタグ（非エンジニア実践例）", "type": "search", "url": "https://note.com/hashtag/claude", "trust": "🟥", "category": "insight", "watch": "「note Claude Code 塾 教育 自動化 2026」で検索。非エンジニアの活用例が塾長に刺さることがある→内容必ず確認・🟥（未検証多い）。" }
   ],
   "curated_github": [
-    { "name": "awesome-claude-code", "type": "repo-list", "url": "https://github.com/hesreallyhim/awesome-claude-code", "category": "repos", "watch": "前回号に無い新規追加リポジトリをチェックする。" },
-    { "name": "awesome-mcp-servers", "type": "repo-list", "url": "https://github.com/punkpeye/awesome-mcp-servers", "trust": "🟨", "category": "howto", "watch": "Claude Codeに繋げるMCPサーバーの新規追加をチェック。新しい連携ツールの紹介記事（howto）に使える。" }
+    { "name": "awesome-claude-code", "type": "repo-list", "url": "https://github.com/hesreallyhim/awesome-claude-code", "category": "repos", "watch": "前回号に無い新規追加リポをチェックする。" },
+    { "name": "awesome-mcp-servers", "type": "repo-list", "url": "https://github.com/punkpeye/awesome-mcp-servers", "trust": "🟨", "category": "howto", "watch": "Claude Codeに繋げるMCPサーバーの新規追加をチェック。新連携ツールのhowtoに使える。" }
   ],
   "secondary": [
     { "name": "ClaudeLog", "type": "page", "url": "https://claudelog.com/claude-news/", "trust": "🟨", "category": "howto", "note": "403を返すことがある。失敗時はスキップ可。" },
     { "name": "ExplainX AI Blog", "type": "search", "url": "https://explainx.ai/blog/", "trust": "🟨", "category": "howto", "watch": "「explainx.ai Claude Code feature 2026」で検索。新機能の解説記事が多い→🟨。" }
   ],
   "_探索ルール": {
-    "優先順位": "① primary（公式・一次）→ ② insider（中の人・本人ブログ）→ ③ media（専門メディア）→ ④ practitioner_blogs・community→ ⑤ japanese・newsletters・video。信頼度は①🟩 ②🟩〜🟨 ③🟨 ④🟨〜🟥 ⑤🟥。",
-    "新ワード解説": "公式や一次情報で見慣れない用語が出たら WebSearch で複数の独立ソースを引いて中立に解説する。Fireship の動画が出ていれば内容を引用するとわかりやすい。",
-    "使いこなし考察": "Reddit・HN・Pragmatic Engineerの議論を起点に「◯◯すると効率は上がるか」を考察する。断定せず条件付きで結論を出す（公式数値でなければ🟨）。",
-    "中の人ウォッチ": "【ブログ層（🟩優先）】Simon Willison・Chip Huyen・Jack Clark・DAIR.AI は本文WebFetchで確認できる→🟩。【X層（本人確認で🟨）】Boris Cherny・Thariq・Alex Albert・Karpathy・Lilian Weng・Riley Goodside・Philipp Schmid を「人名＋Claude Code」で毎朝検索し本人発を確認。確認できなければ載せない。",
+    "在庫の使い方（最重要）": "このリストは合計100件あるが『毎朝100件すべて見るリスト』ではなく『上から引く在庫』。手順は──①primary（公式）とinsiderブログ層を必ず見る→②5ジャンル（newword/howto/insight/insider/official）が1記事ずつ埋まったら、その時点で巡回を止めてよい。残りのmedia/practitioner/community/japanese等は『①②で埋まらないジャンルがあるとき』『掘り出し物を探すとき』だけ追加で当たる。全部を律儀に見て時間切れにしない。",
+    "優先順位": "① primary（公式・一次／🟩）→ ② insiderブログ層（Simon・Ethan Mollick・swyx・Chip Huyen・Hamel・Eugene Yan・Geoffrey Huntley・Kent Beck・Armin Ronacher・Jack Clark・DAIR.AI／本文確認で🟩）→ ③ insider X層（本人発を検索確認で🟨）→ ④ media・practitioner_blogs・competitor_context（🟨）→ ⑤ community・japanese・newsletters・video（🟨〜🟥）。塾長に刺さる順でもある（Ethan Mollick／Superhuman AI／IndyDevDan／日本語メディアは★印つき）。",
+    "新ワード解説": "見慣れない用語が出たらWebSearchで複数の独立ソースを引いて中立に解説する。MCP公式・IEEE Spectrum・Ledge.ai・Fireship動画が出ていれば分かりやすい。",
+    "使いこなし考察": "Reddit・HN・Pragmatic Engineer・Ethan Mollick・Martin Fowlerの議論を起点に「◯◯すると効率は上がるか」を考察する。断定せず条件付きで結論を出す（公式数値でなければ🟨）。",
+    "中の人ウォッチ": "【ブログ層（🟩優先）】Simon Willison・Ethan Mollick・swyx・Chip Huyen・Hamel Husain・Eugene Yan・Geoffrey Huntley・Kent Beck・Armin Ronacher・Jack Clark・DAIR.AI は本文WebFetchで確認できる→🟩。【X層（本人確認で🟨）】Boris Cherny・Cat Wu・Erik Schluntz・Thariq・Alex Albert・Karpathy・Lilian Weng・Riley Goodside・Philipp Schmid を「人名＋Claude Code」で検索し本人発を確認。確認できなければ載せない。見出しに発信者名を込める。",
     "鮮度": "どのソースも、号の日付から1週間（7日）以内のものだけ。8日以上前は拾わない。",
     "信頼度": "🟩安全（公式・本人ブログ・本文確認済み）／🟨注意（本人X発・信頼できる二次・複数一致）／🟥要警戒（SNS個人・未検証・鵜呑み禁物）。",
-    "コミュニティ探索": "Reddit（r/ClaudeCode・r/ClaudeAI・r/LocalLLaMA）とHacker Newsを毎朝検索。複数ユーザーが一致した意見は🟨・一人の主張は🟥。URLはスレッド直URLを使う。",
-    "日本語ソース": "DevelopersIO・Zenn・Qiita は howto 向け。note は内容確認必須（🟥）。桜口さんに刺さる「非エンジニアの活用例」が出たら積極的に拾う。",
-    "競合文脈": "Cursor・Copilot・Replit の新機能が出たら insight として「Claude Codeとの違い・桜口さんへの示唆」を添えて書く。",
+    "コミュニティ探索": "Reddit（r/ClaudeCode・r/ClaudeAI・r/ChatGPTCoding・r/LocalLLaMA）・Hacker News・Lobsters・Product Huntを必要時に検索。複数ユーザーが一致した意見は🟨・一人の主張は🟥。URLはスレッド直URLを使う。",
+    "日本語ソース": "DevelopersIO・Zenn・Qiita・ITmedia AI+・Ledge.ai・gihyoはhowto/newword向け。Publickeyはofficial寄り。はてブは話題集約。noteは内容確認必須（🟥）。塾長に刺さる『非エンジニアの活用例』が出たら積極的に拾う。",
+    "競合文脈": "Cursor・Copilot・Replit・Aider・Cline・Windsurf・Cognition(Devin)の新機能が出たらinsightとして「Claude Codeとの違い・塾長への示唆」を添えて書く。",
     "構成": "5ジャンル各1記事＝計5を目標。1週間以内にネタが無いジャンルは記事無しでよい（他を2記事にしてもよい）。"
   }
 }
