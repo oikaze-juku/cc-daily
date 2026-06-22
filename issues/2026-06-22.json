@@ -121,22 +121,22 @@
       "label": "📰 公式アップデート",
       "items": [
         {
-          "title_ja": "AnthropicがソウルにオフィスをオープンしAIをアジアへ",
+          "title_ja": "外部ツールをClaude Codeに1コマンドで繋げられるようになった",
           "summary_ja": [
-            "Anthropicが2026年6月17日に韓国ソウルにオフィスを開設し、韓国のAIエコシステムとの連携を発表しました。",
-            "アジア圏のサポート体制が強化され、日本語精度や日本特有の要件への対応が改善しやすくなります。",
-            "ClaudeのアジアおよびJapan向けの精度向上・機能拡充が今後加速することが期待されます。"
+            "Claude Code v2.1.186（6/22リリース）で、Google CalendarやNotionなどの外部ツールをClaude Codeに認証・接続するのがコマンド一発で完了するようになりました。",
+            "塾の日程管理ツールや業務アプリをClaude Codeに繋ぐ設定が、複雑なメニュー操作なしに「claude mcp login ツール名」だけで済むようになります。",
+            "ツール接続のハードルが下がり、Claude Codeを業務の中心に据えた自動化の幅が広がります。"
           ],
-          "source_date": "2026-06-17",
-          "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
+          "source_date": "2026-06-22（v2.1.186リリース）",
+          "url": "https://github.com/anthropics/claude-code/releases",
           "trust": "🟩",
-          "trust_reason": "Anthropic公式プレスリリース（news/seoul-office-partnerships-korean-ai-ecosystem）からの一次情報",
-          "tags": ["自動化"],
+          "trust_reason": "Claude Code 公式 GitHub リリースノート（v2.1.186、2026-06-22）の一次情報",
+          "tags": ["自動化", "アプリ開発"],
           "ideas": [
-            "日本語対応強化が進めば、保護者向け文書の作成や日本語UIコメント生成の精度が上がる。",
-            "将来的にLINE連携など日本特有の要件への対応がClaudeでしやすくなる可能性がある。"
+            "塾の出欠管理シートやカレンダーをClaude Codeに繋いで「今日の遅刻者一覧を取得して」と頼む自動化が設定しやすくなる。",
+            "LINE通知ツールのMCP認証を整えておき、保護者への一斉連絡をClaude Code経由で自動化する仕組みの土台にする。"
           ],
-          "try_hint": "今すぐ変わることは少ないが、アジア向け機能拡充ニュースに注目しておくと、新機能を早く試せる。"
+          "try_hint": "試すなら：ターミナルで `claude mcp login` を実行し、使いたい外部ツールを接続してみる（設定すれば自動化の幅が広がる）。"
         }
       ]
     }
