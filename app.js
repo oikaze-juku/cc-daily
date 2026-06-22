@@ -1,3 +1,5 @@
+import { groupByWeek } from './scripts/groupArchive.js';
+
 const $ = (sel) => document.querySelector(sel);
 
 // 端末内に保存する状態（お気に入り・既読）
@@ -10,7 +12,7 @@ let read = getSet(LS_READ);
 
 let manifest = [];
 let current = null;     // 表示中の号
-let filter = 'all';     // all | unread | fav
+let view = 'todo';      // todo（やること）| fav（お気に入り）| archive（アーカイブ）
 
 async function loadJSON(path) {
   const res = await fetch(path, { cache: 'no-store' });
@@ -26,6 +28,11 @@ function allItems(issue) {
   return items;
 }
 
+// やること判定：まだ手をつけていない＝未読 かつ 非お気に入り
+const isTodo = (item) => !read.has(item.url) && !favorites.has(item.url);
+// 処理済み判定：お気に入り or 既読
+const isHandled = (item) => favorites.has(item.url) || read.has(item.url);
+
 function itemCard(item) {
   const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
   const reason = item.trust_reason ? `<div class="reason">${item.trust} ${item.trust_reason}</div>` : '';
@@ -38,11 +45,11 @@ function itemCard(item) {
   const isFav = favorites.has(item.url);
   const isRead = read.has(item.url);
   return `
-    <details class="card${isRead ? ' is-read' : ''}">
+    <details class="card${isRead ? ' is-read' : ''}" data-card="${item.url}">
       <summary>
         <span class="row">
           <span class="badge">${item.trust}</span>
-          <span class="title">${!isRead ? '<span class="dot" aria-label="未読"></span>' : ''}${item.title_ja}</span>
+          <span class="title">${!isRead && !isFav ? '<span class="dot" aria-label="未読"></span>' : ''}${item.title_ja}</span>
           <span class="acts">
             <button class="act act-fav${isFav ? ' on' : ''}" data-act="fav" data-url="${item.url}" aria-label="お気に入り" title="お気に入り">${isFav ? '★' : '☆'}</button>
             <button class="act act-read${isRead ? ' on' : ''}" data-act="read" data-url="${item.url}" aria-label="既読チェック" title="読んだら押す">✓</button>
@@ -60,12 +67,12 @@ function itemCard(item) {
     </details>`;
 }
 
-// その号の既読進捗（細い・上部固定バー）
+// その号の進捗（細い・上部固定バー）。やること表示のときだけ。
 function renderProgress(issue) {
-  if (!issue || filter === 'fav') { $('#progressbar').innerHTML = ''; return; }
+  if (!issue || view !== 'todo') { $('#progressbar').innerHTML = ''; return; }
   const items = allItems(issue);
   const total = items.length;
-  const done = items.filter((i) => read.has(i.url)).length;
+  const done = items.filter(isHandled).length;
   const pct = total ? Math.round((done / total) * 100) : 0;
   const allDone = total > 0 && done === total;
   $('#progressbar').innerHTML = `
@@ -75,25 +82,42 @@ function renderProgress(issue) {
     </div>`;
 }
 
-function filterBar() {
-  const tab = (key, label) => `<button class="ftab${filter === key ? ' on' : ''}" data-filter="${key}">${label}</button>`;
-  return `<div class="filters">${tab('all', 'すべて')}${tab('unread', '未読')}</div>`;
-}
-
 const legend = `<div class="legend"><span>🟩 安全（公式・本人発）</span><span>🟨 注意（二次・未確認）</span><span>🟥 要警戒（SNS等・鵜呑み禁物）</span></div>`;
 
-// 通常表示（1つの号）
-function renderIssue(issue) {
-  const top = issue.headline_top && (filter !== 'unread' || !read.has(issue.headline_top.url))
+// お祝い（やることが全部片付いたとき）
+function celebrateBlock() {
+  return `
+    <section class="celebrate">
+      <div class="celebrate-emoji">🎉</div>
+      <h2>全部読みました！</h2>
+      <p>今日の CC Daily はこれで読了です。おつかれさまでした。</p>
+      <p class="celebrate-sub">読み返したい記事は <b>🗄️ アーカイブ</b>、とっておきは <b>⭐ お気に入り</b> からいつでも見られます。</p>
+    </section>`;
+}
+
+// 通常表示（やること：未読かつ非お気に入りだけ）
+function renderTodo(issue) {
+  const top = issue.headline_top && isTodo(issue.headline_top)
     ? `<section class="top"><h2>🌟 今日の一番</h2>${itemCard(issue.headline_top)}</section>`
     : '';
-  const quiet = issue.quiet_day ? `<p class="quiet">今日は静かでした。</p>` : '';
   const cats = (issue.categories || []).map((cat) => {
-    const items = (cat.items || []).filter((i) => filter !== 'unread' || !read.has(i.url));
+    const items = (cat.items || []).filter(isTodo);
     if (!items.length) return '';
     return `<section class="cat" data-key="${cat.key || ''}"><h3>${cat.label || cat.key}</h3>${items.map(itemCard).join('')}</section>`;
   }).join('');
-  $('#issue').innerHTML = `${filterBar()}${quiet}${top}${cats}${legend}`;
+
+  const hasArticles = allItems(issue).length > 0;
+  const nothingLeft = !top && !cats;
+
+  let body;
+  if (issue.quiet_day && nothingLeft) {
+    body = `<p class="quiet">今日は静かでした。</p>`;
+  } else if (nothingLeft && hasArticles) {
+    body = celebrateBlock();
+  } else {
+    body = `${top}${cats}`;
+  }
+  $('#issue').innerHTML = `${body}${legend}`;
 }
 
 // お気に入り横断表示（全号からお気に入り記事を集約）
@@ -106,45 +130,81 @@ async function renderFavorites() {
     } catch (e) { /* skip */ }
   }
   const body = collected.length
-    ? `<section class="cat"><h3>★ お気に入り（${collected.length}件）</h3>${collected.map(itemCard).join('')}</section>`
+    ? `<section class="cat"><h3>⭐ お気に入り（${collected.length}件）</h3>${collected.map(itemCard).join('')}</section>`
     : `<p class="quiet">まだお気に入りがありません。記事の ☆ をタップすると、ここにまとまります。</p>`;
-  $('#issue').innerHTML = `<h1>★ お気に入り</h1>${body}${legend}`;
+  $('#issue').innerHTML = `<h1>⭐ お気に入り</h1>${body}${legend}`;
+}
+
+// アーカイブ横断表示（全号の「既読かつ非お気に入り」を月の第N週ごとに折りたたみ）
+async function renderArchive() {
+  const entries = [];
+  for (const m of manifest) {
+    try {
+      const issue = await loadJSON(m.path);
+      allItems(issue).forEach((it) => {
+        if (read.has(it.url) && !favorites.has(it.url)) entries.push({ item: it, date: issue.date });
+      });
+    } catch (e) { /* skip */ }
+  }
+  const groups = groupByWeek(entries);
+  const total = entries.length;
+  const body = groups.length
+    ? groups.map((g, i) => `
+        <details class="week-group" ${i === 0 ? 'open' : ''}>
+          <summary><span class="week-label">${g.label}</span><span class="week-count">${g.entries.length}</span></summary>
+          ${g.entries.map((e) => itemCard(e.item)).join('')}
+        </details>`).join('')
+    : `<p class="quiet">まだ読んだ記事がありません。記事の ✓ をタップすると、ここにまとまります。</p>`;
+  $('#issue').innerHTML = `<h1>🗄️ アーカイブ（${total}件）</h1>${body}${legend}`;
 }
 
 function render() {
   renderProgress(current);
-  $('#favBtn').classList.toggle('on', filter === 'fav');
-  $('#favBtn').innerHTML = filter === 'fav' ? '★ お気に入り' : '☆ お気に入り';
-  if (filter === 'fav') { renderFavorites(); return; }
-  if (current) renderIssue(current);
+  $('#favBtn').classList.toggle('on', view === 'fav');
+  $('#archiveBtn').classList.toggle('on', view === 'archive');
+  if (view === 'fav') { renderFavorites(); return; }
+  if (view === 'archive') { renderArchive(); return; }
+  if (current) renderTodo(current);
+}
+
+// ☆✓を押したら「消し込み」アニメーション→状態保存→再描画
+function handleAct(act) {
+  const url = act.getAttribute('data-url');
+  const kind = act.getAttribute('data-act');
+  const set = kind === 'fav' ? favorites : read;
+  if (set.has(url)) set.delete(url); else set.add(url);
+  saveSet(kind === 'fav' ? LS_FAV : LS_READ, set);
+  // お気に入りにしたら同時に既読をつける（進捗カウント用）
+  if (kind === 'fav' && favorites.has(url) && !read.has(url)) { read.add(url); saveSet(LS_READ, read); }
+
+  // やること表示で、この操作によって一覧から外れる場合はスッと消す演出
+  const card = document.querySelector(`[data-card="${CSS.escape(url)}"]`);
+  const willLeave = view === 'todo' && isHandled({ url });
+  if (card && willLeave) {
+    card.classList.add('removing');
+    setTimeout(render, 280);
+  } else {
+    render();
+  }
 }
 
 async function boot() {
   manifest = await loadJSON('issues/manifest.json');
   const sel = $('#dates');
   sel.innerHTML = manifest.map((m) => `<option value="${m.path}">${m.date}</option>`).join('');
-  sel.addEventListener('change', async () => { current = await loadJSON(sel.value); filter = 'all'; render(); });
+  sel.addEventListener('change', async () => { current = await loadJSON(sel.value); view = 'todo'; render(); });
 
-  $('#favBtn').addEventListener('click', () => { filter = filter === 'fav' ? 'all' : 'fav'; render(); });
+  $('#favBtn').addEventListener('click', () => { view = view === 'fav' ? 'todo' : 'fav'; render(); });
+  $('#archiveBtn').addEventListener('click', () => { view = view === 'archive' ? 'todo' : 'archive'; render(); });
 
-  // ☆✓ トグルとフィルタ切替（イベント委譲）
+  // ☆✓ トグル（イベント委譲）
   $('#issue').addEventListener('click', (e) => {
     const act = e.target.closest('[data-act]');
     if (act) {
       e.preventDefault();
       e.stopPropagation();
-      const url = act.getAttribute('data-url');
-      const kind = act.getAttribute('data-act');
-      const set = kind === 'fav' ? favorites : read;
-      if (set.has(url)) set.delete(url); else set.add(url);
-      saveSet(kind === 'fav' ? LS_FAV : LS_READ, set);
-      // お気に入りにしたら同時に既読をつける
-      if (kind === 'fav' && favorites.has(url) && !read.has(url)) { read.add(url); saveSet(LS_READ, read); }
-      render();
-      return;
+      handleAct(act);
     }
-    const ftab = e.target.closest('[data-filter]');
-    if (ftab) { filter = ftab.getAttribute('data-filter'); render(); }
   });
 
   current = await loadJSON(manifest[0].path);
