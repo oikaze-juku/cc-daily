@@ -11,17 +11,26 @@ function itemCard(item) {
   const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
   const reason = item.trust_reason ? `<div class="reason">${item.trust} ${item.trust_reason}</div>` : '';
   const dateLine = item.source_date ? `<div class="date">📅 ${item.source_date} の情報</div>` : '';
-  const ideaBlock = (Array.isArray(item.ideas) && item.ideas.length)
-    ? `<div class="idea"><div class="idea-title">💡 こんな使い方</div><ul>${item.ideas.map((i) => `<li>${i}</li>`).join('')}</ul></div>`
+  // 折りたたみ時に見える「こんなことができます」概要（メインの活用イメージ）
+  const lead = (item.summary_ja || []).map((s) => `<span>${s}</span>`).join('');
+  // 展開時に出る「ほかにもこんな使い方」（同じ熱量の別案）
+  const more = (Array.isArray(item.ideas) && item.ideas.length)
+    ? `<div class="more"><div class="more-title">💡 ほかにもこんな使い方</div><ul>${item.ideas.map((i) => `<li>${i}</li>`).join('')}</ul></div>`
     : '';
   const tryLine = item.try_hint ? `<div class="try">試すなら：${item.try_hint}</div>` : '';
   return `
     <details class="card">
-      <summary><span class="badge">${item.trust}</span><span class="title">${item.title_ja}</span></summary>
+      <summary>
+        <span class="badge">${item.trust}</span>
+        <span class="head">
+          <span class="title">${item.title_ja}</span>
+          <span class="lead-label">こんなことができます</span>
+          <span class="lead">${lead}</span>
+        </span>
+      </summary>
       ${dateLine}
-      <ul>${(item.summary_ja || []).map((s) => `<li>${s}</li>`).join('')}</ul>
       ${reason}
-      ${ideaBlock}
+      ${more}
       ${tags ? `<div class="tags">${tags}</div>` : ''}
       ${tryLine}
       <a class="src" href="${item.url}" target="_blank" rel="noopener">原文を開く ↗</a>
