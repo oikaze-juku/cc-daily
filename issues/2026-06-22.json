@@ -97,22 +97,22 @@
       "label": "🎙 中の人ウォッチ",
       "items": [
         {
-          "title_ja": "第一人者も実践「計画はAI、実装は別AI」",
+          "title_ja": "作者が「完全に変わった」と言うArtifacts",
           "summary_ja": [
-            "LLM活用の世界的第一人者サイモンが、計画を1つのAI（Claude Code）に、実装を別のAI（Codex）に任せる使い分けを実演しました。",
-            "桜口さんが既にやっている「設計はOpus・実装はSonnet」と同じ発想で、世界の第一人者も同じ道を選んでいると裏付けられました。",
-            "用途ごとに得意なAIを当てることで、品質を保ちつつ手戻りを減らせます。"
+            "Claude Code を作った本人（Boris Cherny）が、Artifacts機能について「自分の仕事の仕方が完全に変わった」と6/18に投稿しました。",
+            "コードの視覚的な解説、システム図、ダッシュボード、チームへのデータ共有に毎日使っているとのことです。",
+            "現場で作った人が「手放せない」と言う機能を、まず1つ試してみる価値があります。"
           ],
-          "source_date": "2026-06-11",
-          "url": "https://simonwillison.net/2026/Jun/11/datasette/",
-          "trust": "🟩",
-          "trust_reason": "Simon Willison 本人ブログの記事本文を確認（一次情報）",
+          "source_date": "2026-06-18",
+          "url": "https://x.com/bcherny/status/2067700226669060207",
+          "trust": "🟨",
+          "trust_reason": "Claude Code作者 Boris Cherny（@bcherny）のX投稿。検索で本人アカウントと投稿日（6/18）を確認済み。X認証が必要なため本文の直接取得は不可→🟨",
           "tags": ["自動化", "アプリ開発"],
           "ideas": [
-            "漢字道場や生徒マイページの新機能を「まず計画だけ1つのAIで」「実装は別AIで」と分けて進める。",
-            "難しい依頼ほど計画フェーズを厚くし、実装に入る前に方針を固めて手戻りを防ぐ。"
+            "塾アプリの成績データを渡して「グラフ付きの保護者向けページを作って」と頼み、Artifactsで出力する。",
+            "複雑な設計の説明図をArtifactsで可視化し、講師全員に共有して設計レビューを効率化する。"
           ],
-          "try_hint": "次の新機能で「まず計画だけ立てて」と頼み、計画がOKになってから実装に入る。"
+          "try_hint": "Claude Codeで「この仕様をシステム図にして」と頼み、出てきたArtifactsのURLをチームに送ってみる。"
         }
       ]
     },
@@ -128,9 +128,9 @@
             "ClaudeのアジアおよびJapan向けの精度向上・機能拡充が今後加速することが期待されます。"
           ],
           "source_date": "2026-06-17",
-          "url": "https://www.anthropic.com/news",
+          "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
           "trust": "🟩",
-          "trust_reason": "Anthropic公式ニュースページからの一次情報",
+          "trust_reason": "Anthropic公式プレスリリース（news/seoul-office-partnerships-korean-ai-ecosystem）からの一次情報",
           "tags": ["自動化"],
           "ideas": [
             "日本語対応強化が進めば、保護者向け文書の作成や日本語UIコメント生成の精度が上がる。",

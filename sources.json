@@ -20,6 +20,11 @@
   "curated_github": [
     { "name": "awesome-claude-code", "type": "repo-list", "url": "https://github.com/hesreallyhim/awesome-claude-code", "category": "repos" }
   ],
+  "community": [
+    { "name": "Reddit r/ClaudeCode（実務者の使い方・4200+人）", "type": "search", "url": "https://www.reddit.com/r/ClaudeCode/", "trust": "🟨", "category": "insight", "watch": "「Reddit ClaudeCode Claude Code tips week」で検索し、直近7日の上位スレッドを見る。具体的な使い方・比較が多く insight に向く。複数ユーザーが一致した意見は🟨（一人の主張は🟥）。" },
+    { "name": "Reddit r/ClaudeAI（AI利活用の幅広い議論）", "type": "search", "url": "https://www.reddit.com/r/ClaudeAI/", "trust": "🟨", "category": "insight", "watch": "「Reddit ClaudeAI tips workflow June 2026」で検索。コミュニティ発の実践ワークフローが掘り出し物になることがある。" },
+    { "name": "Hacker News（開発者コミュニティの玄関）", "type": "search", "url": "https://news.ycombinator.com/", "trust": "🟨", "category": "insight", "watch": "「Hacker News Claude Code June 2026」で検索し、直近7日のスレッドを見る。議論の質が高く考察（insight）に向く。コメント内容は🟥扱いで、話題自体を紹介する場合は🟨。" }
+  ],
   "secondary": [
     { "name": "ClaudeLog", "type": "page", "url": "https://claudelog.com/claude-news/", "trust": "🟨", "category": "howto", "note": "2026-06-22時点で 403 を返すことがある。取得失敗時はスキップ可。" }
   ],
@@ -29,6 +34,7 @@
     "中の人ウォッチ": "上の insider watch リスト（Simon Willison／swyx／Boris Cherny／Thariq／Alex Albert）を毎朝巡回する。【ブログ層＝Simon・swyx】本文を WebFetch で確認できるので🟩で載せられる（Simon は Atom で機械巡回＋ til.simonwillison.net/claude-code もチェック）。【X層＝Boris・Thariq・Alex】『人名＋Claude Code』で検索し本人発（本人アカウント）と確認できたら🟨（trust_reason 必須）、確認できなければ載せない。又聞きの怪しいまとめ・インプ稼ぎ・詐欺は入れない。掘り出し物があれば日本語・他分野の実践者も拾ってよい（本人一次発信に限る）。表示は見出しに発信者名を込める（例『Claude Code作者ボリス「計画に8割使え」』）。",
     "鮮度": "どのソースも、号の日付から1週間（7日）以内のものだけ。8日以上前は拾わない。",
     "信頼度": "緑→黄→赤のやばい順。🟩安全（公式・本人ブログ・本文確認済み）／🟨注意（本人X発・二次・未確認）／🟥要警戒（出どころ弱いが話題・鵜呑み禁物）。",
+    "コミュニティ探索": "sources.json の community セクション（Reddit r/ClaudeCode・r/ClaudeAI・Hacker News）を insight や新ワード候補として毎朝チェック。検索キーワード例：『Reddit ClaudeCode tips week』『Hacker News Claude Code June 2026』。複数ユーザーが一致した意見は🟨・一人の主張は🟥。URLは必ずスレッドの直URLを使う（/r/top等は不可）。",
     "構成": "5ジャンル各1記事＝計5を目標。1週間以内にネタが無いジャンルは記事無しでよい（他を2記事にしてもよい）。"
   }
 }

@@ -17,7 +17,7 @@
 
 ## 手順
 
-1. `sources.json` を読む（primary=公式 / insider=中の人 / curated_github / secondary / _探索ルール）。
+1. `sources.json` を読む（primary=公式 / insider=中の人 / community=Reddit・HN / curated_github / secondary / _探索ルール）。
 2. `issues/` の既存ファイル全てから、過去に出した全 `url` を集める（重複排除キー）。
 3. 各ソースを取得：
    - `type: atom` … releases.atom や Simon Willison の Atom の直近7日のエントリ。
