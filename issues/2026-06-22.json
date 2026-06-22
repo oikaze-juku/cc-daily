@@ -2,39 +2,47 @@
   "date": "2026-06-22",
   "quiet_day": false,
   "headline_top": {
-    "title_ja": "Codex に \"1回見せれば覚える\" 自動化が登場（塾の事務作業がそのまま自動化できる）",
+    "title_ja": "AIが\"使える社内ページ\"をURLで作る",
     "summary_ja": [
-      "面倒な作業を Codex に1回やって見せるだけで、再利用できる手順書に変換してくれる新機能「Record & Replay」が登場した。",
-      "塾の毎月の経費精算・定例レポート・請求まわりの繰り返し事務を、1回見せるだけで自動化できる。",
-      "クリック位置でなく「やりたいこと」を覚えるので画面が少し変わっても壊れにくい＝事務時間がまるごと減る。"
+      "Codex が、共有できるインタラクティブな社内サイトや軽いアプリを URL で生成する新機能「Sites」が登場（Business/Enterprise 向けプレビュー）。",
+      "塾の内部資料（成績分析・計画）を、静的なファイルでなく「URLで開ける生きたダッシュボード」にできる。",
+      "ファイル作成・配布の手間が減り、関係者がいつでも最新をURLで見られる。"
     ],
-    "source_date": "2026-06-18（機能リリース日）",
-    "url": "https://www.techtimes.com/articles/318759/20260620/openai-codex-automation-gains-record-replay-show-it-once-skip-script.htm",
+    "source_date": "2026-06-02（発表）",
+    "url": "https://venturebeat.com/orchestration/openais-codex-update-lets-agents-build-interactive-enterprise-workspaces-via-sites-and-role-specific-plugins",
     "trust": "🟩",
-    "trust_reason": "OpenAI Codex の公式機能。複数の独立メディアで内容が一致",
-    "tags": ["自動化", "請求・全銀"],
-    "idea": "毎月の月謝入金チェック → 保護者へのLINE報告、のような定例事務を1回見せて覚えさせれば、来月から自動で下準備してくれるかも。",
-    "try_hint": "試すなら：Codex の Mac アプリを最新版に更新し、まず毎月の定例レポート1つを「見せて」覚えさせる。"
+    "trust_reason": "OpenAI 公式発表（6/2）、複数の主要メディアが報道",
+    "tags": ["自動化", "アプリ開発"],
+    "ideas": [
+      "成績・出欠をまとめた保護者向けダッシュボードをURLで共有する。",
+      "講師間で使う当番表・連絡ボードをサッと作って共有する。",
+      "体験授業の申込フォーム付き案内ページを内製する。"
+    ],
+    "try_hint": "Business/Enterprise プランで Codex Sites のプレビューを有効化して試す。"
   },
   "categories": [
     {
-      "key": "newword",
-      "label": "📖 新ワード解説",
+      "key": "official",
+      "label": "📰 公式アップデート",
       "items": [
         {
-          "title_ja": "hermes agent ＝ \"常駐して動き続ける\" タイプのAIエージェント",
+          "title_ja": "6/15から一部機能が別料金に（要確認）",
           "summary_ja": [
-            "Nous Research が公開した自律エージェントの土台で、頭脳に Claude を使える（hermes agent）。",
-            "Claude Code が「頼んだら動いて終わる職人」なら、hermes は「住み込みで動き続ける執事」。常駐させて回す用途向け。",
-            "今すぐ必要ではないが「常駐型エージェント」という選択肢を知っておくと、将来の自動化設計の幅が広がる。"
+            "2026/6/15から、claude -p・Claude Code の GitHub Actions・Agent SDK・第三者エージェントが、サブスク枠とは別の月額クレジット（API従量）に分離された。",
+            "桜口さんの「クラウドRoutine（夜活）」はサブスク枠内のままだが、「PCで claude -p を回す自動化」は別料金になる可能性がある。",
+            "ただし変更には見直し・一部撤回の報道もあり流動的。最新の公式条件を確認する価値がある。"
           ],
-          "source_date": "2026年2月（公開）",
-          "url": "https://www.mindstudio.ai/blog/hermes-agent-vs-claude-code-comparison",
-          "trust": "🟦",
-          "trust_reason": "公式ドキュメントでなく解説記事ベース。複数ソースで内容が一致するため🟦",
+          "source_date": "2026-06-15",
+          "url": "https://www.digitalapplied.com/blog/anthropic-claude-credit-overhaul-june-15-2026",
+          "trust": "🟨",
+          "trust_reason": "変更が見直し・一部撤回の報道もあり流動的。最新の公式条件を要確認",
           "tags": ["自動化"],
-          "idea": "将来、塾の問い合わせメールを24時間見張って下書きを用意する「常駐AI受付」を置く、という発想が持てるかも。",
-          "try_hint": "試すなら：今は「こういう種類がある」と知るだけでOK。詳しくは解説リンクへ。"
+          "ideas": [
+            "夜活はクラウドRoutine（定額枠）中心に寄せてコストを抑える。",
+            "PCで claude -p の自動化を増やす前に、最新の料金条件を確認する。",
+            "月のクレジット上限を決めて使いすぎを防ぐ。"
+          ],
+          "try_hint": "claude.ai の Settings > Usage / Billing で、今の枠と消費を確認する。"
         }
       ]
     },
@@ -43,61 +51,48 @@
       "label": "🛠 新機能と使い方",
       "items": [
         {
-          "title_ja": "AI が \"部下AI\" を5段まで呼べるように（大きな仕事を任せきれる）",
+          "title_ja": "Codexに\"職種別の助手\"が62種",
           "summary_ja": [
-            "AI が自分の部下 AI（サブエージェント＝作業を任せる分身）を最大5段まで呼べるようになり、大仕事を細かく分担できる。",
-            "塾アプリの全画面バグ点検のような大規模作業を、夜のうちに AI 軍団へまるごと任せて朝に結果、が現実的になる。",
-            "一晩でこなせる仕事量が増える＝寝ている間に進む開発が増える。"
+            "Codex に、データ分析・営業・クリエイティブ・商品デザインなど職種別のプラグインが6種登場（62アプリ・110スキルを束ねる）。",
+            "塾の事務（成績集計、体験勧誘の管理、お便り素案づくり）に転用できる。",
+            "職種ごとの定型作業がパッケージ化され、ゼロから指示しなくても回せる。"
           ],
-          "source_date": "2026年6月（Week 24・公式 What's New）",
-          "url": "https://code.claude.com/docs/en/whats-new/2026-w24",
+          "source_date": "2026-06-02（発表）",
+          "url": "https://techcrunch.com/2026/06/02/openai-launches-new-codex-tools-for-white-collar-work/",
           "trust": "🟩",
-          "trust_reason": "公式 What's New（Week 24 ダイジェスト）が出どころ",
-          "tags": ["自動化", "アプリ開発"],
-          "idea": "生徒全員分の今月の成績コメントを、夜のうちに AI へ一斉に下書きさせて朝に手直しだけする、ができるかも。",
-          "try_hint": "試すなら：夜活で「この機能を全部点検して」のように大きめに頼む（AI が自動で分担する）。"
+          "trust_reason": "OpenAI 公式発表（6/2）、複数の主要メディアが報道",
+          "tags": ["自動化", "塾管理"],
+          "ideas": [
+            "データ分析の助手で月次の成績推移を自動集計する。",
+            "営業の助手で体験→入塾の見込みを管理する。",
+            "クリエイティブの助手で「そよかぜ便り」の素案を作る。"
+          ],
+          "try_hint": "Codex のプラグイン一覧から、まず1つ（データ分析など）を試す。"
         }
       ]
     },
     {
-      "key": "insight",
-      "label": "🤔 使いこなし考察",
+      "key": "newword",
+      "label": "📖 新ワード解説",
       "items": [
         {
-          "title_ja": "\"AI司令塔＋部下\" は効率を上げるか？ → 並列作業なら上がる（コスト管理が鍵）",
+          "title_ja": "最強モデル\"Fable 5\"が登場",
           "summary_ja": [
-            "複数の AI を束ねる「オーケストレーター」は、調査やレビューなど同時に進められる作業では速くなる。",
-            "逆に順番にやる作業や同じ場所を編集する作業はかえって遅くコスト高。桜口さんの夜活「アプリ全体点検」のような並列向き。",
-            "コツは「司令塔に賢いモデル＋部下に安いモデル」。品質を保ったままコストが5〜10倍下がる実例がある。"
+            "Anthropic が \"Mythos級\" の新モデル Claude Fable 5 を安全化して一般提供（同社がこれまで一般公開した中で最高性能）。",
+            "「Mythos級」＝桁違いに高性能なクラス、という位置づけの呼び名。",
+            "Opus でも届かない難所（難バグ・込み入った分析・大規模移行）向け。その分コストは高い。"
           ],
-          "source_date": "2026年5〜6月（複数の技術記事）",
-          "url": "https://medium.com/neuralnotions/multi-agent-orchestration-in-claude-code-the-architecture-and-economics-of-subagents-06d52e69f8b2",
+          "source_date": "2026年6月（v2.1.170 で利用可）",
+          "url": "https://code.claude.com/docs/en/changelog",
           "trust": "🟦",
-          "trust_reason": "複数の技術ブログで同様の結論。公式の数値ではないため🟦（鵜呑みにせず傾向として）",
-          "tags": ["自動化", "アプリ開発"],
-          "idea": "定期テスト前に「全教科の予想問題を教科ごとに並行作成」を一気に頼んで、教材準備を半日ぶん短縮できるかも。",
-          "try_hint": "試すなら：夜活で大きめの並列タスク時だけ多エージェントを使い、普段は単体で（枠の節約）。"
-        }
-      ]
-    },
-    {
-      "key": "insider",
-      "label": "🎙 中の人ウォッチ",
-      "items": [
-        {
-          "title_ja": "Claude Code 開発者いわく「いきなり書かせるな、まず計画させろ」",
-          "summary_ja": [
-            "開発者 Boris Cherny・Cat Wu が語る2026年の最適解は「調べる→計画→実行→レビュー→出荷、各段階で人間が監督」。",
-            "特に「プランモードで先に段取り」させると難題の成功率が2〜3倍。桜口さんの「設計してから実装（opusplan）」はこれと同じ。",
-            "中の人公認のやり方を桜口さんは既に実践中＝今の AI チーム運用は正しい方向、と裏付けられた。"
+          "trust_reason": "公式リリース済みだが、詳細の解説は二次情報ベースのため🟦",
+          "tags": ["アプリ開発"],
+          "ideas": [
+            "何度直してもOpusで直らない難バグの最終手段にする。",
+            "塾の複雑な料金・収支シミュレーションの設計に使う。",
+            "comiru→自社アプリのような大規模移行の司令塔にする。"
           ],
-          "source_date": "2026年（Anthropic 公式・継続更新）",
-          "url": "https://www.anthropic.com/engineering/claude-code-best-practices",
-          "trust": "🟩",
-          "trust_reason": "Anthropic 公式エンジニアリング記事＋開発者本人の発言",
-          "tags": ["自動化", "アプリ開発"],
-          "idea": "「まず計画だけ立てて」と言う癖を私生活にも応用すると、旅行やイベントの段取りでも AI が抜け漏れない計画を作ってくれるかも。",
-          "try_hint": "試すなら：難しめの依頼は最初に「まず計画だけ立てて」と一言add。"
+          "try_hint": "使えるようになったら、Opusで詰まった難所だけ Fable 5 に投げて比べる。"
         }
       ]
     }

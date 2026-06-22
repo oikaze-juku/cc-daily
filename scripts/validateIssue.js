@@ -9,7 +9,7 @@ function validateItem(item, path, errors) {
   if (!Array.isArray(item.tags)) errors.push(`${path}.tags は配列`);
   if (typeof item.try_hint !== 'string') errors.push(`${path}.try_hint は文字列`);
   if (typeof item.source_date !== 'string' || !item.source_date) errors.push(`${path}.source_date が空（情報の日付が必要）`);
-  if (typeof item.idea !== 'string' || !item.idea) errors.push(`${path}.idea が空（応用アイデアが必要）`);
+  if (!Array.isArray(item.ideas) || item.ideas.length === 0) errors.push(`${path}.ideas は配列で1つ以上（応用アイデア）`);
 }
 
 export function validateIssue(issue) {

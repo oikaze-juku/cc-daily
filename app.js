@@ -11,7 +11,9 @@ function itemCard(item) {
   const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
   const reason = item.trust_reason ? `<div class="reason">${item.trust} ${item.trust_reason}</div>` : '';
   const dateLine = item.source_date ? `<div class="date">📅 ${item.source_date} の情報</div>` : '';
-  const ideaLine = item.idea ? `<div class="idea">💡 こんな使い方：${item.idea}</div>` : '';
+  const ideaBlock = (Array.isArray(item.ideas) && item.ideas.length)
+    ? `<div class="idea"><div class="idea-title">💡 こんな使い方</div><ul>${item.ideas.map((i) => `<li>${i}</li>`).join('')}</ul></div>`
+    : '';
   const tryLine = item.try_hint ? `<div class="try">試すなら：${item.try_hint}</div>` : '';
   return `
     <details class="card">
@@ -19,7 +21,7 @@ function itemCard(item) {
       ${dateLine}
       <ul>${(item.summary_ja || []).map((s) => `<li>${s}</li>`).join('')}</ul>
       ${reason}
-      ${ideaLine}
+      ${ideaBlock}
       ${tags ? `<div class="tags">${tags}</div>` : ''}
       ${tryLine}
       <a class="src" href="${item.url}" target="_blank" rel="noopener">原文を開く ↗</a>
@@ -36,7 +38,8 @@ function render(issue) {
       <h3>${cat.label || cat.key}</h3>
       ${(cat.items || []).map(itemCard).join('')}
     </section>`).join('');
-  $('#issue').innerHTML = `<h1>${issue.date} の号</h1>${quiet}${top}${cats}`;
+  const legend = `<div class="legend"><span>🟩 公式・本家発で安心</span><span>🟦 信頼できる二次情報</span><span>🟨 要注意（理由つき）</span></div>`;
+  $('#issue').innerHTML = `<h1>${issue.date} の号</h1>${legend}${quiet}${top}${cats}`;
 }
 
 function applySearch(issue, q) {
