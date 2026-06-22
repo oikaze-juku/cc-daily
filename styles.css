@@ -37,9 +37,9 @@ header {
 
 /* ===== 凡例 ===== */
 .legend {
-  display:flex; flex-wrap:wrap; gap:10px 16px; margin:0 0 22px;
-  padding:14px 16px; background:var(--cream); border:1px solid var(--line); border-radius:24px;
-  font-size:12.5px; color:var(--sub);
+  display:flex; flex-wrap:wrap; gap:8px 14px; margin:32px 0 0;
+  padding:12px 4px 0; border-top:1px solid var(--line);
+  font-size:11.5px; color:var(--sub);
 }
 .legend span { white-space:nowrap; }
 
@@ -112,6 +112,34 @@ main > h1 {
 .src::after { content:"→"; color:var(--kiku-hover); transition:transform .2s ease; }
 .src:active::after { transform:translateX(4px); }
 .quiet { color:var(--sub); font-style:italic; }
+
+/* ===== 進捗バー（タスク管理・その号の既読数） ===== */
+.progress { background:var(--cream); border:1px solid var(--line); border-radius:24px; padding:14px 18px; margin:0 0 16px; }
+.progress-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; }
+.progress-num { font-family:var(--serif); font-weight:600; font-size:15px; color:var(--ink); }
+.progress.done .progress-num { color:#8A6D14; }
+.progress-bar { height:9px; background:#fff; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.progress-fill { height:100%; background:var(--kiku); border-radius:999px; transition:width .35s ease; }
+.progress.done .progress-fill { background:var(--green); }
+
+/* ===== フィルタ（すべて/未読/お気に入り） ===== */
+.filters { display:flex; gap:8px; margin:0 0 18px; }
+.ftab { flex:1; min-height:44px; background:var(--card); color:var(--sub); border:1.5px solid var(--line); border-radius:999px; font-size:13px; font-weight:500; font-family:var(--jp); cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.ftab.on { background:var(--kiku-soft); color:#8A6D14; border-color:var(--kiku); }
+
+/* ===== ☆お気に入り ✓既読チェック ===== */
+.acts { display:flex; gap:6px; flex-shrink:0; }
+.act { width:42px; height:42px; border-radius:999px; border:1.5px solid var(--line); background:var(--card); font-size:18px; line-height:1; cursor:pointer; -webkit-tap-highlight-color:transparent; display:flex; align-items:center; justify-content:center; color:var(--sub); padding:0; }
+.act-fav.on { color:var(--kiku-hover); border-color:var(--kiku); background:var(--kiku-soft); }
+.act-read { color:var(--green-ink); font-weight:700; }
+.act-read.on { color:#fff; background:var(--green-ink); border-color:var(--green-ink); }
+
+/* 未読ドット（タイトル先頭） */
+.dot { display:inline-block; width:8px; height:8px; border-radius:999px; background:var(--pink); margin-right:7px; vertical-align:middle; }
+
+/* 既読カードは少し控えめに */
+.card.is-read { opacity:0.7; }
+.card.is-read .title { color:var(--sub); }
 
 /* ===== ロード演出（控えめ） ===== */
 @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
