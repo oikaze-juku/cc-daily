@@ -1,7 +1,8 @@
 const $ = (sel) => document.querySelector(sel);
 
 async function loadJSON(path) {
-  const res = await fetch(path);
+  // 毎朝更新される号を常に最新で取得する（ブラウザキャッシュを使わない）
+  const res = await fetch(path, { cache: 'no-store' });
   if (!res.ok) throw new Error(`load failed: ${path}`);
   return res.json();
 }
