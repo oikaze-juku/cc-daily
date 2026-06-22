@@ -132,8 +132,8 @@ async function renderFavorites() {
   const groups = groupByWeek(entries);
   const total = entries.length;
   const body = groups.length
-    ? groups.map((g, i) => `
-        <details class="week-group" ${i === 0 ? 'open' : ''}>
+    ? groups.map((g) => `
+        <details class="week-group">
           <summary><span class="week-label">${g.label}</span><span class="week-count">${g.entries.length}</span></summary>
           ${g.entries.map((e) => itemCard(e.item)).join('')}
         </details>`).join('')
@@ -155,8 +155,8 @@ async function renderArchive() {
   const groups = groupByWeek(entries);
   const total = entries.length;
   const body = groups.length
-    ? groups.map((g, i) => `
-        <details class="week-group" ${i === 0 ? 'open' : ''}>
+    ? groups.map((g) => `
+        <details class="week-group">
           <summary><span class="week-label">${g.label}</span><span class="week-count">${g.entries.length}</span></summary>
           ${g.entries.map((e) => itemCard(e.item)).join('')}
         </details>`).join('')
