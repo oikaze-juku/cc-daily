@@ -1,44 +1,132 @@
 :root {
-  --green:#15803d; --blue:#1d4ed8; --amber:#b45309;
-  --bg:#f4f6f9; --card:#ffffff; --fg:#1f2937; --muted:#6b7280; --line:#e5e7eb;
-  --ink:#111827;
+  --paper:#f7f4ef; --card:#fffdf9; --ink:#211f2e; --sub:#6f6a7a; --line:#eae3d8;
+  --accent:#c1502e;   /* テラコッタ朱（アクセント1点） */
+  --gold:#c8941f;     /* 今日の一番 */
+  --c-newword:#2a6f97; --c-howto:#386641; --c-insight:#7209b7; --c-insider:#bc4749; --c-official:#8a8594;
+  --serif:"Fraunces", Georgia, "Times New Roman", serif;
+  --jp:"Zen Kaku Gothic New", system-ui, -apple-system, sans-serif;
 }
-* { box-sizing: border-box; }
-body { margin:0; font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", sans-serif; background:var(--bg); color:var(--fg); line-height:1.75; }
+* { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { -webkit-text-size-adjust:100%; }
+body {
+  margin:0; font-family:var(--jp); background:var(--paper); color:var(--ink);
+  line-height:1.8; font-size:16px; letter-spacing:0.1px;
+}
+/* 紙の上に淡い朝の光のグラデ */
+body::before {
+  content:""; position:fixed; left:0; right:0; top:0; height:240px; z-index:0;
+  background:linear-gradient(180deg, rgba(193,80,46,0.06), transparent);
+  pointer-events:none;
+}
 
-header { position:sticky; top:0; background:rgba(244,246,249,0.92); backdrop-filter:blur(8px); padding:14px 16px; border-bottom:1px solid var(--line); }
-.site { margin:0 0 10px; font-size:22px; font-weight:800; color:var(--ink); letter-spacing:0.5px; }
-.controls { display:flex; gap:8px; }
-.controls select, .controls input { flex:1; min-height:46px; background:#fff; color:var(--fg); border:1px solid var(--line); border-radius:12px; padding:0 14px; font-size:16px; }
-.controls select:focus, .controls input:focus { outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(29,78,216,0.12); }
+/* ===== ヘッダー ===== */
+header {
+  position:sticky; top:0; z-index:10;
+  background:rgba(247,244,239,0.85); backdrop-filter:blur(14px) saturate(1.3);
+  border-bottom:1px solid var(--line); padding:14px 18px;
+}
+.brand { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+.site {
+  margin:0; font-family:var(--serif); font-weight:900; font-size:30px;
+  letter-spacing:-0.6px; line-height:1; color:var(--ink);
+}
+.tagline {
+  margin:0; font-size:11px; color:var(--accent); font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+}
+.controls { display:flex; gap:8px; margin-top:12px; }
+.controls select, .controls input {
+  flex:1; min-height:46px; background:var(--card); color:var(--ink);
+  border:1px solid var(--line); border-radius:12px; padding:0 14px; font-size:16px; font-family:var(--jp);
+}
+.controls select:focus, .controls input:focus {
+  outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(193,80,46,0.13);
+}
 
-main { padding:16px; max-width:720px; margin:0 auto; }
-main > h1 { font-size:15px; color:var(--muted); font-weight:600; margin:4px 0 16px; }
+/* ===== 本体 ===== */
+main { padding:20px 18px 64px; max-width:680px; margin:0 auto; position:relative; z-index:1; }
+main > h1 {
+  font-family:var(--serif); font-weight:600; font-size:15px; color:var(--sub);
+  margin:0 0 22px; padding-bottom:10px; border-bottom:2px solid var(--ink); letter-spacing:0.3px;
+}
 
-/* 今日の一番★（開くご褒美：金のアクセント1点） */
-.top { margin-bottom:8px; }
-.top h2 { font-size:16px; color:var(--amber); font-weight:700; margin:0 0 6px; }
-.top .card { border:1px solid #fcd34d; box-shadow:0 2px 10px rgba(245,158,11,0.15); }
+/* ===== 今日の一番 ===== */
+.top { margin-bottom:28px; }
+.top h2 {
+  font-family:var(--jp); font-size:12px; font-weight:900; color:var(--gold);
+  margin:0 0 10px; letter-spacing:2px;
+}
+.top .card {
+  border:1px solid #ecd9a8; background:linear-gradient(180deg,#fffdf6,#fffaef);
+  box-shadow:0 8px 28px rgba(200,148,31,0.15);
+}
+.top .card summary { font-size:19px; }
 
-.cat h3 { font-size:16px; border-left:4px solid var(--blue); padding-left:10px; color:var(--ink); margin:26px 0 8px; }
+/* ===== カテゴリ見出し（コーナー色分け） ===== */
+.cat { margin-top:32px; }
+.cat h3 {
+  font-family:var(--jp); font-size:16px; font-weight:900; color:var(--ink);
+  margin:0 0 10px; padding-left:12px; border-left:4px solid var(--sub); line-height:1.4;
+}
+.cat[data-key="newword"] h3 { border-color:var(--c-newword); }
+.cat[data-key="howto"]    h3 { border-color:var(--c-howto); }
+.cat[data-key="insight"]  h3 { border-color:var(--c-insight); }
+.cat[data-key="insider"]  h3 { border-color:var(--c-insider); }
+.cat[data-key="official"] h3 { border-color:var(--c-official); }
 
-.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 16px; margin:12px 0; box-shadow:0 1px 3px rgba(17,24,39,0.06); }
-.card summary { font-size:16px; font-weight:700; cursor:pointer; list-style:none; color:var(--ink); }
+/* ===== カード ===== */
+.card {
+  background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:16px 18px; margin:12px 0; box-shadow:0 2px 12px rgba(33,31,46,0.05);
+}
+.card summary {
+  font-family:var(--jp); font-size:16.5px; font-weight:700; line-height:1.55;
+  cursor:pointer; list-style:none; color:var(--ink);
+  display:flex; gap:9px; align-items:flex-start;
+}
 .card summary::-webkit-details-marker { display:none; }
-.card summary::before { content:"▸ "; color:var(--muted); }
-.card[open] summary::before { content:"▾ "; }
-.badge { font-size:16px; margin-right:2px; }
+.badge { font-size:18px; flex-shrink:0; line-height:1.5; }
+.title { flex:1; }
+.card[open] summary { margin-bottom:4px; }
 
-.date { color:var(--muted); font-size:12px; margin:8px 0; }
-.card ul { margin:10px 0; padding-left:20px; }
-.card li { margin:5px 0; }
-.reason { color:var(--muted); font-size:13px; margin:8px 0; }
+.date {
+  display:inline-block; font-family:var(--serif); font-size:12px; color:var(--sub);
+  margin:12px 0 4px; padding:2px 9px; background:rgba(33,31,46,0.04); border-radius:6px; letter-spacing:0.3px;
+}
+.card ul { margin:10px 0; padding-left:0; list-style:none; }
+.card li { margin:8px 0; padding-left:18px; position:relative; }
+.card li::before { content:"—"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.reason { color:var(--sub); font-size:12.5px; margin:8px 0; font-style:italic; }
 
-/* 応用アイデア（温かい黄・ご褒美感） */
-.idea { margin:12px 0; padding:12px 14px; background:#fffbeb; border-left:4px solid #f59e0b; border-radius:10px; font-size:14px; color:#78350f; }
+/* 応用アイデア（温かい黄・ご褒美） */
+.idea {
+  margin:14px 0; padding:13px 15px;
+  background:linear-gradient(135deg,#fff8ec,#fff3df); border:1px solid #f0d9a8;
+  border-radius:12px; font-size:14px; color:#7a4a12; line-height:1.7;
+}
 
-.tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
-.tag { background:#eef2ff; color:#3730a3; border-radius:999px; padding:3px 12px; font-size:12px; }
-.try { margin-top:10px; font-size:13px; color:var(--green); }
-.src { display:inline-block; margin-top:12px; min-height:44px; line-height:44px; color:var(--blue); font-weight:700; text-decoration:none; }
-.quiet { color:var(--muted); }
+.tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+.tag {
+  background:rgba(193,80,46,0.08); color:var(--accent); border-radius:999px;
+  padding:4px 12px; font-size:12px; font-weight:700;
+}
+.try { margin-top:12px; font-size:13px; color:var(--c-howto); font-weight:500; line-height:1.7; }
+.src {
+  display:inline-flex; align-items:center; gap:5px; margin-top:14px; min-height:44px;
+  color:var(--accent); font-weight:600; text-decoration:none; font-family:var(--serif); font-size:15px;
+}
+.src::after { content:"→"; transition:transform .2s ease; }
+.src:active::after { transform:translateX(4px); }
+.quiet { color:var(--sub); font-style:italic; }
+
+/* ===== ロード演出（上から順にふわっと） ===== */
+@keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+main section, main > h1 { animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) both; }
+main section:nth-of-type(1){ animation-delay:.04s; }
+main section:nth-of-type(2){ animation-delay:.10s; }
+main section:nth-of-type(3){ animation-delay:.16s; }
+main section:nth-of-type(4){ animation-delay:.22s; }
+main section:nth-of-type(5){ animation-delay:.28s; }
+main section:nth-of-type(n+6){ animation-delay:.34s; }
+
+@media (prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }

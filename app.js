@@ -15,7 +15,7 @@ function itemCard(item) {
   const tryLine = item.try_hint ? `<div class="try">試すなら：${item.try_hint}</div>` : '';
   return `
     <details class="card">
-      <summary><span class="badge">${item.trust}</span> ${item.title_ja}</summary>
+      <summary><span class="badge">${item.trust}</span><span class="title">${item.title_ja}</span></summary>
       ${dateLine}
       <ul>${(item.summary_ja || []).map((s) => `<li>${s}</li>`).join('')}</ul>
       ${reason}
@@ -32,7 +32,7 @@ function render(issue) {
     : '';
   const quiet = issue.quiet_day ? `<p class="quiet">今日は静かでした。</p>` : '';
   const cats = (issue.categories || []).map((cat) => `
-    <section class="cat">
+    <section class="cat" data-key="${cat.key || ''}">
       <h3>${cat.label || cat.key}</h3>
       ${(cat.items || []).map(itemCard).join('')}
     </section>`).join('');

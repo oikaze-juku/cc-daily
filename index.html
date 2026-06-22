@@ -2,19 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CC Daily — Claude/Codex 開発トレンド日報</title>
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header>
-    <h1 class="site">CC Daily</h1>
+    <div class="brand">
+      <h1 class="site">CC Daily</h1>
+      <p class="tagline">Claude / Codex 開発日報</p>
+    </div>
     <div class="controls">
       <select id="dates" aria-label="号を選ぶ"></select>
-      <input id="q" type="search" placeholder="検索（タイトル・タグ）" />
+      <input id="q" type="search" placeholder="🔍 タイトル・タグで検索" />
     </div>
   </header>
   <main id="issue">読み込み中…</main>
-  <script type="module" src="app.js?v=2"></script>
+  <script type="module" src="app.js?v=3"></script>
 </body>
 </html>
