@@ -1,0 +1,144 @@
+{
+  "date": "2026-06-25",
+  "quiet_day": false,
+  "headline_top": {
+    "title_ja": "Slackで呼ぶだけで動く、チーム専用AI",
+    "summary_ja": [
+      "Slackのチャンネルで「@Claude 〇〇をやって」と書くだけで、AIが指示を受け取り、段階的に仕事をこなして結果を報告してくれる「Claude Tag」をAnthropicが6/23に発表しました（Team・Enterpriseプランでベータ先行公開）。",
+      "保護者向け案内文・塾便りの下書き・問い合わせ対応メモなど、桜口さん・妻・講師がそれぞれ「これ頼めたら」と思っている作業を、各自がSlackから個別に頼めるようになります。",
+      "全員が同じClaudeを共有するため、一度した説明を繰り返さなくてよく、チーム全体で自動化の恩恵をまとめて受けられます。"
+    ],
+    "source_date": "2026-06-23",
+    "url": "https://www.anthropic.com/news/introducing-claude-tag",
+    "trust": "🟩",
+    "trust_reason": "",
+    "tags": ["塾管理", "自動化", "集客"],
+    "ideas": [
+      "「@Claude そよかぜ便り7月号の下書きを作って（今月のトピック：夏期講習・水泳特訓）」とSlackに投稿するだけで、妻がデザインするための下書きが自動で出来上がる仕組みを作る。",
+      "入塾体験後のフォローメール文案を「@Claude ◯◯さん向けのお礼と案内文を作って」とSlackで毎回頼み、担当者が変わっても同じトーンで対応できる運用にする。"
+    ],
+    "try_hint": "試すなら：AnthropicのTeamプランを利用中なら、Claude Tagのベータ参加申請をしておく。まず「どの繰り返し業務を最初に任せるか」をリストに書き出しておくと、使い始めがスムーズになります。"
+  },
+  "categories": [
+    {
+      "key": "newword",
+      "label": "📖 新ワード解説",
+      "items": [
+        {
+          "title_ja": "「ループ設計」──一問一答より強いAIの使い方",
+          "summary_ja": [
+            "AIに毎回「◯◯して」と頼む（プロンプト）より、「目標を渡して繰り返し実行させるループ」を設計する「ループエンジニアリング（Loop Engineering）」が、Claude Codeの使い倒し方として注目されています（6/22、The New Stack）。",
+            "例えば「全生徒のコメント下書きを作る」という目標を/goalに設定して夜活で走らせると、Claude Codeが50人分の処理を自動で順番にこなしてくれます（毎回同じ依頼を繰り返さなくてよい）。",
+            "一度ループを設計してしまえば、繰り返し業務はほぼ無人で動くようになり、夜活の生産量が飛躍的に増えます。"
+          ],
+          "source_date": "2026-06-22",
+          "url": "https://thenewstack.io/loop-engineering/",
+          "trust": "🟨",
+          "trust_reason": "専門メディア（The New Stack）の解説記事。Claude Code作者Boris Chernyの発言を引用しているが、記事本文の直接確認ができていないため🟨。",
+          "tags": ["自動化", "アプリ開発"],
+          "ideas": [
+            "「今月の宿題チェックコメントを全生徒分作る」を/goalに設定し、夜のうちに走らせる。起動したらClaude Codeが自走して朝には完成している状態を目指す。",
+            "毎週のそよかぜ便りの下書きを、生徒名簿と今週のトピックを渡して「全学年分を繰り返し生成する」ループにまとめ、週次の定番タスクを自動化する。"
+          ],
+          "try_hint": "試すなら：Claude Codeに「/goal 〇〇を全部仕上げて」と入力してみる。AIが自動で繰り返し作業を進める様子が確認でき、ループ設計の感覚をつかめます。"
+        }
+      ]
+    },
+    {
+      "key": "howto",
+      "label": "🛠 新機能と使い方",
+      "items": [
+        {
+          "title_ja": "AIがパスワード類を勝手に読まないよう設定できる",
+          "summary_ja": [
+            "Claude Code v2.1.187（6/23）に「sandbox.credentials」設定が追加され、AIが自動作業中に認証キーやパスワードを保存した環境変数・設定ファイルを読めないようブロックできるようになりました。",
+            "塾アプリのFirebaseキーやAPIキーをローカルに置いた状態でAIに作業させる場合、設定一つで「AIが認証情報を触れない」壁を設けられます（作業前の手動除外が不要になる）。",
+            "「AIに任せている間に鍵を読まれないか」という不安が構造的に消え、夜活で大きな作業を任せながら安全な環境を保てます。"
+          ],
+          "source_date": "2026-06-23（v2.1.187）",
+          "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.187",
+          "trust": "🟩",
+          "trust_reason": "",
+          "tags": ["アプリ開発", "自動化"],
+          "ideas": [
+            "Firebaseの秘密鍵（.env.localなど）をプロジェクト配下に置いたまま夜活でAIに作業させるとき、sandbox.credentials設定をオンにしておけば鍵を触られない安全網になる。",
+            "将来、講師・保護者向けのAPIキーが増えてきたとき、開発時のClaude Code作業から機密情報を構造的に切り離す仕組みとして活用できる。"
+          ],
+          "try_hint": "試すなら：Claude Codeの設定ファイルに「sandbox.credentials: true」を追加し、sandboxモードで作業を依頼してみる（認証情報が読まれない状態でAIが動くことが確認できます）。"
+        }
+      ]
+    },
+    {
+      "key": "insight",
+      "label": "🤔 使いこなし考察",
+      "items": [
+        {
+          "title_ja": "管理職がAIを最も使いこなせる──Ethan Mollick の発見",
+          "summary_ja": [
+            "AI研究者のEthan Mollick氏が6/19、「Claude Codeの実績データで、管理職が最も成功率が高かった」と投稿しました。管理職は「何を・どうやって・良い成果とは何かを明確に言語化する」能力があるため、AIへの指示も上手いのだと分析しています。",
+            "プログラミング知識がなくても、「塾の仕事をよく知っていて、何が欲しいかを言語化できる人」がAIを最も活かせる、という意味で、塾経営者の桜口さんにとって心強いデータです。",
+            "「自分はエンジニアじゃないから…」という引け目を持つ必要はなく、現場経験と管理スキルこそがClaude Code活用の真の競争力です。"
+          ],
+          "source_date": "2026-06-19",
+          "url": "https://x.com/emollick/status/2067839690158268923",
+          "trust": "🟨",
+          "trust_reason": "AI研究者Ethan Mollick氏（@emollick）本人のX投稿として検索で特定。本文の直接取得ができていないため🟨。",
+          "tags": ["経営・財務", "自動化"],
+          "ideas": [
+            "Claude Codeへの指示を「管理職として新しい担当者に仕事を頼むように」書く。「何を作りたいか」「良い成果とはどんな状態か」「どうやって確認するか」の3点を必ず添えると精度が上がる。",
+            "「エンジニアじゃないから」と遠慮していた大きな依頼（塾アプリの新機能設計・生徒管理の自動化）に、業務の流れを知る管理者目線で要件を書いて頼んでみる。"
+          ],
+          "try_hint": "試すなら：次のClaude Codeへの依頼を「ゴール・制約・完了の判断基準」の3点を一文ずつ添えて書いてみる。管理職の言語化スキルをそのまま活かせます。"
+        }
+      ]
+    },
+    {
+      "key": "insider",
+      "label": "🎙 中の人ウォッチ",
+      "items": [
+        {
+          "title_ja": "Simon Willison が Claude Code で自分のツールを完成させた",
+          "summary_ja": [
+            "LLM実践の世界的第一人者・Simon Willison氏が6/18、自作のデータ閲覧ツール「Datasette」に「カスタムHTMLアプリを内蔵できる機能」をClaude Code（Claude Opus 4.6）だけで開発し公開しました。",
+            "AIが書いたHTML・JavaScriptをそのままプラグインとして組み込む形で完成。塾アプリでも「管理画面の1ページをClaude Codeに書かせてFirebaseに繋ぐ」という同じ手順が、個人でも実現できる規模感の話です。",
+            "「1人でも、Claude Codeがあれば自分専用のツールを作り切れる」という実証を、現場最前線の人物が繰り返し示しています。"
+          ],
+          "source_date": "2026-06-18",
+          "url": "https://simonwillison.net/2026/Jun/18/datasette-apps/",
+          "trust": "🟩",
+          "trust_reason": "",
+          "tags": ["アプリ開発", "自動化"],
+          "ideas": [
+            "塾アプリの「成績閲覧ページ」や「出欠管理ダッシュボード」を、Claude Codeに1ページずつ作らせてFirebaseに接続する実験を始める（まず1画面だけ）。",
+            "Datasette AppsのようなオープンソースにClaude Codeで機能追加するアプローチを参考に、既存の無料ツールを塾専用に改造する発想で開発のハードルを下げる。"
+          ],
+          "try_hint": "試すなら：Claude Codeに「塾の成績データをグラフ表示するHTMLページを作って」と頼んでみる。1つのHTMLファイルが完成したら、塾アプリへの組み込み方を一緒に相談できます。"
+        }
+      ]
+    },
+    {
+      "key": "official",
+      "label": "📰 公式アップデート",
+      "items": [
+        {
+          "title_ja": "Claude Code が別のエディタにも広がってきた",
+          "summary_ja": [
+            "6/22、「ClaudeをJetBrains IDEのAIエージェントとして使えるプレビュー」がGitHub公式ブログで発表されました。JavaやAndroid開発向けのエディタ（IntelliJ IDEA・Android Studio等）でもClaudeが動かせるようになります。",
+            "現在は主にターミナル（Claude Code）とVS Codeが中心ですが、選択肢が増えることで、将来「塾アプリのAndroid版開発」などを手伝ってもらうエディタを選べる幅が広がります。",
+            "Claude Codeが複数エディタに展開されているため、将来の乗り換えコストが下がり、AI開発を続けやすい環境になってきています。"
+          ],
+          "source_date": "2026-06-22",
+          "url": "https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/",
+          "trust": "🟩",
+          "trust_reason": "",
+          "tags": ["アプリ開発"],
+          "ideas": [
+            "現在はVS Code＋Claude Code中心でよいが、「塾アプリのAndroid版を作りたい」となったとき、JetBrainsのAndroid StudioでもClaudeが使えることを頭に置いておく。",
+            "将来の機能追加（iOS/Androidアプリ化）を検討するとき、エディタの選択肢が広がっていることで開発の壁が低くなることを知識として持っておく。"
+          ],
+          "try_hint": "試すなら：今すぐ変更不要。JetBrains IDEを使う機会（Androidアプリ開発等）が来たとき、Claude連携が使えると思い出せるようメモしておく程度でOK。"
+        }
+      ]
+    }
+  ]
+}
