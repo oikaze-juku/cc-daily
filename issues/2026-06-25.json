@@ -8,7 +8,11 @@
       "Slackのチャンネルで「@Claude そよかぜ便り7月号の下書きを作って」と書くだけで、各自がその場でAIに仕事を振れるようになります（Claude Tag）。",
       "全員が同じClaudeを共有するため一度した説明を繰り返さずに済み、チーム全体で自動化の恩恵をまとめて受けられます。"
     ],
-    "article": ["Slackのチャンネルで「@Claude 〜して」とメンションするだけでAIが指示を受け取り、段階的に作業して結果を報告する「Claude Tag」をAnthropicが6/23に発表。Team・Enterpriseプランでベータ先行公開。"],
+    "article": [
+      "AnthropicがSlack統合機能「Claude Tag」を6/23に発表。Slackのチャンネルで「@Claude 〜して」とメンションするだけで、AIが段階的に作業を進めて結果をスレッドで報告する。",
+      "チームメンバー全員が同じClaudeを共有でき、個人セッションと異なりチャット上での作業の透明性が確保される。",
+      "Team・Enterpriseプランでベータ先行公開。Anthropic公式ニュース（anthropic.com/news）からの一次情報。"
+    ],
     "source_date": "2026-06-23",
     "url": "https://www.anthropic.com/news/introducing-claude-tag",
     "trust": "🟩",
@@ -32,7 +36,11 @@
             "「全生徒のコメント下書きを作る」を目標（/goal）として設定し夜活で走らせると、Claude Codeが50人分を自動で順番にこなします（ループエンジニアリング）。",
             "一度ループを設計してしまえば繰り返し業務はほぼ無人で動くようになり、夜活の生産量が飛躍的に増えます。"
           ],
-          "article": ["毎回個別に指示する（プロンプト）のでなく、「目標を渡して繰り返し実行させるループ」を設計する使い方を「ループエンジニアリング（Loop Engineering）」と呼ぶ。6/22 The New Stackが解説。"],
+          "article": [
+            "「ループエンジニアリング（Loop Engineering）」とは、AIへの毎回の個別指示（プロンプトエンジニアリング）ではなく、「ゴールを設定して自律的に繰り返し実行させるループ」を設計する手法。The New Stack が6/22に解説記事を公開した。",
+            "Claude Code作者Boris Chernyの発言を引用し、ゴールを「/goal 〜」で渡すとClaude Codeが自律的に処理を繰り返す仕組みが基盤にあると説明している。",
+            "記事本文の直接確認ができていないため、詳細はリンク先（thenewstack.io/loop-engineering/）で確認を。"
+          ],
           "source_date": "2026-06-22",
           "url": "https://thenewstack.io/loop-engineering/",
           "trust": "🟨",
@@ -57,7 +65,11 @@
             "Claude Code v2.1.187（6/23）の「sandbox.credentials」設定をオンにすると、AIが認証キーやパスワードを保存したファイルを読めない壁を作れます。",
             "「AIに任せている間に鍵を読まれないか」という不安が構造的に消え、夜活で大きな作業を安全に任せられます。"
           ],
-          "article": ["Claude Code v2.1.187（6/23）に追加された「sandbox.credentials」設定。AIが自動作業中に認証情報（パスワードやAPIキー）を保存した環境変数・設定ファイルを読めないようブロックできる。"],
+          "article": [
+            "Claude Code v2.1.187（6/23リリース）に追加された「sandbox.credentials」設定をオンにすると、AIが自動作業中に環境変数（.env）・設定ファイル（.env.local等）・秘密鍵に保存された認証情報を読めないようにブロックできる。",
+            "従来は「AIが作業中に認証情報ファイルに触るかもしれない」という不安を手動回避する必要があったが、設定1つで構造的に遮断できるようになった。",
+            "公式GitHubリリースノート（v2.1.187）からの一次情報。"
+          ],
           "source_date": "2026-06-23（v2.1.187）",
           "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.187",
           "trust": "🟩",
@@ -82,7 +94,11 @@
             "AI研究者のEthan Mollick氏が6/19、「Claude Codeの実績データで管理職が最も成功率が高かった」と投稿。塾業務を知り、何が欲しいかを言語化できる桜口さんは最も活かせる側です。",
             "引け目を持つ必要はなく、現場経験と管理スキルをそのままAIへの指示力に変えられます。"
           ],
-          "article": ["AI研究者Ethan Mollick氏が6/19、「Claude Codeの実績データで、管理職が最も成功率が高かった」とX投稿。管理職は『何を・どうやって・良い成果とは何か』を明確に言語化できるためと分析した。"],
+          "article": [
+            "AI研究者Ethan Mollick（@emollick）氏が6/19、「Claude Codeの利用実績データを分析したところ、職種別で管理職（マネージャー）が最も高い成功率を示した」とX投稿。",
+            "管理職は「何を達成したいか・どうやってやるか・良い成果とは何か」を明確に言語化する習慣があるためAIへの指示の質が高くなると、氏は分析した。",
+            "X認証が必要なため本文の直接取得は不可だが、投稿の存在と内容は検索で確認済み。"
+          ],
           "source_date": "2026-06-19",
           "url": "https://x.com/emollick/status/2067839690158268923",
           "trust": "🟨",
@@ -107,7 +123,11 @@
             "LLM実践の第一人者・Simon Willison氏が6/18、自作ツールにHTMLアプリを内蔵する機能をClaude Codeだけで開発・公開。AIが書いたHTMLをそのまま部品として組み込む形です。",
             "「1人でもClaude Codeがあれば自分専用ツールを作り切れる」と最前線の人物が示し、塾アプリを1画面ずつ作る発想に自信が持てます。"
           ],
-          "article": ["LLM実践の世界的第一人者Simon Willison氏が6/18、自作のデータ閲覧ツール「Datasette」に、カスタムHTMLアプリを内蔵できる機能をClaude Code（Claude Opus 4.6）だけで開発し公開した。"],
+          "article": [
+            "LLM実践の世界的第一人者Simon Willison氏が6/18、自作のオープンソースデータ閲覧ツール「Datasette」に「Datasette Apps」機能を追加し公開した（simonwillison.net/2026/Jun/18/datasette-apps/）。",
+            "Claude Code（Claude Opus 4.6）だけを使って実装したと明記しており、カスタムHTMLアプリ（グラフ・フォーム・可視化ツール等）をDatasette内に組み込んで共有できる仕組み。1人の開発者がAIの助けで既存の人気ツールに本番レベルの機能追加を完遂した具体例。",
+            "Simon Willison氏本人のブログ（simonwillison.net）からの一次情報。"
+          ],
           "source_date": "2026-06-18",
           "url": "https://simonwillison.net/2026/Jun/18/datasette-apps/",
           "trust": "🟩",
@@ -132,7 +152,11 @@
             "6/22、JavaやAndroid開発向けエディタ（IntelliJ IDEA・Android Studio等）でもClaudeが動くプレビューが発表されました。",
             "将来「塾アプリのAndroid版」等を作るとき手伝ってもらうエディタを選べる幅が広がり、乗り換えコストが下がります。"
           ],
-          "article": ["6/22、ClaudeをJetBrains IDE（IntelliJ IDEA・Android Studio等、Java/Android開発向けエディタ）のAIエージェントとして使えるプレビューがGitHub公式ブログで発表された。"],
+          "article": [
+            "6/22、ClaudeをJetBrains IDE（IntelliJ IDEA・PyCharm・Android Studio等のJava/Android/Python向けエディタ）のAIエージェントとして使えるプレビュー機能が、GitHub公式ブログで発表された。",
+            "Claude Code（VS Code中心）とは別に、JetBrains系ツールでも同等のAIエージェント機能を利用できるようになる予定。現在はプレビュー段階で、正式リリース時期は未定。",
+            "GitHubとAnthropicの提携拡大の一環。公式GitHubブログからの一次情報。"
+          ],
           "source_date": "2026-06-22",
           "url": "https://github.blog/changelog/2026-06-22-new-features-and-claude-as-agent-provider-preview-in-jetbrains-ides/",
           "trust": "🟩",
