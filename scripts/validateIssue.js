@@ -6,6 +6,10 @@ function validateItem(item, path, errors) {
   if (!Array.isArray(item.summary_ja) || item.summary_ja.length !== 3) errors.push(`${path}.summary_ja は3行必須`);
   if (typeof item.url !== 'string' || !/^https?:\/\//.test(item.url)) errors.push(`${path}.url が不正`);
   if (!TRUST.has(item.trust)) errors.push(`${path}.trust が不正`);
+  if (item.article !== undefined) {
+    if (!Array.isArray(item.article)) errors.push(`${path}.article は配列`);
+    else if (!item.article.every((s) => typeof s === 'string')) errors.push(`${path}.article の要素は文字列のみ`);
+  }
   if (!Array.isArray(item.tags)) errors.push(`${path}.tags は配列`);
   if (typeof item.try_hint !== 'string') errors.push(`${path}.try_hint は文字列`);
   if (typeof item.source_date !== 'string' || !item.source_date) errors.push(`${path}.source_date が空（情報の日付が必要）`);
