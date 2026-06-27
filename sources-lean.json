@@ -1,0 +1,750 @@
+{
+  "primary": [
+    {
+      "type": "atom",
+      "url": "https://github.com/anthropics/claude-code/releases.atom",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://code.claude.com/docs/en/changelog",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://code.claude.com/docs/en/whats-new",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "atom",
+      "url": "https://github.com/openai/codex/releases.atom",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://developers.openai.com/codex/changelog",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "atom",
+      "url": "https://github.com/google-gemini/gemini-cli/releases.atom",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://www.anthropic.com/news",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://www.anthropic.com/engineering",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://www.anthropic.com/research",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://status.anthropic.com/",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "repo-list",
+      "url": "https://github.com/anthropics/anthropic-cookbook",
+      "trust": "🟩",
+      "category": "howto",
+      "watch": "公式の実装レシピ集。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/@anthropic-ai",
+      "trust": "🟩",
+      "category": "howto",
+      "watch": "「Anthropic Claude Code tutoria"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/AnthropicAI",
+      "trust": "🟩",
+      "category": "official",
+      "handle": "@AnthropicAI",
+      "watch": "公式アカウント。"
+    },
+    {
+      "type": "page",
+      "url": "https://claude.com/blog",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://modelcontextprotocol.io/",
+      "trust": "🟩",
+      "category": "newword",
+      "watch": "MCPはAnthropic発の公式標準。"
+    },
+    {
+      "type": "page",
+      "url": "https://openai.com/news/",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://openai.com/research/",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "page",
+      "url": "https://blog.google/technology/ai/",
+      "trust": "🟩",
+      "category": "official"
+    },
+    {
+      "type": "atom",
+      "url": "https://github.blog/feed/",
+      "trust": "🟩",
+      "category": "official"
+    }
+  ],
+  "insider": [
+    {
+      "type": "atom",
+      "url": "https://simonwillison.net/atom/everything/",
+      "trust": "🟩",
+      "category": "insider",
+      "handle": "@simonw",
+      "watch": "Claude Code/Codexの実践Tips。"
+    },
+    {
+      "type": "page",
+      "url": "https://www.oneusefulthing.org/",
+      "trust": "🟩",
+      "category": "insight",
+      "handle": "@emollick",
+      "watch": "★塾長に最も刺さる発信者。"
+    },
+    {
+      "type": "page",
+      "url": "https://www.latent.space/",
+      "trust": "🟩",
+      "category": "insider",
+      "handle": "@swyx",
+      "watch": "Claude Codeの深い使いこなし記事・対談。"
+    },
+    {
+      "type": "page",
+      "url": "https://huyenchip.com/blog/",
+      "trust": "🟩",
+      "category": "insider",
+      "handle": "@chipro",
+      "watch": "MLエンジニアリング・LLMの実務的な深掘り。"
+    },
+    {
+      "type": "page",
+      "url": "https://www.darioamodei.com/",
+      "trust": "🟩",
+      "category": "insight",
+      "handle": "@DarioAmodei",
+      "watch": "AIの大きな方向性。"
+    },
+    {
+      "type": "page",
+      "url": "https://hamel.dev/",
+      "trust": "🟩",
+      "category": "howto",
+      "handle": "@HamelHusain",
+      "watch": "AIの『ちゃんと効いてるか測る』実務。本人ブログ→🟩。"
+    },
+    {
+      "type": "page",
+      "url": "https://eugeneyan.com/writing/",
+      "trust": "🟩",
+      "category": "insight",
+      "handle": "@eugeneyan",
+      "watch": "現場でAIをどう仕事に組み込むかの実務的考察。"
+    },
+    {
+      "type": "page",
+      "url": "https://ghuntley.com/",
+      "trust": "🟩",
+      "category": "howto",
+      "handle": "@GeoffreyHuntley",
+      "watch": "Claude Codeを使い倒す具体ノウハウを濃く書く。"
+    },
+    {
+      "type": "page",
+      "url": "https://tidyfirst.substack.com/",
+      "trust": "🟩",
+      "category": "insight",
+      "handle": "@KentBeck",
+      "watch": "テスト駆動の生みの親がAIと組む開発を書く。"
+    },
+    {
+      "type": "page",
+      "url": "https://lucumr.pocoo.org/",
+      "trust": "🟩",
+      "category": "howto",
+      "handle": "@mitsuhiko",
+      "watch": "AIエージェントに作業を任せる実務エッセイ。"
+    },
+    {
+      "type": "page",
+      "url": "https://jack-clark.net/",
+      "trust": "🟩",
+      "category": "insider",
+      "handle": "@jackclarkSF",
+      "watch": "毎週のAI動向まとめ（Import AI）。"
+    },
+    {
+      "type": "page",
+      "url": "https://dair.ai/",
+      "trust": "🟩",
+      "category": "insider",
+      "handle": "@omarsar0",
+      "watch": "プロンプトガイド・LLM活用教材の定番サイト。"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/bcherny",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@bcherny",
+      "watch": "「Boris Cherny Claude Code」で検索し"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/_catwu",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@_catwu",
+      "watch": "Claude Codeチームのプロダクト担当。"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/ErikSchluntz",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@ErikSchluntz",
+      "watch": "Claude Codeの中の人。"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/trq",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@trq",
+      "watch": "セッション管理Tips（/rewind・/compact等）"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/alexalbert__",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@alexalbert__",
+      "watch": "Anthropicの開発者向け発信。"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/karpathy",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@karpathy",
+      "watch": "「Andrej Karpathy Claude Codex "
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/lilianweng",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@lilianweng",
+      "watch": "「Lilian Weng AI agent」で検索。"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/goodside",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@goodside",
+      "watch": "プロンプトの実践知。"
+    },
+    {
+      "type": "x-watch",
+      "url": "https://x.com/_philschmid",
+      "trust": "🟨",
+      "category": "insider",
+      "handle": "@_philschmid",
+      "watch": "LLM実装・Claude活用の具体コード例。"
+    }
+  ],
+  "media": [
+    {
+      "type": "search",
+      "url": "https://venturebeat.com/category/ai/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「VentureBeat Claude Code Codex"
+    },
+    {
+      "type": "search",
+      "url": "https://techcrunch.com/category/artificial-intelligence/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「TechCrunch Claude Code Anthro"
+    },
+    {
+      "type": "search",
+      "url": "https://www.theverge.com/ai-artificial-intelligence",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「The Verge Claude Codex AI cod"
+    },
+    {
+      "type": "search",
+      "url": "https://arstechnica.com/ai/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「Ars Technica Claude Anthropic"
+    },
+    {
+      "type": "search",
+      "url": "https://the-decoder.com/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「The Decoder Claude Code Anthr"
+    },
+    {
+      "type": "search",
+      "url": "https://www.axios.com/technology",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「Axios Anthropic Claude June 2"
+    },
+    {
+      "type": "search",
+      "url": "https://www.zdnet.com/topic/artificial-intelligence/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「ZDNET Claude Code how to 2026"
+    },
+    {
+      "type": "search",
+      "url": "https://spectrum.ieee.org/topic/artificial-intelligence/",
+      "trust": "🟨",
+      "category": "newword",
+      "watch": "「IEEE Spectrum AI coding agent"
+    },
+    {
+      "type": "search",
+      "url": "https://www.technologyreview.com/topic/artificial-intelligence/",
+      "trust": "🟨",
+      "category": "newword",
+      "watch": "「MIT Technology Review Claude "
+    },
+    {
+      "type": "search",
+      "url": "https://www.wired.com/tag/artificial-intelligence/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Wired AI Claude Code June 202"
+    },
+    {
+      "type": "search",
+      "url": "https://www.infoq.com/ai-ml-data-eng/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「InfoQ Claude Code AI agent Ju"
+    }
+  ],
+  "practitioner_blogs": [
+    {
+      "type": "search",
+      "url": "https://dev.to/t/claudecode",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「dev.to claude-code tips 2026」"
+    },
+    {
+      "type": "search",
+      "url": "https://medium.com/tag/claude-code",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「Medium claude code workflow 2"
+    },
+    {
+      "type": "search",
+      "url": "https://www.xda-developers.com/tag/ai/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「XDA claude code tips setup 20"
+    },
+    {
+      "type": "search",
+      "url": "https://newsletter.pragmaticengineer.com/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Pragmatic Engineer Claude Cod"
+    },
+    {
+      "type": "search",
+      "url": "https://every.to/chain-of-thought",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「every.to Claude Code AI 2026」"
+    },
+    {
+      "type": "page",
+      "url": "https://vercel.com/blog",
+      "trust": "🟩",
+      "category": "howto",
+      "watch": "AI開発ツールの新機能。会社公式ブログ→🟩。"
+    },
+    {
+      "type": "page",
+      "url": "https://martinfowler.com/",
+      "trust": "🟩",
+      "category": "insight",
+      "watch": "LLMをソフトウェア開発にどう組み込むかのエッセイ。"
+    },
+    {
+      "type": "page",
+      "url": "https://www.thoughtworks.com/radar",
+      "trust": "🟩",
+      "category": "insight",
+      "watch": "技術の『採用すべきか』判定の定番。"
+    },
+    {
+      "type": "search",
+      "url": "https://sourcegraph.com/blog",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Sourcegraph blog AI coding ag"
+    }
+  ],
+  "newsletters": [
+    {
+      "type": "search",
+      "url": "https://tldr.tech/ai",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「TLDR AI Claude Codex June 202"
+    },
+    {
+      "type": "search",
+      "url": "https://www.deeplearning.ai/the-batch/",
+      "trust": "🟩",
+      "category": "official",
+      "watch": "「The Batch Claude AI coding 20"
+    },
+    {
+      "type": "search",
+      "url": "https://www.superhuman.ai/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「Superhuman AI Claude tips 202"
+    },
+    {
+      "type": "search",
+      "url": "https://bensbites.com/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「Bens Bites Claude Code Codex "
+    },
+    {
+      "type": "search",
+      "url": "https://www.therundown.ai/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「The Rundown AI Claude June 20"
+    },
+    {
+      "type": "search",
+      "url": "https://lastweekin.ai/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「Last Week in AI Claude Anthro"
+    }
+  ],
+  "video": [
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/@indydevdan",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "★今日の1本候補。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/@ColeMedin",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "今日の1本候補。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/@Fireship",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "今日の1本候補。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/@MattBerman",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "今日の1本候補。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/@aiDotEngineer",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "今日の1本候補。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/results?search_query=Claude+Code+%E8%A7%A3%E8%AA%AC+2026",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "★日本語の今日の1本候補。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.youtube.com/results?search_query=AI+%E6%A5%AD%E5%8B%99%E5%8A%B9%E7%8E%87%E5%8C%96+%E5%AE%9F%E4%BE%8B+2026",
+      "trust": "🟨",
+      "category": "video",
+      "curate": true,
+      "watch": "日本語の今日の1本候補（ビジネス活用寄り）。"
+    }
+  ],
+  "competitor_context": [
+    {
+      "type": "page",
+      "url": "https://www.cursor.com/blog",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Claude CodeとCursorの違い」比較insig"
+    },
+    {
+      "type": "page",
+      "url": "https://docs.github.com/en/copilot/about-github-copilot/github-copilot-features",
+      "trust": "🟩",
+      "category": "insight",
+      "watch": "Copilotの新機能→Claude Codeとの差を考察す"
+    },
+    {
+      "type": "search",
+      "url": "https://blog.replit.com/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Replit AI agent Claude Code c"
+    },
+    {
+      "type": "search",
+      "url": "https://aider.chat/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Aider Claude Code comparison "
+    },
+    {
+      "type": "search",
+      "url": "https://github.com/cline/cline",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Cline Claude Code VS Code 202"
+    },
+    {
+      "type": "search",
+      "url": "https://windsurf.com/blog",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Windsurf Claude Code comparis"
+    },
+    {
+      "type": "search",
+      "url": "https://cognition.ai/blog",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Devin Cognition Claude Code 2"
+    }
+  ],
+  "community": [
+    {
+      "type": "search",
+      "url": "https://www.reddit.com/r/ClaudeCode/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Reddit ClaudeCode tips week」で"
+    },
+    {
+      "type": "search",
+      "url": "https://www.reddit.com/r/ClaudeAI/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Reddit ClaudeAI tips workflow"
+    },
+    {
+      "type": "search",
+      "url": "https://www.reddit.com/r/ChatGPTCoding/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Reddit ChatGPTCoding Claude C"
+    },
+    {
+      "type": "search",
+      "url": "https://www.reddit.com/r/LocalLLaMA/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Reddit LocalLLaMA Claude Code"
+    },
+    {
+      "type": "search",
+      "url": "https://news.ycombinator.com/",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「Hacker News Claude Code June "
+    },
+    {
+      "type": "search",
+      "url": "https://lobste.rs/t/ai",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「lobste.rs Claude Code AI 2026"
+    },
+    {
+      "type": "page",
+      "url": "https://github.com/anthropics/claude-code/discussions",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "直近7日の新規Discussion・人気投票上位を見る。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.producthunt.com/topics/artificial-intelligence",
+      "trust": "🟨",
+      "category": "newword",
+      "watch": "「Product Hunt Claude Code AI t"
+    }
+  ],
+  "japanese": [
+    {
+      "type": "search",
+      "url": "https://dev.classmethod.jp/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「DevelopersIO Claude Code 2026"
+    },
+    {
+      "type": "search",
+      "url": "https://zenn.dev/topics/claudecode",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「Zenn Claude Code 2026 活用」で検索。"
+    },
+    {
+      "type": "search",
+      "url": "https://qiita.com/tags/claude-code",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「Qiita Claude Code 2026」で検索。"
+    },
+    {
+      "type": "search",
+      "url": "https://www.itmedia.co.jp/aiplus/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「ITmedia Claude Anthropic 2026"
+    },
+    {
+      "type": "search",
+      "url": "https://www.publickey1.jp/",
+      "trust": "🟨",
+      "category": "official",
+      "watch": "「Publickey Claude Anthropic Op"
+    },
+    {
+      "type": "search",
+      "url": "https://ledge.ai/",
+      "trust": "🟨",
+      "category": "newword",
+      "watch": "「Ledge.ai Claude Code 生成AI 202"
+    },
+    {
+      "type": "search",
+      "url": "https://gihyo.jp/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「gihyo Claude Code AI 2026」で検索"
+    },
+    {
+      "type": "search",
+      "url": "https://b.hatena.ne.jp/hotentry/it",
+      "trust": "🟨",
+      "category": "insight",
+      "watch": "「はてなブックマーク Claude Code」で検索。"
+    },
+    {
+      "type": "search",
+      "url": "https://note.com/hashtag/claude",
+      "trust": "🟥",
+      "category": "insight",
+      "watch": "「note Claude Code 塾 教育 自動化 202"
+    }
+  ],
+  "curated_github": [
+    {
+      "type": "repo-list",
+      "url": "https://github.com/hesreallyhim/awesome-claude-code",
+      "category": "repos",
+      "watch": "前回号に無い新規追加リポをチェックする。"
+    },
+    {
+      "type": "repo-list",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "Claude Codeに繋げるMCPサーバーの新規追加をチェ"
+    }
+  ],
+  "secondary": [
+    {
+      "type": "page",
+      "url": "https://claudelog.com/claude-news/",
+      "trust": "🟨",
+      "category": "howto",
+      "note": "403を返すことがある。失敗時はスキップ可。"
+    },
+    {
+      "type": "search",
+      "url": "https://explainx.ai/blog/",
+      "trust": "🟨",
+      "category": "howto",
+      "watch": "「explainx.ai Claude Code featu"
+    }
+  ]
+}
