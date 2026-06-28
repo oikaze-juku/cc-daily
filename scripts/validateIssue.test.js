@@ -5,7 +5,7 @@ import { validateIssue } from './validateIssue.js';
 const goodItem = { title_ja: 'x', summary_ja: ['a', 'b', 'c'], url: 'https://e.com', trust: '🟩', tags: [], try_hint: '', source_date: '2026-06-22', ideas: ['案1', '案2', '案3'] };
 
 test('正しい号は valid', () => {
-  const issue = { date: '2026-06-22', quiet_day: false, headline_top: goodItem, categories: [{ key: 'official', items: [goodItem] }] };
+  const issue = { date: '2026-06-22', quiet_day: false, headline_top: goodItem, categories: [{ key: 'howto', items: [goodItem] }, { key: 'official', items: [goodItem] }] };
   assert.equal(validateIssue(issue).valid, true);
 });
 
@@ -44,11 +44,26 @@ test('ideas が空配列だと invalid', () => {
 });
 
 test('trust 🟥（要警戒）は valid', () => {
-  const issue = { date: '2026-06-22', quiet_day: false, headline_top: { ...goodItem, trust: '🟥' }, categories: [] };
+  const issue = { date: '2026-06-22', quiet_day: false, headline_top: { ...goodItem, trust: '🟥' }, categories: [{ key: 'howto', items: [goodItem] }] };
   assert.equal(validateIssue(issue).valid, true);
 });
 
 test('廃止した 🟦 は invalid', () => {
   const issue = { date: '2026-06-22', quiet_day: false, headline_top: { ...goodItem, trust: '🟦' }, categories: [] };
   assert.equal(validateIssue(issue).valid, false);
+});
+
+test('通常日に howto が 0 件だと invalid', () => {
+  const issue = { date: '2026-06-28', quiet_day: false, headline_top: goodItem, categories: [{ key: 'official', items: [goodItem] }] };
+  assert.ok(validateIssue(issue).errors.some(e => e.includes('howto')));
+});
+
+test('howto が 1 件あれば valid', () => {
+  const issue = { date: '2026-06-28', quiet_day: false, headline_top: goodItem, categories: [{ key: 'howto', items: [goodItem] }, { key: 'official', items: [goodItem] }] };
+  assert.equal(validateIssue(issue).valid, true);
+});
+
+test('quiet_day は howto なしでも valid', () => {
+  const issue = { date: '2026-06-28', quiet_day: true, categories: [] };
+  assert.equal(validateIssue(issue).valid, true);
 });
