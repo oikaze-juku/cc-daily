@@ -38,10 +38,13 @@ function itemCard(item) {
   const reason = item.trust_reason ? `<div class="reason">${item.trust} ${item.trust_reason}</div>` : '';
   const dateLine = item.source_date ? `<div class="date">📅 ${item.source_date} の情報</div>` : '';
   const lead = (item.summary_ja || []).map((s) => `<span>${s}</span>`).join('');
-  const more = (Array.isArray(item.ideas) && item.ideas.length)
-    ? `<div class="more"><div class="more-title">💡 ほかにもこんな使い方</div><ul>${item.ideas.map((i) => `<li>${i}</li>`).join('')}</ul></div>`
+  // 記事本文（何が新しく加わり、各機能は何か＝覚える事実・定義）。配列の各要素を段落に。
+  const articleBody = Array.isArray(item.article) ? item.article : (item.article ? [item.article] : []);
+  const article = articleBody.length
+    ? `<div class="article"><div class="article-title">📰 記事</div>${articleBody.map((p) => `<p>${p}</p>`).join('')}</div>`
     : '';
-  const tryLine = item.try_hint ? `<div class="try">試すなら：${item.try_hint}</div>` : '';
+  // 試すなら（手を動かす実践レシピ＝身につく知恵）。
+  const tryLine = item.try_hint ? `<div class="try"><div class="try-title">🔧 試すなら（やってみよう）</div><p>${item.try_hint}</p></div>` : '';
   const isFav = favorites.has(item.url);
   const isRead = read.has(item.url);
   return `
@@ -58,9 +61,9 @@ function itemCard(item) {
         <span class="lead-label">こんなことができます</span>
         <span class="lead">${lead}</span>
       </summary>
+      ${article}
       ${dateLine}
       ${reason}
-      ${more}
       ${tags ? `<div class="tags">${tags}</div>` : ''}
       ${tryLine}
       <a class="src" href="${item.url}" target="_blank" rel="noopener">原文を開く ↗</a>
