@@ -34,5 +34,11 @@ export function validateIssue(issue) {
       errors.push('通常日は howto（実践・活用事例）が 1 件以上必須。第1〜3段の探索が不足している');
     }
   }
+  const officialTotal = (issue.categories || [])
+    .filter(c => c.key === 'official')
+    .flatMap(c => c.items || []).length;
+  if (officialTotal > 1) {
+    errors.push('official（重要ニュース）は最大1件。公式アップデートで枠を埋めてはいけない');
+  }
   return { valid: errors.length === 0, errors };
 }

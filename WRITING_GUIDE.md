@@ -22,10 +22,10 @@
     "try_hint": ""
   },
   "categories": [
-    { "key": "howto",   "label": "🛠 実践・活用事例", "items": [ /* 下と同形式・目標2件 */ ] },
-    { "key": "insight", "label": "🤔 使いこなし考察", "items": [] },
-    { "key": "insider", "label": "🎙 中の人ウォッチ", "items": [] },
-    { "key": "official","label": "📰 今週の重要ニュース", "items": [] }
+    { "key": "howto",   "label": "🛠 実践・活用事例", "items": [ /* ツール不問の実証事例・目標2件 */ ] }, /* 上段：主食 */
+    { "key": "insight", "label": "🤔 使いこなし考察", "items": [] },                                    /* 上段 */
+    { "key": "insider", "label": "🎙 中の人ウォッチ", "items": [] },                                    /* 上段・任意 */
+    { "key": "official","label": "📰 今週の重要ニュース", "items": [] }                                  /* 下段：最大1件・最後・headline_top 禁止 */
   ]
 }
 ```
