@@ -102,15 +102,18 @@ main > h1 {
 }
 .reason { color:var(--sub); font-size:12.5px; margin:8px 0; font-style:italic; }
 
-/* ほかにもこんな使い方（山吹soft・ポジティブ） */
-.more { margin:14px 0; padding:14px 16px; background:var(--kiku-soft); border:1px solid var(--kiku); border-radius:24px; }
-.more-title { font-family:var(--jp); font-weight:700; color:#8A6D14; font-size:13px; margin-bottom:7px; }
-.more ul { margin:0; padding-left:18px; list-style:disc; }
-.more li { margin:7px 0; font-size:14px; color:#5C4F2E; line-height:1.75; }
+/* 📰 記事本文（何が新しく加わり各機能は何か＝覚える事実・定義） */
+.article { margin:14px 0; }
+.article-title { font-family:var(--jp); font-weight:700; color:var(--ink); font-size:13px; margin-bottom:6px; }
+.article p { margin:0 0 8px; font-size:14px; color:#4A4836; line-height:1.85; }
+.article p:last-child { margin-bottom:0; }
 
 .tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
 .tag { background:var(--cream); color:var(--sub); border:1px solid var(--line); border-radius:999px; padding:4px 13px; font-size:12px; font-weight:500; }
-.try { margin-top:12px; font-size:13px; color:var(--green-ink); font-weight:500; line-height:1.7; }
+/* 🔧 試すなら（手を動かす実践レシピ＝身につく知恵）。緑系で行動を促す */
+.try { margin-top:14px; padding:14px 16px; background:#F1F7EF; border:1px solid var(--green); border-radius:24px; }
+.try-title { font-family:var(--jp); font-weight:700; color:var(--green-ink); font-size:13px; margin-bottom:6px; }
+.try p { margin:0; font-size:14px; color:#3E4B38; line-height:1.85; }
 .src {
   display:inline-flex; align-items:center; gap:5px; margin-top:14px; min-height:44px;
   color:var(--ink); font-weight:600; text-decoration:none; font-family:var(--serif); font-size:15px;

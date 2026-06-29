@@ -6,14 +6,14 @@ function validateItem(item, path, errors) {
   if (!Array.isArray(item.summary_ja) || item.summary_ja.length !== 3) errors.push(`${path}.summary_ja は3行必須`);
   if (typeof item.url !== 'string' || !/^https?:\/\//.test(item.url)) errors.push(`${path}.url が不正`);
   if (!TRUST.has(item.trust)) errors.push(`${path}.trust が不正`);
-  if (item.article !== undefined) {
-    if (!Array.isArray(item.article)) errors.push(`${path}.article は配列`);
-    else if (!item.article.every((s) => typeof s === 'string')) errors.push(`${path}.article の要素は文字列のみ`);
-  }
   if (!Array.isArray(item.tags)) errors.push(`${path}.tags は配列`);
   if (typeof item.try_hint !== 'string') errors.push(`${path}.try_hint は文字列`);
   if (typeof item.source_date !== 'string' || !item.source_date) errors.push(`${path}.source_date が空（情報の日付が必要）`);
-  if (!Array.isArray(item.ideas) || item.ideas.length === 0) errors.push(`${path}.ideas は配列で1つ以上（応用アイデア）`);
+  // 記事本文は画面に表示される必須項目（何が新しく加わり各機能は何か）。空配列・空文字は不可。
+  const articleArr = Array.isArray(item.article) ? item.article : (item.article ? [item.article] : []);
+  if (articleArr.length === 0 || !articleArr.every((s) => typeof s === 'string' && s.trim())) {
+    errors.push(`${path}.article は本文1段落以上が必須（記事本文）`);
+  }
 }
 
 export function validateIssue(issue) {
