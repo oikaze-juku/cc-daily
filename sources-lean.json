@@ -381,14 +381,14 @@
       "url": "https://dev.to/t/claudecode",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「dev.to AI tools business automation non-engineer 2026」で検索（Claude Code 限定にしない）。"
+      "watch": "「dev.to Claude Code tips workflow engineer 2026」「dev.to AI coding agent techniques」で検索。"
     },
     {
       "type": "search",
       "url": "https://medium.com/tag/claude-code",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「Medium AI business automation non-engineer 2026」「Medium 生成AI 業務効率化」で検索。"
+      "watch": "「Medium Claude Code workflow techniques engineer 2026」「Medium AI coding agent tips」で検索。"
     },
     {
       "type": "search",
@@ -657,28 +657,28 @@
       "url": "https://dev.classmethod.jp/",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「DevelopersIO 生成AI 業務効率化 非エンジニア 2026」で検索（Claude Code 限定にしない）。"
+      "watch": "「DevelopersIO 生成AI 開発 テクニック 実践 2026」「DevelopersIO Claude Code ワークフロー」で検索。"
     },
     {
       "type": "search",
       "url": "https://zenn.dev/topics/claudecode",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「Zenn 生成AI 業務効率化 やってみた」「Zenn 非エンジニア AI アプリ 個人開発」で検索（Claude Code 限定にしない）。"
+      "watch": "「Zenn Claude Code テクニック ワークフロー 2026」「Zenn 生成AI 開発 実践 エンジニア」で検索（Claude Code 限定にしない）。"
     },
     {
       "type": "search",
       "url": "https://qiita.com/tags/claude-code",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「Qiita 生成AI 業務自動化 非エンジニア」「Qiita ChatGPT 業務改善 アプリ作った 2026」で検索。"
+      "watch": "「Qiita 生成AI 開発 テクニック 実践 2026」「Qiita Claude Code 活用 ワークフロー」で検索。"
     },
     {
       "type": "search",
       "url": "https://www.itmedia.co.jp/aiplus/",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「ITmedia 生成AI 中小企業 業務効率化 2026」で検索。"
+      "watch": "「ITmedia 生成AI 開発 エンジニア 実践 2026」「ITmedia Claude AI エージェント」で検索。"
     },
     {
       "type": "search",
@@ -706,14 +706,14 @@
       "url": "https://b.hatena.ne.jp/hotentry/it",
       "trust": "🟨",
       "category": "insight",
-      "watch": "「はてなブックマーク 生成AI 業務効率化 非エンジニア」で検索（Claude Code 限定にしない）。"
+      "watch": "「はてなブックマーク 生成AI 開発 テクニック エンジニア」で検索（Claude Code 限定にしない）。"
     },
     {
       "type": "search",
       "url": "https://note.com/hashtag/claude",
       "trust": "🟥",
       "category": "insight",
-      "watch": "「note 生成AI 業務効率化 非エンジニア 2026」「note AI 塾 中小企業 自動化」で検索（Claude Code 限定にしない）。"
+      "watch": "「note AI 開発 エンジニア テクニック 2026」「note Claude Code 実践 ワークフロー」で検索。"
     }
   ],
   "curated_github": [
