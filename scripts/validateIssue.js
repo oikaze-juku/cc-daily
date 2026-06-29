@@ -26,5 +26,13 @@ export function validateIssue(issue) {
   (issue.categories || []).forEach((cat, ci) => {
     (cat.items || []).forEach((it, ii) => validateItem(it, `categories[${ci}].items[${ii}]`, errors));
   });
+  if (!issue.quiet_day) {
+    const howtoItems = (issue.categories || [])
+      .filter(c => c.key === 'howto')
+      .flatMap(c => c.items || []);
+    if (howtoItems.length === 0) {
+      errors.push('通常日は howto（実践・活用事例）が 1 件以上必須。第1〜3段の探索が不足している');
+    }
+  }
   return { valid: errors.length === 0, errors };
 }
