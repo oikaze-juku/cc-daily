@@ -381,14 +381,14 @@
       "url": "https://dev.to/t/claudecode",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「dev.to claude-code tips 2026」"
+      "watch": "「dev.to Claude Code tips workflow engineer 2026」「dev.to AI coding agent techniques」で検索。"
     },
     {
       "type": "search",
       "url": "https://medium.com/tag/claude-code",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「Medium claude code workflow 2"
+      "watch": "「Medium Claude Code workflow techniques engineer 2026」「Medium AI coding agent tips」で検索。"
     },
     {
       "type": "search",
@@ -657,28 +657,28 @@
       "url": "https://dev.classmethod.jp/",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「DevelopersIO Claude Code 2026"
+      "watch": "「DevelopersIO 生成AI 開発 テクニック 実践 2026」「DevelopersIO Claude Code ワークフロー」で検索。"
     },
     {
       "type": "search",
       "url": "https://zenn.dev/topics/claudecode",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「Zenn Claude Code 2026 活用」で検索。"
+      "watch": "「Zenn Claude Code テクニック ワークフロー 2026」「Zenn 生成AI 開発 実践 エンジニア」で検索（Claude Code 限定にしない）。"
     },
     {
       "type": "search",
       "url": "https://qiita.com/tags/claude-code",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「Qiita Claude Code 2026」で検索。"
+      "watch": "「Qiita 生成AI 開発 テクニック 実践 2026」「Qiita Claude Code 活用 ワークフロー」で検索。"
     },
     {
       "type": "search",
       "url": "https://www.itmedia.co.jp/aiplus/",
       "trust": "🟨",
       "category": "howto",
-      "watch": "「ITmedia Claude Anthropic 2026"
+      "watch": "「ITmedia 生成AI 開発 エンジニア 実践 2026」「ITmedia Claude AI エージェント」で検索。"
     },
     {
       "type": "search",
@@ -706,14 +706,14 @@
       "url": "https://b.hatena.ne.jp/hotentry/it",
       "trust": "🟨",
       "category": "insight",
-      "watch": "「はてなブックマーク Claude Code」で検索。"
+      "watch": "「はてなブックマーク 生成AI 開発 テクニック エンジニア」で検索（Claude Code 限定にしない）。"
     },
     {
       "type": "search",
       "url": "https://note.com/hashtag/claude",
       "trust": "🟥",
       "category": "insight",
-      "watch": "「note Claude Code 塾 教育 自動化 202"
+      "watch": "「note AI 開発 エンジニア テクニック 2026」「note Claude Code 実践 ワークフロー」で検索。"
     }
   ],
   "curated_github": [

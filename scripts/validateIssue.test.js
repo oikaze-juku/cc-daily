@@ -67,3 +67,18 @@ test('quiet_day は howto なしでも valid', () => {
   const issue = { date: '2026-06-28', quiet_day: true, categories: [] };
   assert.equal(validateIssue(issue).valid, true);
 });
+
+test('official が 2 件だと invalid', () => {
+  const issue = { date: '2026-06-28', quiet_day: false, headline_top: goodItem, categories: [{ key: 'howto', items: [goodItem] }, { key: 'official', items: [goodItem, goodItem] }] };
+  assert.ok(validateIssue(issue).errors.some(e => e.includes('official')));
+});
+
+test('official が 1 件なら valid', () => {
+  const issue = { date: '2026-06-28', quiet_day: false, headline_top: goodItem, categories: [{ key: 'howto', items: [goodItem] }, { key: 'official', items: [goodItem] }] };
+  assert.equal(validateIssue(issue).valid, true);
+});
+
+test('official が 0 件でも valid', () => {
+  const issue = { date: '2026-06-28', quiet_day: false, headline_top: goodItem, categories: [{ key: 'howto', items: [goodItem] }] };
+  assert.equal(validateIssue(issue).valid, true);
+});
