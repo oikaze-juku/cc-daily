@@ -26,6 +26,7 @@ TZ='Asia/Tokyo' date +%F
 
 ## 手順
 
+0. **`next_focus.md` があれば最初に読む**（前夜の自己チューニング `TUNE.md` が残した「今日の探索で最優先にする1つ」）。下の探索（手順3）の方針に反映する。ただし**既存ルール（事例ファースト・official最下段1件・鮮度7日等）を上書きしない**。あくまで同点のときの優先順位の指針。無ければ無視して進む。
 1. `sources-lean.json` を読む（primary / insider / media / practitioner_blogs / newsletters / video / competitor_context / community / japanese / curated_github / secondary のURL・type・category・trust リスト。`sources.json` は人間向けの詳細版なので読まない）。
 2. `node scripts/listUsedUrls.js` を実行して、過去に出した全 `url` をテキストで取得する（重複排除キー）。**過去号の JSON を全件読み込んではいけない**——URL だけが必要で、このスクリプトの出力（2KB以下）だけを使う。スクリプトは直近30日分だけを対象にしているため、号が増えても出力は膨らまない（7日鮮度ルールにより30日以上前の URL は再登場しないため）。
 3. **探索（事例ファーストの順で実施）**：
