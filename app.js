@@ -1,6 +1,23 @@
 import { groupByWeek } from './scripts/groupArchive.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getFirestore, doc, setDoc, deleteDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
 const $ = (sel) => document.querySelector(sel);
+
+// Firebase 初期化（★をFirestoreにミラー保存する）
+const fbApp = initializeApp({
+  apiKey: "AIzaSyDJyN52ZW_gsESmJ4zhDRLjFbZvj4bTf_w",
+  authDomain: "cc-daily-897f4.firebaseapp.com",
+  projectId: "cc-daily-897f4",
+  storageBucket: "cc-daily-897f4.firebasestorage.app",
+  messagingSenderId: "1053058214515",
+  appId: "1:1053058214515:web:e1bddfdda37b4c46ffd806",
+});
+const db = getFirestore(fbApp);
+const auth = getAuth(fbApp);
+let uid = null;
+signInAnonymously(auth).then((cred) => { uid = cred.user.uid; }).catch(() => {});
 
 // 端末内に保存する状態（お気に入り・既読）
 const LS_FAV = 'ccd_fav';
@@ -13,6 +30,32 @@ let read = getSet(LS_READ);
 let manifest = [];
 let current = null;     // 表示中の号
 let view = 'todo';      // todo（やること）| fav（お気に入り）| archive（アーカイブ）
+
+// URL から Firestore docId 生成用ハッシュ（小規模用途・速度優先）
+function simpleHash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) { h = (Math.imul(31, h) + str.charCodeAt(i)) | 0; }
+  return (h >>> 0).toString(16).padStart(8, '0');
+}
+
+// ★状態を Firestore にベストエフォートでミラー（失敗しても UI に影響しない）
+async function mirrorFav(adding, url, title, tagsStr, date) {
+  if (!uid) return;
+  try {
+    const ref = doc(db, 'favorites', `${uid}_${simpleHash(url)}`);
+    if (adding) {
+      await setDoc(ref, {
+        uid, url,
+        title_ja: title,
+        tags: tagsStr ? tagsStr.split(',').filter(Boolean) : [],
+        issue_date: date,
+        timestamp: serverTimestamp(),
+      });
+    } else {
+      await deleteDoc(ref);
+    }
+  } catch (_) {}
+}
 
 async function loadJSON(path) {
   const res = await fetch(path, { cache: 'no-store' });
@@ -33,7 +76,10 @@ const isTodo = (item) => !read.has(item.url) && !favorites.has(item.url);
 // 処理済み判定：お気に入り or 既読
 const isHandled = (item) => favorites.has(item.url) || read.has(item.url);
 
-function itemCard(item) {
+// HTML属性値エスケープ
+const escAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function itemCard(item, date = '') {
   const tags = (item.tags || []).map((t) => `<span class="tag">${t}</span>`).join('');
   const reason = item.trust_reason ? `<div class="reason">${item.trust} ${item.trust_reason}</div>` : '';
   const dateLine = item.source_date ? `<div class="date">📅 ${item.source_date} の情報</div>` : '';
@@ -54,7 +100,7 @@ function itemCard(item) {
           <span class="badge">${item.trust}</span>
           <span class="title">${!isRead && !isFav ? '<span class="dot" aria-label="未読"></span>' : ''}${item.title_ja}</span>
           <span class="acts">
-            <button class="act act-fav${isFav ? ' on' : ''}" data-act="fav" data-url="${item.url}" aria-label="お気に入り" title="お気に入り">${isFav ? '★' : '☆'}</button>
+            <button class="act act-fav${isFav ? ' on' : ''}" data-act="fav" data-url="${item.url}" data-title="${escAttr(item.title_ja || '')}" data-tags="${escAttr((item.tags || []).join(','))}" data-date="${escAttr(date)}" aria-label="お気に入り" title="お気に入り">${isFav ? '★' : '☆'}</button>
             <button class="act act-read${isRead ? ' on' : ''}" data-act="read" data-url="${item.url}" aria-label="既読チェック" title="読んだら押す">✓</button>
           </span>
         </span>
@@ -101,12 +147,12 @@ function celebrateBlock() {
 // 通常表示（やること：未読かつ非お気に入りだけ）
 function renderTodo(issue) {
   const top = issue.headline_top && isTodo(issue.headline_top)
-    ? `<section class="top"><h2>🌟 今日の一番</h2>${itemCard(issue.headline_top)}</section>`
+    ? `<section class="top"><h2>🌟 今日の一番</h2>${itemCard(issue.headline_top, issue.date || '')}</section>`
     : '';
   const cats = (issue.categories || []).map((cat) => {
     const items = (cat.items || []).filter(isTodo);
     if (!items.length) return '';
-    return `<section class="cat" data-key="${cat.key || ''}"><h3>${cat.label || cat.key}</h3>${items.map(itemCard).join('')}</section>`;
+    return `<section class="cat" data-key="${cat.key || ''}"><h3>${cat.label || cat.key}</h3>${items.map((i) => itemCard(i, issue.date || '')).join('')}</section>`;
   }).join('');
 
   const hasArticles = allItems(issue).length > 0;
@@ -138,7 +184,7 @@ async function renderFavorites() {
     ? groups.map((g) => `
         <details class="week-group">
           <summary><span class="week-label">${g.label}</span><span class="week-count">${g.entries.length}</span></summary>
-          ${g.entries.map((e) => itemCard(e.item)).join('')}
+          ${g.entries.map((e) => itemCard(e.item, e.date || '')).join('')}
         </details>`).join('')
     : `<p class="quiet">まだお気に入りがありません。記事の ☆ をタップすると、ここにまとまります。</p>`;
   $('#issue').innerHTML = `<h1>⭐ お気に入り（${total}件）</h1>${body}${legend}`;
@@ -161,7 +207,7 @@ async function renderArchive() {
     ? groups.map((g) => `
         <details class="week-group">
           <summary><span class="week-label">${g.label}</span><span class="week-count">${g.entries.length}</span></summary>
-          ${g.entries.map((e) => itemCard(e.item)).join('')}
+          ${g.entries.map((e) => itemCard(e.item, e.date || '')).join('')}
         </details>`).join('')
     : `<p class="quiet">まだ読んだ記事がありません。記事の ✓ をタップすると、ここにまとまります。</p>`;
   $('#issue').innerHTML = `<h1>🗄️ アーカイブ（${total}件）</h1>${body}${legend}`;
@@ -176,7 +222,7 @@ function render() {
   if (current) renderTodo(current);
 }
 
-// ☆✓を押したら「消し込み」アニメーション→状態保存→再描画
+// ☆✓を押したら「消し込み」アニメーション→状態保存→Firestoreミラー→再描画
 function handleAct(act) {
   const url = act.getAttribute('data-url');
   const kind = act.getAttribute('data-act');
@@ -185,6 +231,17 @@ function handleAct(act) {
   saveSet(kind === 'fav' ? LS_FAV : LS_READ, set);
   // お気に入りにしたら同時に既読をつける（進捗カウント用）
   if (kind === 'fav' && favorites.has(url) && !read.has(url)) { read.add(url); saveSet(LS_READ, read); }
+
+  // ★トグル時にFirestoreへミラー（ベストエフォート・失敗してもUIは変わらない）
+  if (kind === 'fav') {
+    mirrorFav(
+      favorites.has(url),
+      url,
+      act.getAttribute('data-title') || '',
+      act.getAttribute('data-tags') || '',
+      act.getAttribute('data-date') || '',
+    );
+  }
 
   // やること表示で、この操作によって一覧から外れる場合はスッと消す演出
   const card = document.querySelector(`[data-card="${CSS.escape(url)}"]`);
