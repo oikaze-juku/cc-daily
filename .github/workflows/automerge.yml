@@ -10,8 +10,11 @@ permissions:
 
 jobs:
   automerge:
-    # feat(issue): で始まるPRだけを自動マージ（probe・手動PRは対象外）
-    if: startsWith(github.event.pull_request.title, 'feat(issue):')
+    # feat(issue):（毎朝の号）と chore(tune):（夜チューニングの並べ替え＋ログ）を自動マージ。
+    # proposal(profile):（タグ増減提案）・probe・手動PRは対象外＝人間が承認する。
+    if: >-
+      startsWith(github.event.pull_request.title, 'feat(issue):') ||
+      startsWith(github.event.pull_request.title, 'chore(tune):')
     runs-on: ubuntu-latest
     steps:
       - name: draft を解除してから auto-merge を有効化

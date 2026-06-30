@@ -1,2 +1,5 @@
 node_modules/
 .DS_Store
+
+# 夜チューニングの一時ファイル（Firestore取得結果）
+fav-urls.json
