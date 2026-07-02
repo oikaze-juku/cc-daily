@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { collectArticles, computeTune } from './runTune.js';
+import { collectArticles, computeTune, parseArgs } from './runTune.js';
 
 const issues = [
   {
@@ -58,4 +58,41 @@ test('一度も★が付かない既存タグは removeCandidates に出る', ()
   const r = computeTune(issues, ['u1'], profile);
   // 塾管理 は提示されていない＝0★ → 削除候補
   assert.ok(r.removeCandidates.includes('塾管理'));
+});
+
+// --- --profile オプション（夫婦別プロファイル学習ループ・案B） ---
+
+test('parseArgs: --profile 無指定なら既定 profile.json（後方互換）', () => {
+  const args = parseArgs(['fav-urls.json', '14']);
+  assert.equal(args.favPath, 'fav-urls.json');
+  assert.equal(args.windowDays, 14);
+  assert.equal(args.profilePath, 'profile.json');
+});
+
+test('parseArgs: --profile <path> を指定すると profilePath が変わる', () => {
+  const args = parseArgs(['fav-urls.wife.json', '14', '--profile', 'profile.wife.json']);
+  assert.equal(args.favPath, 'fav-urls.wife.json');
+  assert.equal(args.windowDays, 14);
+  assert.equal(args.profilePath, 'profile.wife.json');
+});
+
+test('parseArgs: windowDays 省略時は14既定（既存の後方互換を維持）', () => {
+  const args = parseArgs(['fav-urls.json']);
+  assert.equal(args.windowDays, 14);
+  assert.equal(args.profilePath, 'profile.json');
+});
+
+test('computeTune: profile.wife.json 相当（妻タグ）を渡すと妻タグで集計される', () => {
+  const wifeIssues = [
+    {
+      headline_top: { url: 'w1', tags: ['デザイン', 'SNS運用'] },
+      categories: [{ items: [{ url: 'w2', tags: ['デザイン'] }] }],
+    },
+  ];
+  const wifeProfile = { interest_tags: ['デザイン', 'SNS運用', 'Canva'] };
+  const r = computeTune(wifeIssues, ['w1', 'w2'], wifeProfile);
+  assert.equal(r.favoriteRate, 1);
+  assert.equal(r.currentTags[0], 'デザイン');
+  // 夫のタグ（アプリ開発など）は妻profileに無いので影響しない
+  assert.ok(!r.currentTags.includes('アプリ開発'));
 });

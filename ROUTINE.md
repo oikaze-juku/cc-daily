@@ -24,12 +24,19 @@ TZ='Asia/Tokyo' date +%F
 
 `newword`（新ワード解説）は廃止。変更履歴の転記に陥りやすいため。説明が必要な新語は `insight` か `howto` の中で自然に解説する。
 
-## 手順
+## このルーティンは2段構成（Stage A → Stage B）
+
+**夫婦別プロファイル学習ループ（案B）**：探索（Stage A）は夫婦共有で1回だけ行い、コストを抑える。選抜（Stage B）は人ごとに分けて夫用・妻用の2つの号を出す。
+
+- **Stage A（共有・探索＝下記手順0〜9）**：`profile.json`（夫）と `profile.wife.json`（妻）の `interest_tags` の**和集合**で広く探索し、プール記事 8〜12本に `genre`（howto/insight/insider/official/video のいずれか、号の categories.key と同じ語彙）と `tags`（和集合基準）を付けて `issues/<TODAY>.pool.json` に書き出す。**この段では「号」を組まない**（headline_top の選定・4ジャンルへのカテゴリ確定は Stage B の仕事）。
+- **Stage B（人別・LLM不要・純粋スクリプト＝手順10以降）**：`scripts/curateForProfile.js` を2回呼び、プールから夫用・妻用それぞれの号を機械的に選抜する。
+
+## 手順（Stage A：共有探索）
 
 0. **`next_focus.md` があれば最初に読む**（前夜の自己チューニング `TUNE.md` が残した「今日の探索で最優先にする1つ」）。下の探索（手順3）の方針に反映する。ただし**既存ルール（事例ファースト・official最下段1件・鮮度7日等）を上書きしない**。あくまで同点のときの優先順位の指針。無ければ無視して進む。
-1. `sources-lean.json` を読む（primary / insider / media / practitioner_blogs / newsletters / video / competitor_context / community / japanese / curated_github / secondary のURL・type・category・trust リスト。`sources.json` は人間向けの詳細版なので読まない）。
+1. `sources-lean.json` を読む（primary / insider / media / practitioner_blogs / newsletters / video / competitor_context / community / japanese / curated_github / secondary のURL・type・category・trust リスト。`sources.json` は人間向けの詳細版なので読まない）。**`profile.json` と `profile.wife.json` の両方を読み、`interest_tags` の和集合（重複除く）を今日の探索タグとして使う。** 妻のタグ（デザイン・SNS運用・Canva・画像生成AI等）も第1〜3段の検索キーワードに含める。
 2. `node scripts/listUsedUrls.js` を実行して、過去に出した全 `url` をテキストで取得する（重複排除キー）。**過去号の JSON を全件読み込んではいけない**——URL だけが必要で、このスクリプトの出力（2KB以下）だけを使う。スクリプトは直近30日分だけを対象にしているため、号が増えても出力は膨らまない（7日鮮度ルールにより30日以上前の URL は再登場しないため）。
-3. **探索（事例ファーストの順で実施）**：
+3. **探索（事例ファーストの順で実施・目標プール8〜12本）**：
 
    > **探索フェーズのルール（コスト節約・厳守）**
    > - **記事本文の WebFetch は禁止**。候補のタイトル・URL・日付だけをメモする。Atom フィード（構造化XML）の読み込みはOK。
@@ -61,7 +68,7 @@ TZ='Asia/Tokyo' date +%F
    - **official 2件以上禁止**：`official` カテゴリは最大1件。公式リリースノートで howto・insight 枠を埋めてはいけない→NG。
    - 上記に当たる場合は第1〜3段の探索に戻り、別のソースから差し替え候補を探す。
 5. 候補から既出 url（手順2で取得したリスト）を `scripts/dedupe.js` の `dedupe` ロジックで除外する。**さらに、URL が違っても過去号と同じ話題・同じ機能を扱うものは出さない**（同じ新機能の二度載せ禁止）。
-6. **ここで初めて WebFetch を実行**（候補記事の本文確認・最大8件）。その後、各候補を評価：
+6. **ここで初めて WebFetch を実行**（候補記事の本文確認・最大12件。プール8〜12本に緩和）。その後、各候補を評価：
    - **信頼度を 緑→黄→赤（やばい順）で付ける**：🟩 安全（公式・本人の一次発信・複数ソースで裏取り済み）／🟨 注意（信頼できる二次・解説記事ベースで複数一致・一部未確認）／🟥 要警戒（個人の SNS 主張・未検証・出どころは弱いが話題。**鵜呑み禁物**として載せる）。
    - タイトル＋本文を `detectHype` にかけ、明らかな煽り・デマ・詐欺は載せない（🟥 で載せるのは「裏は取れていないが有用そうな実践」まで）。
    - 🟨・🟥 は `trust_reason` を**必ず1行**添える。
@@ -70,16 +77,30 @@ TZ='Asia/Tokyo' date +%F
    - `summary_ja`（=「こんなことができます」）：**結果**。あなたの作業がどう変わるか。**専門用語ゼロ**。状況→変化→効果の3行・合計150字前後・話が一本につながる。
    - `article`（=「📰 記事」）：**事実・定義＝教材の核**。何が新しく加わり各機能は何か。**覚える名前を出してその場で噛み砕く**。新聞記事スタイル1段落200字前後・配列1要素。
    - `try_hint`（=「🔧 試すなら」）：**実践レシピ**。手順つきでやや長め（2〜4文）。記事で出した名前を実際どう使うかを見せ、身につく知恵にする。
-   - `source_date` を必ず付ける。`profile.json` の `interest_tags` で `tags` を付け、関連度の高い順に並べる。**`ideas` は廃止（書かない）。**
-8. **4ジャンル（howto×2 / insight×1 / insider×1 / official×1）計5記事**を目標にカテゴリ分けする。1週間以内に該当ネタが無いジャンルは記事無しでよい。**さらに、良い動画があった日だけ、`video`「🎬 今日の1本」を `categories` の【最後】に足す（最下段固定）。** key / label の例：
-   - **上段（主食）**：`howto`「🛠 実践・活用事例」/ `insight`「🤔 使いこなし考察」/ `insider`「🎙 中の人ウォッチ」
-   - **下段（最後・脇）**：`official`「📰 今週の重要ニュース」（最大1件）/ `video`「🎬 今日の1本」（任意）
-   - `headline_top`（今日の一番★）＝**必ず上段（howto / insight / insider）から選ぶ**。official アップデートを今日の一番にしない。ツール不問の実証事例が最有力候補。**タイトルにツール名を入れる**こと。
-9. **無理にネタを作らない。** 質の高い新情報・掘り出し物が無いカテゴリは空でよい。全体で出すものが無い日は `quiet_day: true` にし `headline_top` を省略、evergreen な小ネタを1件だけ。逆に、しっかり探して**掘り出し物**（見落とされがちな良ツール・良記事）があれば積極的に拾う。
-10. `issues/<TODAY>.json` として書き出す（スキーマは下記）。
-11. `scripts/validateIssue.js` の `validateIssue` ロジックで検証。エラーがあれば修正してから次へ。
-12. `node scripts/writeManifest.js` を実行して `issues/manifest.json` を更新。
-13. 変更を **通常の PR（DRAFT ではない）** として作成する。タイトルは必ず `feat(issue): <TODAY> の号` で始めること。GitHub Action が自動マージする。PR の本文末尾に必ず次の**探索台帳**を付ける（どのソースを当たったか・品質の根拠として残す）：
+   - `source_date` を必ず付ける。**`profile.json` と `profile.wife.json` の `interest_tags` の和集合**で `tags` を付け、関連度の高い順に並べる（片方のタグしか付かないと Stage B でもう一方の号が空になるため、和集合で付けることが重要）。**`ideas` は廃止（書かない）。**
+8. **プールの各記事に `genre` を1つ付ける**（`howto` / `insight` / `insider` / `official` / `video` のいずれか。号の `categories.key` と同じ語彙）。目安は **howto×3〜4 / insight×2 / insider×2 / official×1（あれば）/ video×1（あれば）** でプール8〜12本を構成する（Stage B が人ごとに選抜するため、1ジャンルに偏らせない）。
+   - `howto`「🛠 実践・活用事例」/ `insight`「🤔 使いこなし考察」/ `insider`「🎙 中の人ウォッチ」/ `official`「📰 今週の重要ニュース」（最大1件相当）/ `video`「🎬 今日の1本」（任意）。
+   - **この段では headline_top や号の categories は組まない**（Stage B の `curateForProfile.js` が人ごとに機械的に決める）。
+9. **無理にネタを作らない。** 質の高い新情報・掘り出し物が無ければプールは少なくてよい（最低目安は howto 1件以上）。今日出せるネタが本当に無ければプールを空配列にしてよい（Stage B が自動で `quiet_day: true` の号を組む）。逆に、しっかり探して**掘り出し物**（見落とされがちな良ツール・良記事）があれば積極的に拾う。
+
+## 手順（Stage A 出力）
+
+10. `issues/<TODAY>.pool.json` として書き出す（`{ "date": "<TODAY>", "items": [ {...記事, "genre": "howto" }, ... ] }`。各記事のフィールドは号の item と同じ：`title_ja` / `summary_ja`（3行）/ `article`（本文1段落以上）/ `source_date` / `url` / `trust` /（`trust_reason`）/ `tags` / `try_hint` に加え `genre`）。
+
+## 手順（Stage B：人別選抜・LLM不要）
+
+11. 夫用・妻用の号を機械的に組む（決定的・LLM呼び出しなし）：
+    ```bash
+    node scripts/curateForProfile.js issues/<TODAY>.pool.json profile.json      > issues/<TODAY>.json
+    node scripts/curateForProfile.js issues/<TODAY>.pool.json profile.wife.json > issues/<TODAY>.wife.json
+    ```
+12. 両方を `scripts/validateIssue.js` の `validateIssue` ロジックで検証。エラーがあれば Stage A のプール記事（`article`・`summary_ja`・`tags` 等）を直してから Stage B をやり直す。
+13. manifest を両方更新：
+    ```bash
+    node scripts/writeManifest.js       # issues/manifest.json（夫）
+    node scripts/writeManifestWife.js   # issues/manifest.wife.json（妻）
+    ```
+14. 変更を **通常の PR（DRAFT ではない）** として作成する。タイトルは必ず `feat(issue): <TODAY> の号` で始めること。GitHub Action が自動マージする。PR には `issues/<TODAY>.pool.json` / `issues/<TODAY>.json` / `issues/<TODAY>.wife.json` / `issues/manifest.json` / `issues/manifest.wife.json` を含める。PR の本文末尾に必ず次の**探索台帳**を付ける（どのソースを当たったか・品質の根拠として残す）：
 
 ```
 ## 探索台帳
@@ -88,11 +109,12 @@ TZ='Asia/Tokyo' date +%F
 - 中の人(insider blogs/X): [確認した人物名] → 採用〇件 / なし
 - 今週の重要ニュース(official): [確認内容] → 採用〇件 / なし
 - アンチ怠惰チェック: 事例〇件 / 同一ドメイン重複なし / 同一リリース重複なし
+- Stage B: 夫の号 headline=[url] / 妻の号 headline=[url]
 ```
 
 ## 厳守（提出前チェックリスト）
 
-- **当日号を必ず新規作成。既存号の上書き禁止。**（UTC 日付ズレで上書き事故あり → JST `date +%F` で確定した `<TODAY>` で新規作成）
+- **当日号を必ず新規作成。既存号の上書き禁止。**（UTC 日付ズレで上書き事故あり → JST `date +%F` で確定した `<TODAY>` で新規作成）。夫婦別プロファイル学習ループでは `issues/<TODAY>.pool.json` / `issues/<TODAY>.json` / `issues/<TODAY>.wife.json` の3つとも新規作成（上書き禁止）。
 - PR は **DRAFT にしない**（DRAFT だと自動マージが働かない）。
 - **事例ファースト：howto 1件以上必須。エンジニアの実践テクニック・ワークフローのみ（「〜できます」の機能紹介・非エンジニアの体験談はNG）。** 全件チェンジログ転記はNG → 第1〜3段に戻る。
 - **official は最下段1件まで。** 公式アップデートを headline_top・howto・insight に入れない。
@@ -100,7 +122,7 @@ TZ='Asia/Tokyo' date +%F
 - **同一ドメイン・同一リリース・official から2件以上採用しない。**
 - **中の人ウォッチは sources-lean.json の insider リストを起点に。** ブログ本文確認→🟩、X 本人発確認→🟨。又聞き・インプ稼ぎNG。
 - sources-lean.json と手順3の探索**以外**からは拾わない。
-- **🎬今日の1本：良い動画があれば最大1本。文字起こしなし・0本OK。** categories の**最後**に `key:video` で置く。
+- **🎬今日の1本：良い動画があれば最大1本。文字起こしなし・0本OK。** Stage A（プール）では `genre:video` を付けるだけでよい（categories の最後に置く並び順は Stage B の `curateForProfile.js` が機械的に決める）。
 - 不確かなものは 🟨 ＋ `trust_reason` 1行。考察は断定せず条件付きで。
 - **鮮度：7日以内のみ。source_date 必須。** 8日以上前は拾わない。
 - 重複回避：過去号と同じ話題・URL は出さない。
