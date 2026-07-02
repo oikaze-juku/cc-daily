@@ -1,2 +1,4 @@
 {"date":"2026-07-01","presented":0,"fav":0,"favoriteRate":0,"reorder":false,"propose":false,"note":"bootstrap: Firestore収集を本番反映・データ蓄積待ち"}
 {"date":"2026-07-01","presented":53,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"現行interest_tags(14タグ)の幅を維持し多様な事例を提示、★の初回シグナルを集める"}
+{"date":"2026-07-02","who":"husband","presented":58,"fav":11,"favoriteRate":0.1896551724137931,"class":"flaky","carryover_met":"yes","reorder":false,"propose":false,"stopped":false,"focus":"自動化・アプリ開発への★集中の再現性を確認"}
+{"date":"2026-07-02","who":"wife","presented":58,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ"}
