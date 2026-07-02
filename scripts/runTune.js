@@ -7,8 +7,10 @@
 // 中核は computeTune（純粋関数・テスト対象）。ファイル読み込みは下の CLI 部だけ。
 //
 // 使い方（クラウドRoutineがTUNE.mdの手順で呼ぶ）：
-//   node scripts/runTune.js <favorited-urls.json> [windowDays=14]
+//   node scripts/runTune.js <favorited-urls.json> [windowDays=14] [--profile <path>]
 //   - <favorited-urls.json>: ["https://...", ...] か {"favoritedUrls":[...]} 形式
+//   - --profile <path>: 読み込む好みプロファイル（既定 profile.json＝後方互換）。
+//     夫婦別プロファイル学習ループでは夫=profile.json／妻=profile.wife.json を渡す。
 //   - 出力: 集計結果JSONを stdout に印字
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -44,14 +46,33 @@ export function computeTune(issues, favoritedUrls, profile) {
   };
 }
 
+// CLI引数パース（純粋関数・テスト対象）：
+//   位置引数1 = favPath、位置引数2 = windowDays（省略時14）、--profile <path>（省略時 profile.json）
+export function parseArgs(argv) {
+  const positional = [];
+  let profilePath = 'profile.json';
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--profile') {
+      profilePath = argv[i + 1];
+      i++;
+    } else {
+      positional.push(argv[i]);
+    }
+  }
+  return {
+    favPath: positional[0],
+    windowDays: Number(positional[1]) || 14,
+    profilePath,
+  };
+}
+
 // ---- CLI（直接実行されたときだけ動く。テスト import 時は動かない） ----
 function readJSON(path) {
   return JSON.parse(readFileSync(path, 'utf8'));
 }
 
 function main() {
-  const favPath = process.argv[2];
-  const windowDays = Number(process.argv[3]) || 14;
+  const { favPath, windowDays, profilePath } = parseArgs(process.argv.slice(2));
 
   // ★URL（無ければ空＝採点だけ進める）
   let favoritedUrls = [];
@@ -69,7 +90,7 @@ function main() {
     }
   }
 
-  const profile = readJSON('profile.json');
+  const profile = readJSON(profilePath);
   const out = computeTune(issues, favoritedUrls, profile);
   process.stdout.write(JSON.stringify(out, null, 2) + '\n');
 }
