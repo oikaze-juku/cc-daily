@@ -2,3 +2,5 @@
 {"date":"2026-07-01","presented":53,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"現行interest_tags(14タグ)の幅を維持し多様な事例を提示、★の初回シグナルを集める"}
 {"date":"2026-07-02","who":"husband","presented":58,"fav":11,"favoriteRate":0.1896551724137931,"class":"flaky","carryover_met":"yes","reorder":false,"propose":false,"stopped":false,"focus":"自動化・アプリ開発への★集中の再現性を確認"}
 {"date":"2026-07-02","who":"wife","presented":58,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ"}
+{"date":"2026-07-03","who":"husband","presented":62,"fav":12,"favoriteRate":0.1935483870967742,"class":"deterministic","carryover_met":"yes","reorder":true,"propose":false,"stopped":false,"focus":"自動化・アプリ開発の先頭繰り上げ後も多様な実践事例を厚めに提示、他タグ露出も維持"}
+{"date":"2026-07-03","who":"wife","presented":62,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ"}
