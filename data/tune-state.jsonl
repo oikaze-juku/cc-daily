@@ -6,3 +6,5 @@
 {"date":"2026-07-03","who":"wife","presented":62,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ"}
 {"date":"2026-07-04","who":"husband","presented":62,"fav":12,"favoriteRate":0.1935483870967742,"class":"environment","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"当日号(2026-07-04)未生成のため新規シグナルなし。自動化・アプリ開発優先の並びを維持し号生成再開後に再現性を確認"}
 {"date":"2026-07-04","who":"wife","presented":62,"fav":0,"favoriteRate":0,"class":"environment","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"当日号未生成・マーク蓄積待ちのため引き続き幅広く提示"}
+{"date":"2026-07-05","who":"husband","presented":65,"fav":12,"favoriteRate":0.18461538461538463,"class":"environment","carryover_met":"no","reorder":false,"propose":false,"stopped":false,"focus":"自動化・アプリ開発優先の並びを維持、07-05号の記事に新規★が付くか次回確認"}
+{"date":"2026-07-05","who":"wife","presented":65,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ"}
