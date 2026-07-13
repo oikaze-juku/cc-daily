@@ -22,3 +22,5 @@
 {"date":"2026-07-11","who":"wife","presented":62,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（11夜連続0件）"}
 {"date":"2026-07-12","who":"husband","presented":60,"fav":9,"favoriteRate":0.15,"class":"flaky","carryover_met":"partial","reorder":false,"propose":false,"stopped":false,"focus":"朝の号生成Routineが復旧しissues/2026-07-12.jsonが生成された（07-09〜07-11の3朝連続空振りから回復）。サーキットブレーカー解除。ただし新規★はまだ0件のため07-12号への再現性を次回確認"}
 {"date":"2026-07-12","who":"wife","presented":60,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（12夜連続0件）"}
+{"date":"2026-07-13","who":"husband","presented":58,"fav":9,"favoriteRate":0.15517241379310345,"class":"flaky","carryover_met":"no","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineは07-12・07-13と2晩連続で正常稼働。夫の新規★は07-06以来7日間0件が継続、07-13号への再現を次回確認"}
+{"date":"2026-07-13","who":"wife","presented":58,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（13夜連続0件）"}
