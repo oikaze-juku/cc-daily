@@ -26,3 +26,5 @@
 {"date":"2026-07-13","who":"wife","presented":58,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（13夜連続0件）"}
 {"date":"2026-07-14","who":"husband","presented":57,"fav":8,"favoriteRate":0.14035087719298245,"class":"flaky","carryover_met":"no","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineは07-12〜07-14と3晩連続で正常稼働。夫の新規★は07-06以来8日間0件が継続、07-14号への再現を次回確認"}
 {"date":"2026-07-14","who":"wife","presented":57,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（14夜連続0件）"}
+{"date":"2026-07-15","who":"husband","presented":57,"fav":8,"favoriteRate":0.14035087719298245,"class":"environment","carryover_met":"no","reorder":false,"propose":false,"stopped":true,"focus":"号生成Routineは06:36JSTに発火したがissues/2026-07-15.json未生成で空振り。新規★確認の申し送りが3晩連続未達でブレーカー該当も、profile側に提案できる変更なしのため号生成状況を最優先で監視"}
+{"date":"2026-07-15","who":"wife","presented":57,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（15夜連続0件）"}
