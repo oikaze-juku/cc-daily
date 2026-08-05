@@ -68,3 +68,5 @@
 {"date":"2026-08-03","who":"wife","presented":47,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（34夜連続0件）"}
 {"date":"2026-08-04","who":"husband","presented":45,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"presentedは08-03の47→45へ窓内記事数の入れ替わりで減少、★とは無関係。★入力は07-06以来29日間0件が継続。号生成Routineは2026-08-04.json正常生成"}
 {"date":"2026-08-04","who":"wife","presented":45,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（35夜連続0件）"}
+{"date":"2026-08-05","who":"husband","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"presentedは08-04の45→43へ窓内記事数の入れ替わりで減少、★とは無関係。★入力は07-06以来30日間0件が継続。号生成Routineは2026-08-05.json正常生成"}
+{"date":"2026-08-05","who":"wife","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（36夜連続0件）"}
