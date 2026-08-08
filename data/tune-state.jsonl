@@ -74,3 +74,5 @@
 {"date":"2026-08-06","who":"wife","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（37夜連続0件）"}
 {"date":"2026-08-07","who":"husband","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"presentedは08-06の43→43で変化なし。★入力は07-06以来32日間0件が継続。本日issues/2026-08-07.jsonが未生成（号生成Routine1日目の欠落）で最優先確認事項"}
 {"date":"2026-08-07","who":"wife","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（38夜連続0件）"}
+{"date":"2026-08-08","who":"husband","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineの欠落が08-07・08-08で2日連続。翌朝08-09の号生成復旧を最優先確認、再欠落なら3日目でエスカレーション"}
+{"date":"2026-08-08","who":"wife","presented":43,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineの欠落が08-07・08-08で2日連続。翌朝08-09の号生成復旧を最優先確認、再欠落なら3日目でエスカレーション"}
