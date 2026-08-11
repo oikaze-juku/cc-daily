@@ -80,3 +80,5 @@
 {"date":"2026-08-09","who":"wife","presented":42,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（40夜連続0件）"}
 {"date":"2026-08-10","who":"husband","presented":42,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"yes","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineは08-09・08-10と連続正常稼働、一過性欠落の懸念は解消。★入力ゼロは07-06以来35日間継続"}
 {"date":"2026-08-10","who":"wife","presented":42,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（41夜連続0件）"}
+{"date":"2026-08-11","who":"husband","presented":41,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"yes","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineは08-09〜08-11と3日連続正常稼働。★入力ゼロは07-06以来36日間継続"}
+{"date":"2026-08-11","who":"wife","presented":41,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ（42夜連続0件）"}
