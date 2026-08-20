@@ -96,3 +96,5 @@
 {"date":"2026-08-18","who":"wife","presented":41,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ(49晩連続0件)。号生成Routineの2日連続欠落は08-18に復旧し夫側と共通で解消"}
 {"date":"2026-08-19","who":"husband","presented":40,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"yes","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineは08-18・08-19と連続正常稼働。★入力ゼロは07-06以来44日間継続"}
 {"date":"2026-08-19","who":"wife","presented":40,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ(50晩連続0件)。号生成Routineの連続正常稼働は夫側と共通の朗報"}
+{"date":"2026-08-20","who":"husband","presented":40,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"no","reorder":false,"propose":false,"stopped":false,"focus":"号生成Routineが08-20に欠落(新規1日目)。翌朝08-21の復旧を最優先確認、再欠落なら2日目でカウント継続。★入力ゼロは07-06以来45日間継続"}
+{"date":"2026-08-20","who":"wife","presented":40,"fav":0,"favoriteRate":0,"class":"flaky","carryover_met":"na","reorder":false,"propose":false,"stopped":false,"focus":"yomimono側のマーク蓄積を待つ(51晩連続0件)。号生成Routineの08-20欠落は夫側と共通の最優先監視対象"}
